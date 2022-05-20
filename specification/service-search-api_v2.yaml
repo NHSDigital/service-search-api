@@ -2,7 +2,7 @@
 # for service-search-api owned by NHS Digital (https://digital.nhs.uk/)
 openapi: '3.0.0'
 info:
-  title: 'Service Search API (v1)'
+  title: 'Service Search API (v2)'
   version: 'Computed and injected at build time by `scripts/set_version.py`'
   description: |
     ## Overview
@@ -81,54 +81,12 @@ info:
     
     | Environment | Base URL                                        |
     | ------------|-------------------------------------------------|
-    | Existing    | https://api.nhs.uk/service-search/              |
+    | Legacy      | https://api.nhs.uk/service-search/              |
     | New         | https://api.service.nhs.uk/service-search-api/  |
 
     ## Onboarding
 
     For more details, see [getting started](https://developer.api.nhs.uk/getting-started).
-
-    ## Attribution
-
-    Any syndicated content must incorporate the following attribution (credit) to the NHS website:
-    
-    ![Run in Postman](https://apimgmtstrbns9gsxxqoiy7d.blob.core.windows.net/content/MediaLibrary/Terms/nhs_attribution.png)]
-
-    ```json
-    "author": {
-      "url": "https://www.nhs.uk",
-      "logo": "https://www.nhs.uk/nhscwebservices/documents/logo1.jpg",
-      "email": "nhswebsite.servicedesk@nhs.net",
-      "@type": "Organization",
-      "name": "NHS website"
-    }
-    ```
-
-    If you are displaying NHS syndicated content in a context where a functional link back to the article on the NHS website is not possible then you should use the following attribution (credit):
-    
-    From [www.nhs.uk](www.nhs.uk)
-
-    ## Caching
-    
-    Caching all content supplied through our API is recommended where possible. Unless otherwise notified by the syndication team, you should refresh cached content at least once every 7 days. If instructed to refresh cached our content, you must do so immediately.
-
-    Certain topics on the NHS website need to be refreshed more frequently than every 7 days. Find out about [content not covered by our standard terms and conditions](https://www.nhs.uk/our-policies/terms-and-conditions/content-not-licensed-for-re-use/).
-    
-    # Usage caps
-    
-    When using a trial subscription, you will only be able to run 10 calls/minute up to a maximum of 1,000 calls per month. A full subscription caps usage at 4,000 calls per hour. You are not to call the APIs over 4,000 times in any one-hour period, unless you have notified the syndication team in advance and they have confirmed in writing that you can do so.
-
-    # Standard licence terms
-    
-    By using an NHS website API, you agree to our [standard licence terms (PDF, 189KB)](https://apimgmtst3acoupair9misya.blob.core.windows.net/content/MediaLibrary/Terms/NHS-website-syndication-terms.pdf).
-
-    # Your contact details
-
-    You must provide accurate contact details that must be kept up to date while you are using our content. Failure to keep contact details updated is a breach of our licence terms and may result in your subscription being disabled. You can check your details on [your profile](https://developer.api.nhs.uk/profile).
-
-    # Help and support
-    
-    If you need help using any of our APIs , please email the NHS website service desk at [nhswebsite.servicedesk@nhs.net](mailto://nhswebsite.servicedesk@nhs.net).
 
 
   contact:
@@ -143,100 +101,10 @@ servers:
   - url: 'https://api.service.nhs.uk/service-search-api'
     description: Production environment.
 paths:
-
   "/":
-  
-    # --------------------------------------------------------------------------------
-    # GET /
-    # --------------------------------------------------------------------------------
-  
     get:
-      operationId: root-GET
+      operationId: search-GET
       description: Information about services provided by NHS organisations listed in the service search on the NHS website.
-      parameters:
-        - name: api-version
-          description: The API version number can be supplied as a query parameter.
-          in: query
-          schema:
-            type: number
-            default: 1
-            enum: [1]
-        - name: search
-          in: query
-          default: "*"
-          description: The text to search for. All searchable fields are searched by default unless searchFields is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
-          schema:
-            type: string
-        - name: searchMode
-          in: query
-          description: Defaults to any. Specifies whether any or all of the search terms must be matched in order to count the document as a match.
-          schema:
-            type: string
-            enum: 
-            - 'any'
-            - 'all'
-            default: 'any'
-        - name: searchFields
-          in: query
-          description: The list of comma-separated field names to search for the specified text.
-          schema:
-            type: string
-        - name: queryType
-          description: Defaults to simple. When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "". When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
-          in: query
-          schema:
-            type: string
-            enum:
-            - 'simple'
-            - 'full'
-            default: 'simple'
-        - name: $skip
-          description: The number of search results to skip.
-          in: query
-          schema:
-            type: number
-            format: int32
-        - name: $top
-          description: The number of search results to retrieve. This defaults to 50.
-          in: query
-          schema:
-            type: number
-            format: int32
-            default: 50
-        - name: $count
-          description: Optional, defaults to false. Specifies whether to fetch the total count of results. This is the count of all documents that match the search and $filter parameters, ignoring $top and $skip. Setting this value to true may have a performance impact. The count returned is an approximation. If you’d like to get only the count without any documents, you can use $top=0.
-          in: query
-          schema:
-            type: boolean
-            default: false
-        - name: $orderBy
-          in: query
-          description: A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by asc to indicate ascending, and desc to indicate descending. The default is ascending order.
-          schema:
-            type: string
-        - name: $select
-          in: query
-          description: A list of comma-separated fields to include in the result set. If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
-          schema:
-            type: string
-        - name: $filter
-          in: query
-          description: A structured search expression in standard OData syntax.
-          schema:
-            type: string
-      responses:
-        "200":
-          $ref: '#/components/responses/OrganisationResults'
-
-  "/organisationtypes":
-
-    # --------------------------------------------------------------------------------
-    # GET /organisationtypes
-    # --------------------------------------------------------------------------------
-
-    get:
-      operationId: organisationtypes-GET
-      description: Get, filter or search the organisation types
       parameters:
       - name: api-version
         description: The API version number can be supplied as a query parameter.
@@ -244,7 +112,6 @@ paths:
         schema:
           type: number
           default: 1
-          enum: [1]
       - name: search
         in: query
         description: The text to search for. All searchable fields are searched by default unless searchFields is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
@@ -309,66 +176,16 @@ paths:
           type: string
       responses:
         "200":
-          $ref: '#/components/responses/OrganisationTypeResults'
+          $ref: '#/components/responses/SearchResponse'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
           $ref: '#/components/responses/Forbidden'
-
-  "/search-postcode-or-place":
-
-    # --------------------------------------------------------------------------------
-    # POST /search-postcode-or-place
-    # --------------------------------------------------------------------------------
-
-    post:
-      operationId: search-postcode-or-place-POST
-      description: Information about services provided by NHS organisations listed in the service search on the NHS website filtered by postcode or place name.
-      parameters:
-        - name: api-version
-          description: Specify the version of the API.  MUST be 1.
-          in: query
-          required: true
-          schema:
-            type: number
-            default: 1
-            enum: [1]
-        - name: search
-          description: Search query term
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: latitude
-          description: The latitude parameter for geospacial searches.
-          in: query
-          schema:
-            type: number
-        - name: longitude
-          description: The longitude parameter for geospacial searches.
-          in: query
-          schema:
-            type: number
-      requestBody:
-        description: To generate a response body visit http://api-bridge.azurewebsites.net/servicesearchguide. You can also read Microsoft's search documentation at https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents
-        content:
-          "application/json":
-            schema:
-              type: object
-              additionalProperties: true
-      responses:
-        "200":
-          $ref: "#/components/responses/SearchPostcodeResults"
-
+          
 components:
   responses:
-    Unknown:
-      description: "Unknown"
-      content:
-        "application/json": {}
-  
     BadRequest:
       description: Bad Request
       content:
@@ -378,7 +195,7 @@ components:
             properties: {}
 
     Unauthorized:
-      description: Bad Request
+      description: Unauthorized
       content:
         application/json:
           schema:
@@ -386,59 +203,27 @@ components:
             properties: {}
 
     Forbidden:
-      description: Bad Request
+      description: Forbidden
       content:
         application/json:
           schema:
             type: object
             properties: {}
-            
-    SearchPostcodeResults:
-      description: Postcode search results
-      content:
-        "application/json":
-          schema:
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    url:
-                      type: string
-                      format: uri
-
-    OrganisationTypeResults:
-      description: Organisation Type Search Results
-      content:
-        "application/json":
-          schema:
-            allOf:
-              - $ref: "#/components/schemas/SearchResults"
-              - type: "object"
-                properties:
-                  "value":
-                    type: "array"
-                    items:
-                      $ref: "#/components/schemas/OrganisationType"
     
-    OrganisationResults:
-      description: Organisation Search Results
+    SearchResponse:
+      description: Search Response
       content:
         "application/json":
           schema:
             allOf:
-              - $ref: "#/components/schemas/SearchResults"
-              - type: "object"
+              - $ref: '#/components/schemas/SearchResults'
+              - type: object
                 properties:
-                  "value":
-                    type: "array"
+                  value:
+                    type: array
                     items:
-                      $ref: "#/components/schemas/Organisation"
-                
+                      $ref: '#/components/schemas/Organisation'
+
   schemas:
     SearchResult:
       type: object
@@ -463,102 +248,205 @@ components:
           items:
             $ref: "#/components/schemas/SearchResult"
 
-    OrganisationType:
-      description: Organisation Types
-      type: object
-      properties:
-        "OrganisationTypeID":
-          type: string
-        "OrganisationTypeName":
-          type: string
-        "IsDeleted":
-          type: boolean
-        "DisplayName":
-          type: string
-    
     Organisation:
       description: Organisation v1
       type: object
       properties:
-        "OrganisationID":
+        "ODSCode": 
           type: string
-        "OrganisationName":
+        "OrganisationName": 
           type: string
-        "OrganisationAliases":
-          $ref: "#/components/schemas/StringArray"
-        "OrganisationTypeID":
+        "OrganisationTypeId": 
           type: string
-        "OrganisationType":
+        "OrganisationType": 
           type: string
-        "OrganisationStatus":
+        "OrganisationStatus": 
           type: string
-        "IsPimsManaged":
-          type: "boolean"
-        "PIMSCode": 
+        "SummaryText": 
           type: string
-        "NACSCode": 
-          type: string
-        "LocalAuthorityCode":
-          type: string
-        "SummaryText":
-          type: string
-        "URL":
-          type: string
-          format: "uri"
-        "Address1":
-          type: string
-        "Address2":
-          type: string
-        "Address3":
-          type: string
-        "City":
-          type: string
-        "County":
-          type: string
-        "Latitude":
-          type: "number"
-        "Longitude":
-          type: "number"
-        "OrganisationSubType":
-          type: string
-        "LastUpdatedDate":
-          type: string
-          format: "date-time"
+        "URL": 
+            type: string
+            format: uri
+        "Address1": 
+            type: string
+        "Address2": 
+            type: string
+        "Address3": 
+            type: string
+        "City": 
+            type: string
+        "County": 
+            type: string
+        "Latitude": 
+            type: string
+        "Longitude": 
+            type: string
         "Postcode":
-          type: string
+            type: string
         "Geocode":
           $ref: "#/components/schemas/Geocode"
-        "CCG":
-          $ref: "#/components/schemas/StringArray"
-        "RelatedIAPTCCGs":
-          $ref: "#/components/schemas/StringArray"
-        "Trusts":
-          $ref: "#/components/schemas/StringArray"
-        "CCGLocalAuthority":
-          $ref: "#/components/schemas/StringArray"
-        "ServicesOffered":
-          $ref: "#/components/schemas/StringArray"
-        "ServicesProvided":
-          $ref: "#/components/schemas/StringArray"
-        "ServiceCodesProvided":
-          $ref: "#/components/schemas/StringArray"
-        "ServicesProvidedConditions":
-          $ref: "#/components/schemas/StringArray"
-        "OrgTypeConditions":
-          $ref: "#/components/schemas/StringArray"
+        "Phone": 
+            type: string
+        "Email": 
+            type: string
+        "Website": 
+            type: string
+            format: uri
+        "OrganisationSubType": 
+            type: string
+        "OrganisationAliases": 
+          $ref: '#/components/schemas/StringArray'
+        "ParentOrganisation": 
+          $ref: '#/components/schemas/OrganisationReference'
+        "Services":
+          $ref: '#/components/schemas/StringArray'
         "OpeningTimes":
-          $ref: "#/components/schemas/JsonEncodedString"
+          $ref: '#/components/schemas/OpeningTimes'
         "Contacts":
-          $ref: "#/components/schemas/JsonEncodedString"
-        "VenueType":
-          $ref: "#/components/schemas/JsonEncodedString"
-        "Metrics":
-          $ref: "#/components/schemas/JsonEncodedString"
-        "GSD":
+          $ref: '#/components/schemas/ContactList'
+        "Facilities":
+          $ref: '#/components/schemas/FacilityList'
+        "Staff":
+          $ref: '#/components/schemas/StaffList'
+        "GSD": 
           type: string
-        "OpeningTimesV2":
-          $ref: "#/components/schemas/OpeningTimes"
-    
+        "LastUpdatedDates":
+          type: object
+          additionalProperties:
+            type: string
+            format: date-time
+        "AcceptingPatients":
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Acceptance'
+        "CCG": 
+          type: string
+        "RelatedIAPTCCGs":
+            $ref: '#/components/schemas/StringArray'
+        "CCGLocalAuthority":
+            $ref: '#/components/schemas/StringArray'
+        "Trusts":
+            $ref: '#/components/schemas/StringArray'
+        "Metrics":
+            $ref: '#/components/schemas/MetricList'
+
+    Metric:
+      type: object
+      properties:
+        "MetricID":
+          type: number
+        "MetricName":
+          type: string
+        "DisplayName":
+          type: string
+        "Description":
+          type: string
+        "Value":
+          type: string
+        "Value2":
+          type: string
+        "Value3":
+          type: string
+        "Text":
+          type: string
+        "LinkUrl":
+          type: string
+        "LinkText":
+          type: string
+        "MetricDisplayTypeID":
+          type: number
+        "MetricDisplayTypeName":
+          type: string
+        "HospitalSectorType":
+          type: string
+        "MetricText":
+          type: string
+        "DefaultText":
+          type: string
+        "IsMetaMetric":
+          type: string
+        "BandingClassification":
+          type: string
+        "BandingName":
+          type: string
+
+    MetricList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Metric'
+
+    Acceptance:
+      type: object
+      properties:
+        "Id":
+          type: number
+        "Name":
+          type: string
+        "AcceptingPatients":
+          type: boolean
+
+    OrganisationReference:
+      type: object
+      properties:
+        "ODSCode":
+          type: string
+        "OrganisationName": 
+          type: string
+
+    Facility:
+      type: object
+      properties:
+        "Id":
+          type: number
+        "Name":
+          type: string
+        "Value":
+          type: string
+        "FacilityGroupName":
+          type: string
+
+    FacilityList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Facility'
+
+    Staff:
+      type: object
+      properties:
+        "Title":
+          type: string
+        "GivenName":
+          type: string
+        "FamilyName":
+          type: string
+        "Role":
+          type: string
+        "Qualification":
+          type: string
+
+    StaffList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Staff'
+
+    Contact:
+      type: object
+      properties:
+        "ContactType":
+          type: string
+        "ContactAvailabilityType":
+          type: string
+        "ContactMethodType":
+          type: string
+        "ContactValue":
+          type: string
+
+    ContactList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Contact'
+
+
     OpeningTimes:
       type: array
       items:
@@ -625,3 +513,4 @@ components:
           type: object
           additionalProperties: true
       example: "{ \"type\": \"name\", \"properties\": { \"name\": \"EPSG:4326\" } }"
+
