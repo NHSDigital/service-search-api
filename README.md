@@ -1,5 +1,6 @@
 # service-search-api
 
+
 ![Build](https://github.com/NHSDigital/service-search-api/workflows/Build/badge.svg?branch=master)
 
 This is a specification for the *service-search-api* API.
