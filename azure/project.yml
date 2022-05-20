@@ -1,0 +1,4 @@
+variables:
+  service_name: service-search-api
+  short_service_name: ssa
+  service_base_path: service-search-api

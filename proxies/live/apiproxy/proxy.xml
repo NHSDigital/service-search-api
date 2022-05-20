@@ -1,0 +1,4 @@
+<APIProxy name="ssa">
+  <!-- This is the root of the application -->
+  <Description>"service-search-api"</Description>
+</APIProxy>
