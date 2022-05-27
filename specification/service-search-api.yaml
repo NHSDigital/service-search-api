@@ -163,7 +163,6 @@ paths:
             enum: [1]
         - name: search
           in: query
-          default: "*"
           description: The text to search for. All searchable fields are searched by default unless searchFields is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
           schema:
             type: string
