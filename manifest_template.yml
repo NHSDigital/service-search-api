@@ -4,10 +4,13 @@ DESCRIPTION: example description
 APIGEE_ENVIRONMENTS:
   - name: internal-dev
     display_name: Internal Development
+    visibility: true
   - name: internal-qa
     display_name: Internal QA
+    visibility: true
   - name: ref
     display_name: Reference
+    visibility: true
 # Enable environments when ready by uncommenting:
   # - name: internal-dev-sandbox
   #   display_name: Internal Development Sandbox
@@ -15,8 +18,14 @@ APIGEE_ENVIRONMENTS:
   #   display_name: Internal QA Sandbox
   # - name: sandbox
   #   display_name: Sandbox
-  # - name: int
-  #   display_name: Integration Testing
+  - name: int
+    display_name: Integration Testing
+    approval_type: auto
+  - name: prod
+    display_name: Production
+    approval_type: manual
+    visibility: false # explicitly making this hidden
+
 ---
 meta:
   api:
@@ -33,7 +42,7 @@ apigee:
   - name: {{ ENV.name }}
     products:
       - name: {{ NAME }}
-        approvalType: auto
+        approvalType: {{ ENV.approvalType | default('auto') }}
         attributes:
           - name: access
             value: public
@@ -73,6 +82,6 @@ apigee:
         description: {{ DESCRIPTION }}
         requireCallbackUrl: false
         title: {{ TITLE }}
-        visibility: true
+        visibility: {{ ENV.visibility | default('false') }}
         specId: {{ NAME }}
 {% endfor %}
