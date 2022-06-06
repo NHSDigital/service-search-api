@@ -21,6 +21,7 @@ APIGEE_ENVIRONMENTS:
   - name: int
     display_name: Integration Testing
     approval_type: auto
+    visibility: false
   - name: prod
     display_name: Production
     approval_type: manual
