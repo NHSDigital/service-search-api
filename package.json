@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "OAS (Swagger v3) API Definition for Template API",
   "scripts": {
-    "lint:v1": "speccy lint -s openapi-tags -s operation-tags -s -s path-keys-no-trailing-slash specification/service-search-api.yaml --skip default-and-example-are-redundant",
-    "lint:v2": "speccy lint -s openapi-tags -s operation-tags -s -s path-keys-no-trailing-slash specification/service-search-api_v2.yaml --skip default-and-example-are-redundant",
-    "lint": "npm run lint:v1 && npm run lint:v2",
+    "lint": "speccy lint -s openapi-tags -s operation-tags -s -s path-keys-no-trailing-slash specification/service-search-api.yaml --skip default-and-example-are-redundant",
     "publish": "mkdir -p build && node_modules/.bin/speccy resolve specification/service-search-api.yaml -i | poetry run python scripts/yaml2json.py | poetry run python scripts/set_version.py > build/service-search-api.json",
     "serve": "node_modules/.bin/speccy serve build/service-search-api.json",
     "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL"
