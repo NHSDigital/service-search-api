@@ -5,6 +5,7 @@ list:
 	@grep '^[^#[:space:]].*:' Makefile
 
 build:
+	cp -R ../specification/examples/ ./responses/
 	docker build .
 
 clean:
