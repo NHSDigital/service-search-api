@@ -5,6 +5,9 @@
         <Name>VerifyAPIKey.FromHeader</Name>
       </Step>
       <Step>
+        <Name>FlowCallout.ApplyRateLimitingApiKey</Name>
+      </Step>
+      <Step>
         <Name>KeyValueMapOperations.GetSubscriptionKey</Name>
       </Step>
       <Step>
