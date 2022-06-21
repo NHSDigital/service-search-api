@@ -38,13 +38,6 @@
       <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or (request.verb = "HEAD"))
       </Condition>
     </Flow>
-    <Flow name="AddSubscriptionKey">
-      <Request>
-        <Step>
-          <Name>AssignMessage.AddSubscriptionKey</Name>
-        </Step>
-      </Request>
-    </Flow>
   </Flows>
   <PreFlow/>
   <PostClientFlow name="PostClientFlow">
