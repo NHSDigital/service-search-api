@@ -2,17 +2,15 @@
 # for service-search-api owned by NHS Digital (https://digital.nhs.uk/)
 openapi: "3.0.0"
 info:
-  title: "Service Search API (v2)"
+  title: "Service Search - Rest API"
   version: "Computed and injected at build time by `scripts/set_version.py`"
   description: |
     ## Overview
     Use this API to find information about NHS services, including lists of NHS organisation types, organisations, and coronavirus (COVID 19) walk-in sites.
 
-    search for NHS [organisation types](https://editor.swagger.io/c), for example, GP practices, hospitals
+    search for NHS organisation types, for example, GP practices, hospitals
 
-    search for NHS [organisations](https://developer.api.nhs.uk/nhs-api/documentation/service-search-organisations) that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
-
-    search for [coronavirus (COVID 19)](https://developer.api.nhs.uk/nhs-api/documentation/service-search-covid-walkin) walk-in sites
+    search for NHS organisations that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
 
     ---
 
@@ -39,7 +37,7 @@ info:
     * [EPS Directory of Services - REST API](https://digital.nhs.uk/developer/api-catalogue/electronic-prescription-service-directory-of-services) - use this to access information about dispensing services, including searching for dispensers who can provide services for a patient with a given location and urgency
     * [Electronic Transmission of Prescriptions Web Services - SOAP API](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap) - use this to access EPS dispenser (and dispensing appliance contractor) information for a patient via NHS UK Web Services
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
-
+    * [Coronavirus (COVID 19) walk-in sites](https://developer.api.nhs.uk/nhs-api/documentation/service-search-covid-walkin) - use this endpoint to find details of walk-in sites for coronavirus (COVID 19)
     ---
 
     ## API status
@@ -52,7 +50,7 @@ info:
 
     This API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.
 
-    For more details, see service levels.
+    For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
 
     ---
 
@@ -73,20 +71,20 @@ info:
 
     This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis), meaning we authenticate the calling application but not the end user.
 
-    Your request must include a `subscription-key` header with a valid subscription key. [Login](Login) or [register](https://developer.api.nhs.uk/register) with the NHS website developer portal to get your subscription key.
-
+    For implementation instructions please read the documentation for [API key based authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication)
     ---
 
     ## Environments and testing
 
-    | Environment | Base URL                                        |
-    | ------------|-------------------------------------------------|
-    | Legacy      | https://api.nhs.uk/service-search/              |
-    | New         | https://api.service.nhs.uk/service-search-api/  |
+    | Environment       | Base URL                                                  |
+    | ----------------- |---------------------------------------------------------- |
+    | Sandbox           | https://sandbox.api.service.nhs.uk/service-search-api/    |
+    | Integration test  | https://int.api.service.nhs.uk/service-search-api/        |
+    | Production        | https://api.service.nhs.uk/service-search-api/            |
 
     ## Onboarding
 
-    For more details, see [getting started](https://developer.api.nhs.uk/getting-started).
+    For more details, see [getting started](https://digital.nhs.uk/developer/getting-started).
 
   contact:
     name: "service-search-api API Support"
@@ -95,7 +93,7 @@ info:
 servers:
   - url: "https://sandbox.api.service.nhs.uk/service-search-api"
     description: Sandbox environment.
-  - url: "https://int.api.service.nhs.uk/service-search-api"
+  - url: "https://int.api.service.nhs.uk/service-search-api/"
     description: Integration test environment.
   - url: "https://api.service.nhs.uk/service-search-api"
     description: Production environment.
@@ -103,7 +101,7 @@ paths:
   "/":
     get:
       operationId: search-GET
-      description: Information about services provided by NHS organisations listed in the service search on the NHS website.
+      description: You can use this to get information about services provided by NHS organisations listed in the service search on the NHS website.
       parameters:
         - name: api-version
           description: The API version number can be supplied as a query parameter.
@@ -182,6 +180,8 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
 
   "/search-postcode-or-place":
     # --------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ paths:
 
     post:
       operationId: search-postcode-or-place-POST
-      description: Information about services provided by NHS organisations listed in the service search on the NHS website filtered by postcode or place name.
+      description: You can use this to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
       parameters:
         - name: api-version
           description: Specify the version of the API.  MUST be 2.
@@ -226,6 +226,12 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/SearchPostcodeResults"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
 
   "/organisationtypes":
     # --------------------------------------------------------------------------------
@@ -234,7 +240,7 @@ paths:
 
     get:
       operationId: organisationtypes-GET
-      description: Get, filter or search the organisation types
+      description: You can use this to get, filter or search the organisation types
       parameters:
         - name: api-version
           description: The API version number can be supplied as a query parameter. This must be 1.
@@ -314,6 +320,8 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
 
 components:
   responses:
@@ -335,6 +343,14 @@ components:
 
     Forbidden:
       description: Forbidden
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}
+
+    TooManyRequests:
+      description: Too Many Requests
       content:
         application/json:
           schema:
