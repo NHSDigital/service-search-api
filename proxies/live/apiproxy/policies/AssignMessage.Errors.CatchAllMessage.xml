@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage.Errors.CatchAllMessage">
+  <DisplayName>Catchall error message</DisplayName>
   <Set>
     <Payload contentType="application/json" variablePrefix="%" variableSuffix="#">
     {
-        "resourceType": "OperationOutcome",
-        "issue": [
-            {
-            "severity": "error",
-            "code": "%error.status.code#",
-            "details": {
-                "coding": [
-                {
-                    "code": "%error.status.code#",
-                    "display": "%error.reason.phrase#"
-                }
-                ]
-            },
-            "diagnostics": "%error.content#"
-            }
-        ]
+      "statusCode": "500",
+      "message": "An unknown error occured processing this request."
     }
     </Payload>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
