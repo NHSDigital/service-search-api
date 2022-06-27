@@ -93,7 +93,7 @@ info:
 servers:
   - url: "https://sandbox.api.service.nhs.uk/service-search-api"
     description: Sandbox environment.
-  - url: "https://int.api.service.nhs.uk/service-search-api/"
+  - url: "https://int.api.service.nhs.uk/service-search-api"
     description: Integration test environment.
   - url: "https://api.service.nhs.uk/service-search-api"
     description: Production environment.

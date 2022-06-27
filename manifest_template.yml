@@ -87,6 +87,7 @@ APIGEE_ENVIRONMENTS:
           enabled: false
   - name: sandbox
     display_name: Sandbox
+    visibility: true
     ratelimiting:
       personal-demographics-sandbox:
         quota:
