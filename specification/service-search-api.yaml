@@ -101,7 +101,22 @@ paths:
   "/":
     get:
       operationId: search-GET
-      description: You can use this to get information about services provided by NHS organisations listed in the service search on the NHS website.
+      description: |
+        ## Overview
+        Use this to get information about services provided by NHS organisations listed in the service search on the NHS website.
+
+        ## Sandbox test scenarios
+        You can test the following scenarios in our sandbox environment:
+
+        | Scenario               | Request                    | Response                                 |
+        | ---------------------- | -------------------------- | ---------------------------------------- |
+        | All organisations      | No parameters              | HTTP status 200 with all organisations   |
+        | Single organisation    | `search`=`DN601`           | HTTP status 200 with single organisation |
+        | No organisations found | `search`=`no-organisation` | HTTP status 200 with no organisations    |
+        | Invalid API version    | No api-version parameter   | HTTP status 404 with problem description |
+
+        You can try out the sandbox using the 'Try this API feature' on this page.
+
       parameters:
         - name: api-version
           description: The API version number can be supplied as a query parameter.
@@ -190,7 +205,22 @@ paths:
 
     post:
       operationId: search-postcode-or-place-POST
-      description: You can use this to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
+      description: |
+        ## Overview
+        You can use this to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
+
+        ## Sandbox test scenarios
+        You can test the following scenarios in our sandbox environment:
+
+        | Scenario               | Request                  | Response                                 |
+        | ---------------------- | ------------------------ | ---------------------------------------- |
+        | Place found            | `search`=`manchester`    | HTTP status 200 with 2 locations         |
+        | Postcode not found     | `search`=`LS42PB`        | HTTP status 500 with problem description |
+        | No search parameter    | No search parameter      | HTTP status 500 with problem description |
+        | Invalid API version    | No api-version parameter | HTTP status 404 with problem description |
+
+        You can try out the sandbox using the 'Try this API feature' on this page.
+
       parameters:
         - name: api-version
           description: Specify the version of the API.  MUST be 2.
@@ -232,6 +262,8 @@ paths:
           $ref: "#/components/responses/Forbidden"
         "429":
           $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
   "/organisationtypes":
     # --------------------------------------------------------------------------------
@@ -240,7 +272,22 @@ paths:
 
     get:
       operationId: organisationtypes-GET
-      description: You can use this to get, filter or search the organisation types
+      description: |
+        ## Overview
+        You can use this to get, filter or search the organisation types
+
+        ## Sandbox test scenarios
+        You can test the following scenarios in our sandbox environment:
+
+        | Scenario                    | Request                  | Response                                        |
+        | --------------------------- | ------------------------ | ----------------------------------------------- |
+        | All organisation types      | /                        | HTTP status 200 with all organisation tpyes     |
+        | Single organisation type    | `search`=`pharmacy`      | HTTP status 200 with a single organisation type |
+        | No organisation types found | `search`=`nothing-found` | HTTP status 200 with no organisation types      |
+        | Invalid API version         | No api-version parameter | HTTP status 404 with problem description        |
+
+        You can try out the sandbox using the 'Try this API feature' on this page.
+
       parameters:
         - name: api-version
           description: The API version number can be supplied as a query parameter. This must be 1.
@@ -322,6 +369,8 @@ paths:
           $ref: "#/components/responses/Forbidden"
         "429":
           $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
 components:
   responses:
@@ -351,6 +400,14 @@ components:
 
     TooManyRequests:
       description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}
+
+    InternalServerError:
+      description: Internal Server Error
       content:
         application/json:
           schema:
