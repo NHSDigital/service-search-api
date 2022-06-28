@@ -6,11 +6,10 @@ info:
   version: "Computed and injected at build time by `scripts/set_version.py`"
   description: |
     ## Overview
-    Use this API to find information about NHS services, including lists of NHS organisation types, organisations, and coronavirus (COVID 19) walk-in sites.
-
-    search for NHS organisation types, for example, GP practices, hospitals
-
-    search for NHS organisations that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
+    Use this API to:
+    * find information about NHS services, including lists of NHS organisation types, organisations, and coronavirus (COVID 19) walk-in sites
+    * search for NHS organisation types, for example, GP practices, hospitals
+    * search for NHS organisations that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
 
     ---
 
@@ -42,7 +41,7 @@ info:
 
     ## API status
 
-    This API is [stable](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status).
+    This API is [alpha](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status).
 
     ---
 
@@ -60,7 +59,8 @@ info:
 
     The API supports search using either HTTP GET or HTTP POST.
 
-    Network access
+    ## Network access
+
     This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
 
     For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
@@ -72,6 +72,7 @@ info:
     This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis), meaning we authenticate the calling application but not the end user.
 
     For implementation instructions please read the documentation for [API key based authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication)
+
     ---
 
     ## Environments and testing
@@ -87,7 +88,7 @@ info:
     For more details, see [getting started](https://digital.nhs.uk/developer/getting-started).
 
   contact:
-    name: "service-search-api API Support"
+    name: "Service Search API Support"
     url: "https://digital.nhs.uk/developer/help-and-support"
     email: api.management@nhs.net
 servers:
@@ -189,12 +190,10 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/SearchResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
         "429":
           $ref: "#/components/responses/TooManyRequests"
 
@@ -258,8 +257,8 @@ paths:
           $ref: "#/components/responses/SearchPostcodeResults"
         "401":
           $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
         "429":
           $ref: "#/components/responses/TooManyRequests"
         "500":
@@ -361,12 +360,10 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/OrganisationTypeResults"
-        "400":
-          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
         "429":
           $ref: "#/components/responses/TooManyRequests"
         "500":
@@ -408,6 +405,14 @@ components:
 
     InternalServerError:
       description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}
+
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:
