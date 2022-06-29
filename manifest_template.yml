@@ -50,13 +50,9 @@ APIGEE_ENVIRONMENTS:
           enabled: false
       app:
         quota:
-          enabled: true
-          limit: 1500
-          interval: 1
-          timeunit: week
+          enabled: false
         spikeArrest:
-          enabled: true
-          ratelimit: 60pm
+          enabled: false
   - name: internal-dev-sandbox
     display_name: Internal Development Sandbox
     visibility: true
