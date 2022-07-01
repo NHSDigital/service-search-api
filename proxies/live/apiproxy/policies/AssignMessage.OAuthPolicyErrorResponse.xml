@@ -3,7 +3,8 @@
     <StatusCode>401</StatusCode>
     <Payload contentType="application/json">
       {
-        "message": "ACCESS_DENIED",
+          statusCode: 401,
+          message: "API key invalid"
       }
     </Payload>
   </Set>
