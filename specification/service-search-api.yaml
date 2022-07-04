@@ -38,6 +38,7 @@ info:
     * [Electronic Transmission of Prescriptions Web Services - SOAP API](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap) - use this to access EPS dispenser (and dispensing appliance contractor) information for a patient via NHS UK Web Services
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
     * [Coronavirus (COVID 19) walk-in sites](https://developer.api.nhs.uk/nhs-api/documentation/service-search-covid-walkin) - use this endpoint to find details of walk-in sites for coronavirus (COVID 19)
+
     ---
 
     ## API status
@@ -58,6 +59,7 @@ info:
 
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest).
 
+    ---
 
     ## Network access
 
@@ -82,6 +84,8 @@ info:
     | Sandbox           | https://sandbox.api.service.nhs.uk/service-search-api/    |
     | Integration test  | https://int.api.service.nhs.uk/service-search-api/        |
     | Production        | https://api.service.nhs.uk/service-search-api/            |
+
+    ---
 
     ## Onboarding
 
