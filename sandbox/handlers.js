@@ -47,7 +47,7 @@ async function searchPostcodeOrPlace(req, res, next) {
     res.status(404);
   } else if (queryStringParameters?.["search"].toLowerCase() === "manchester") {
     res.status(200).json(searchPostcodeOrPlaceResponse);
-  } else if (queryStringParameters?.["search"].toLowerCase() === "LS42PB") {
+  } else if (queryStringParameters?.["search"].toLowerCase() === "ls42pb") {
     res.status(500).json(searchPostcodeOrPlaceNotFoundResponse);
   } else {
     res.status(500).json(searchPostcodeOrPlaceInvalidResponse);

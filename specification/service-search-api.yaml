@@ -287,7 +287,7 @@ paths:
         | --------------------------- | ------------------------ | ----------------------------------------------- |
         | All organisation types      | /                        | HTTP status 200 with all organisation tpyes     |
         | Single organisation type    | `search`=`pharmacy`      | HTTP status 200 with a single organisation type |
-        | No organisation types found | `search`=`nothing-found` | HTTP status 200 with no organisation types      |
+        | No organisation types found | `search`=`nothing`       | HTTP status 200 with no organisation types      |
         | Invalid API version         | No api-version parameter | HTTP status 404 with problem description        |
 
         You can try out the sandbox using the 'Try this API feature' on this page.
