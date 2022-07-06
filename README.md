@@ -74,7 +74,6 @@ SSO_LOGIN_URL=https://login.apigee.com
 APIGEE_ENVIRONMENT="internal-dev"
 SERVICE_BASE_PATH="service-search-api"
 APIGEE_API_TOKEN="$(get_token)"
-SSO_LOGIN_URL=https://login.apigee.com
 SOURCE_COMMIT_ID="7aad0db8d58e2f67eeaf7b2ebc930fceb18b991a"
 ```
 
