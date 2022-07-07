@@ -97,6 +97,7 @@ APIGEE_ENVIRONMENTS:
           enabled: false
   - name: int
     display_name: Integration Testing
+    visibility: true
     ratelimiting:
       service-search-api-int:
         quota:
