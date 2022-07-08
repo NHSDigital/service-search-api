@@ -6,7 +6,7 @@ info:
   version: "Computed and injected at build time by `scripts/set_version.py`"
   description: |
     ## Overview
-    Use this API to find information about NHS services, including lists of NHS organisation types and organisations
+    Use this API to find information about NHS services, including lists of NHS organisation types and organisations.
 
     You can:
     * search for NHS organisation types, for example, GP practices, hospitals
@@ -73,7 +73,7 @@ info:
 
     This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis), meaning we authenticate the calling application but not the end user.
 
-    For implementation details read the documentation for [API key based authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication).
+    For details read the documentation for [API key based authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication).
 
     ---
 
@@ -90,6 +90,12 @@ info:
     ## Onboarding
 
     This API is not available for onboarding.
+
+    ---
+
+    ## Rate Limiting
+
+    The integration test environment is rate limited to 1500 requests per week and 1 request per second.
 
   contact:
     name: "Service Search API Support"

@@ -42,9 +42,6 @@ async function searchPostcodeOrPlace(req, res, next) {
   const queryStringParameters = req?.query;
   if (queryStringParameters?.["api-version"] !== "2") {
     res.status(404).json({ statusCode: 404, message: "Resource not found" });
-  } else if (!queryStringParameters?.["search"]) {
-    // No search parameter is a 404 without a body (this is returned from the backend service)
-    res.status(404);
   } else if (queryStringParameters?.["search"].toLowerCase() === "manchester") {
     res.status(200).json(searchPostcodeOrPlaceResponse);
   } else if (queryStringParameters?.["search"].toLowerCase() === "ls42pb") {
