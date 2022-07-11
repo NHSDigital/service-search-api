@@ -12,8 +12,6 @@ info:
     * search for NHS organisation types, for example, GP practices, hospitals
     * search for NHS organisations that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
 
-    ---
-
     ## Who can use this API
 
     This API:
@@ -26,8 +24,6 @@ info:
 
     You must do this before you can go live (see ‘Onboarding’ below).
 
-    ---
-
     ## Related APIs
 
     The following APIs are related to this API:
@@ -39,13 +35,9 @@ info:
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
     * [Coronavirus (COVID 19) walk-in sites](https://developer.api.nhs.uk/nhs-api/documentation/service-search-covid-walkin) - use this endpoint to find details of walk-in sites for coronavirus (COVID 19)
 
-    ---
-
     ## API status
 
-    This API is [alpha](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status). This means the service might be available for testing via a sandbox or an integration environment but we expect breaking changes.
-
-    ---
+    This API is in [alpha](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status). This means the service might be available for testing via a sandbox or an integration environment but we expect breaking changes.
 
     ## Service level
 
@@ -53,13 +45,10 @@ info:
 
     For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
 
-    ---
-
     ## Technology
 
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest).
 
-    ---
 
     ## Network access
 
@@ -67,7 +56,6 @@ info:
 
     For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
 
-    ---
 
     ## Security and authorisation
 
@@ -75,21 +63,19 @@ info:
 
     For implementation details read the documentation for [API key based authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication).
 
-    ---
 
     ## Environments and testing
 
     | Environment       | Base URL                                                  |
     | ----------------- |---------------------------------------------------------- |
-    | Sandbox           | https://sandbox.api.service.nhs.uk/service-search-api/    |
-    | Integration test  | https://int.api.service.nhs.uk/service-search-api/        |
-    | Production        | https://api.service.nhs.uk/service-search-api/            |
+    | Sandbox           | `https://sandbox.api.service.nhs.uk/service-search-api/`    |
+    | Integration test  | `https://int.api.service.nhs.uk/service-search-api/`        |
+    | Production        | `https://api.service.nhs.uk/service-search-api/`            |
 
-    ---
 
     ## Onboarding
 
-    This API is not available for onboarding.
+    This API is not yet available for onboarding.
 
   contact:
     name: "Service Search API Support"
