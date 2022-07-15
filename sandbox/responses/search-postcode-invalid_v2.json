@@ -1,5 +1,5 @@
 {
-  "statusCode": 500,
-  "message": "Internal server error",
-  "activityId": "05eea835-4202-4081-a873-ebcef71f27f6"
+  "optionalErrorName": "We can't find 'REPLACE_ME'",
+  "optionalErrorText": "If the place you searched for is in England, you could: check your spelling and try again or try a different place name.",
+  "optionalErrorHTML": "<h1>We can't find 'REPLACE_ME'</h1><p>If the place you searched for is in England, you could:</p><ul><li>check your spelling and try again</li><li>try a different place name</li></ul>"
 }
