@@ -2,3 +2,6 @@ variables:
   service_name: service-search-api
   short_service_name: ssa
   service_base_path: service-search-api
+  product_display_name: Service Search - REST API
+  product_description: " "
+  spec_file: service-search-api.json

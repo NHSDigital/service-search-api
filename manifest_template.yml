@@ -84,7 +84,6 @@ APIGEE_ENVIRONMENTS:
   - name: sandbox
     display_name: Sandbox
     visibility: true
-    make_spec_visible: true
     ratelimiting:
       personal-demographics-sandbox:
         quota:
@@ -171,6 +170,6 @@ apigee:
         description: {{ DESCRIPTION }}
         requireCallbackUrl: false
         title: {{ TITLE }}
-        visibility: {{ ENV.make_spec_visible | default('false') }}
+        visibility: {{ ENV.visibility | default('false') }}
         specId: {{ NAME }}
 {% endfor %}
