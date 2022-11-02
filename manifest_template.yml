@@ -1,6 +1,6 @@
 SERVICE_NAME: service-search-api
-PRODUCT_DISPLAY_NAME: service-search-api
-DESCRIPTION: example description
+PRODUCT_DISPLAY_NAME: Service Search - REST API
+DESCRIPTION: " "
 APIGEE_ENVIRONMENTS:
   - name: internal-dev
     display_name: Internal Development
