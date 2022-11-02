@@ -36,7 +36,7 @@ build-proxy:
 	scripts/build_proxy.sh
 
 #Files to loop over in release
-_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests"
+_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests specification"
 
 copy-examples:
 	cp specification/examples/* sandbox/responses/
