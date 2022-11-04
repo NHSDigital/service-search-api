@@ -428,24 +428,22 @@ components:
       description: Search Response
       content:
         "application/json":
+          examples:
+            Organisations:
+              $ref: "examples/organisations_v2.json"
+            SingleItem:
+              $ref: "examples/organisations-single_v2.json"
+            NotFound:
+              $ref: "examples/organisations-not-found_v2.json"
           schema:
             allOf:
+              - $ref: "#/components/schemas/SearchResults"
               - type: object
-                example:
-                  # TODO: The schema almost matches. I couldn't find any example exactly matched with this schema
-                  $ref: "examples/organisation-types_v1.json"
-                properties:
-                  value:
-                    $ref: "#/components/schemas/SearchResults"
-              - type: object
-                example:
-                  $ref: "examples/organisations_v2.json"
                 properties:
                   value:
                     type: array
                     items:
                       $ref: "#/components/schemas/Organisation"
-
     SearchPostcodeResults:
       description: Postcode search results
       content:
@@ -470,18 +468,18 @@ components:
       description: Organisation Type Search Results
       content:
         "application/json":
+          examples:
+            OrganisationTypes:
+              $ref: "examples/organisation-types_v1.json"
+            # FIXME: the below two are according to the sandbox
+            NotFound:
+              $ref: "examples/organisation-types-not-found_v1.json"
+            SingleItem:
+              $ref: "examples/organisation-types-single-item_v1.json"
           schema:
             allOf:
-              - type: object
-                example:
-                  # TODO: The schema almost matches. I couldn't find any example exactly matched with this schema
-                  $ref: "examples/organisation-types_v1.json"
-                properties:
-                  value:
-                    $ref: "#/components/schemas/SearchResults"
+              - $ref: "#/components/schemas/SearchResults"
               - type: "object"
-                example:
-                  $ref: "examples/organisations_v2.json"
                 properties:
                   "value":
                     type: "array"
