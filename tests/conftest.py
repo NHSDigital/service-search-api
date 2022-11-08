@@ -5,6 +5,7 @@ import uuid
 import pytest
 from api_test_utils.api_test_session_config import APITestSessionConfig
 from api_test_utils.apigee_api_apps import ApigeeApiDeveloperApps
+from api_test_utils.api_session_client import APISessionClient
 
 from tests.configuration.config import ENVIRONMENT
 
@@ -17,6 +18,15 @@ def api_test_config() -> APITestSessionConfig:
 
     """
     return APITestSessionConfig()
+
+
+@pytest.fixture(scope='function')
+async def api_client(api_test_config: APITestSessionConfig):
+    session_client = APISessionClient(api_test_config.base_uri)
+
+    yield session_client
+
+    await session_client.close()
 
 
 @pytest.fixture(scope="session")
