@@ -6,7 +6,7 @@ import pytest
 from api_test_utils.api_test_session_config import APITestSessionConfig
 from api_test_utils.apigee_api_apps import ApigeeApiDeveloperApps
 
-from tests.configuration.config import ENVIRONMENT, PROXY_API_KEY
+from tests.configuration.config import ENVIRONMENT
 
 
 @pytest.fixture(scope='session')
