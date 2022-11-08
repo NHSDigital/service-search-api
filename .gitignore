@@ -16,3 +16,4 @@ __pycache__/
 
 smoketest-report.xml
 **/.env
+**/integration_tests_report.xml

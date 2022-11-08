@@ -2,9 +2,9 @@ from functools import partial
 
 import pytest
 from aiohttp import ClientResponse
+from api_test_utils import poll_until, env
 from api_test_utils.api_session_client import APISessionClient
 from api_test_utils.api_test_session_config import APITestSessionConfig
-from api_test_utils import poll_until, env
 
 
 async def _is_deployed(resp: ClientResponse, api_test_config: APITestSessionConfig) -> bool:

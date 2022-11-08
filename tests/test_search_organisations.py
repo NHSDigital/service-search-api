@@ -1,12 +1,10 @@
-import uuid
-
 import pytest
 import requests
+from assertpy import assert_that
 
 from .configuration import config
 from .conftest import make_headers
 from .example_loader import load_example
-from assertpy import assert_that
 
 
 class TestSearchOrganisations:

@@ -1,7 +1,7 @@
 import pytest
-from api_test_utils.oauth_helper import OauthHelper
 from api_test_utils.apigee_api_apps import ApigeeApiDeveloperApps
 from api_test_utils.apigee_api_products import ApigeeApiProducts
+from api_test_utils.oauth_helper import OauthHelper
 
 
 class TestEndpoints:
