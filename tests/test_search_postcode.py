@@ -11,6 +11,7 @@ class TestSearchPostcode:
     endpoint = "search-postcode-or-place"
 
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_search_postcode(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -33,6 +34,7 @@ class TestSearchPostcode:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_place_not_found(self, get_api_key):
         # Given
         expected_status_code = 500
@@ -55,6 +57,7 @@ class TestSearchPostcode:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_invalid_api_version(self, get_api_key):
         # Given
         expected_status_code = 404

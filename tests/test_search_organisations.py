@@ -9,6 +9,7 @@ from .example_loader import load_example
 
 class TestSearchOrganisations:
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_single_organisation(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -29,6 +30,7 @@ class TestSearchOrganisations:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_organisation_not_found(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -49,6 +51,7 @@ class TestSearchOrganisations:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_search_organisations(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -68,6 +71,7 @@ class TestSearchOrganisations:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.sandbox
+    @pytest.mark.integration
     def test_not_found(self, get_api_key):
         # Given
         expected_status_code = 404
