@@ -35,8 +35,8 @@ extends:
     apigee_deployments:
       - environment: internal-dev
         post_deploy:
-          - template: ./templates/run-smoke-tests.yml
+          - template: ./templates/run-integration-tests.yml
       - environment: internal-dev-sandbox
         proxy_path: sandbox
         post_deploy:
-          - template: ./templates/run-smoke-tests.yml
+          - template: ./templates/run-integration-tests.yml
