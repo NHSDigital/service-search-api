@@ -227,7 +227,7 @@ paths:
           schema:
             type: number
             default: 2
-            enum: [2]
+            enum: [ 2 ]
         - name: search
           description: Search query term
           in: query
@@ -294,7 +294,7 @@ paths:
           schema:
             type: number
             default: 1
-            enum: [1]
+            enum: [ 1 ]
         - name: search
           in: query
           description: The text to search for. All searchable fields are searched by default unless searchFields is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
@@ -379,7 +379,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: {}
+            properties: { }
 
     Unauthorized:
       description: Unauthorized
@@ -387,7 +387,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: {}
+            properties: { }
 
     Forbidden:
       description: Forbidden
@@ -395,7 +395,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: {}
+            properties: { }
 
     TooManyRequests:
       description: Too Many Requests
@@ -403,7 +403,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: {}
+            properties: { }
 
     InternalServerError:
       description: Internal Server Error
@@ -411,20 +411,29 @@ components:
         application/json:
           schema:
             type: object
-            properties: {}
+            properties: { }
 
     NotFound:
       description: Not found
       content:
         application/json:
+          example:
+            $ref: "examples/organisations-not-found_v2.json"
           schema:
             type: object
-            properties: {}
+            properties: { }
 
     SearchResponse:
       description: Search Response
       content:
         "application/json":
+          examples:
+            Organisations:
+              $ref: "examples/organisations_v2.json"
+            SingleItem:
+              $ref: "examples/organisations-single_v2.json"
+            NotFound:
+              $ref: "examples/organisations-not-found_v2.json"
           schema:
             allOf:
               - $ref: "#/components/schemas/SearchResults"
@@ -434,11 +443,12 @@ components:
                     type: array
                     items:
                       $ref: "#/components/schemas/Organisation"
-
     SearchPostcodeResults:
       description: Postcode search results
       content:
         "application/json":
+          example:
+            $ref: "examples/search-postcode_v2.json"
           schema:
             type: object
             properties:
@@ -457,6 +467,14 @@ components:
       description: Organisation Type Search Results
       content:
         "application/json":
+          examples:
+            OrganisationTypes:
+              $ref: "examples/organisation-types_v1.json"
+            # FIXME: the below two are according to the sandbox
+            NotFound:
+              $ref: "examples/organisation-types-not-found_v1.json"
+            SingleItem:
+              $ref: "examples/organisation-types-single-item_v1.json"
           schema:
             allOf:
               - $ref: "#/components/schemas/SearchResults"

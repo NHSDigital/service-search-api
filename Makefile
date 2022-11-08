@@ -36,10 +36,13 @@ build-proxy:
 	scripts/build_proxy.sh
 
 #Files to loop over in release
-_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests"
+_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests specification"
+
+copy-examples:
+	cp specification/examples/* sandbox/responses/
 
 #Create /dist/ sub-directory and copy files into directory
-release: clean publish build-proxy
+release: clean copy-examples publish build-proxy
 	mkdir -p dist
 	for f in $(_dist_include); do cp -r $$f dist; done
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-sandbox.yml
