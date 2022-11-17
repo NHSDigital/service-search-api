@@ -417,8 +417,9 @@ components:
       description: Not found
       content:
         application/json:
-          example:
-            $ref: "examples/organisations-not-found_v2.json"
+          examples:
+            OrganisationNotFound:
+              $ref: "examples/organisations-not-found_v2.json"
           schema:
             type: object
             properties: { }
@@ -447,8 +448,9 @@ components:
       description: Postcode search results
       content:
         "application/json":
-          example:
-            $ref: "examples/search-postcode_v2.json"
+          examples:
+            SearchPostcodeV2:
+              $ref: "examples/search-postcode_v2.json"
           schema:
             type: object
             properties:
