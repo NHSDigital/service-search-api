@@ -30,6 +30,7 @@ clean:
 publish: clean
 	mkdir -p build
 	npm run publish 2> /dev/null
+	scripts/generate_postman_collection.sh
 
 #Runs build proxy script
 build-proxy:
