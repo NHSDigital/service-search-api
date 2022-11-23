@@ -21,6 +21,7 @@
     "minimist": "^1.2.2",
     "newman": "^5.3.0",
     "newman-reporter-html": "^1.0.5",
+    "openapi-to-postmanv2": "^4.3.0",
     "speccy": "^0.11.0"
   }
 }
