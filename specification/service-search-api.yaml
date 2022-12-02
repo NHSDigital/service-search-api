@@ -9,9 +9,10 @@ info:
     Use this API to find information about NHS services, including lists of NHS organisation types and organisations.
 
     You can:
-    * search for NHS organisation types, for example, GP practices, hospitals
-    * search for NHS organisations that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
-
+    * retrieve a list of organisation types, for example, GP practices or hospitals
+    * search for NHS organisations that provide healthcare services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
+    * search for coronavirus (COVID-19) walk-in sites
+    
     ## Who can use this API
 
     This API:
