@@ -30,6 +30,9 @@ clean:
 publish: clean
 	mkdir -p build
 	npm run publish 2> /dev/null
+	poetry run scripts/inline_examples.py build/service-search-api.json > build/temp.json
+	rm build/service-search-api.json
+	mv build/temp.json build/service-search-api.json
 
 #Runs build proxy script
 build-proxy:

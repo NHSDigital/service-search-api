@@ -18,6 +18,7 @@ keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 [tool.poetry.dependencies]
 python = "^3.8"
 requests = "^2.28.1"
+jsonpath-ng = "^1.5.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7.9"
