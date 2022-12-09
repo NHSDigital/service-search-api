@@ -6,19 +6,16 @@ info:
   version: "Computed and injected at build time by `scripts/set_version.py`"
   description: |
     ## Overview
-    Use this API to find information about NHS services, including lists of NHS organisation types and organisations.
+    Use this API to find information about organisations that provide NHS healthcare services, NHS organisation types, and coronavirus (COVID-19) walk-in sites.
 
     You can:
-    * search for NHS organisation types, for example, GP practices, hospitals
-    * search for NHS organisations that provide services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
-
+    * retrieve a list of organisation types, for example, GP practices or hospitals
+    * search for NHS organisations that provide healthcare services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
+    * search for coronavirus (COVID-19) walk-in sites
+    
     ## Who can use this API
 
-    This API:
-
-    * is intended for use by patient-facing applications
-    * is intended for non-clinical use
-    * can only be used where there is a legal basis to do so
+    This API can only be used where there is a legal basis to do so.
 
     Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
@@ -33,8 +30,7 @@ info:
     * [EPS Directory of Services - REST API](https://digital.nhs.uk/developer/api-catalogue/electronic-prescription-service-directory-of-services) - use this to access information about dispensing services, including searching for dispensers who can provide services for a patient with a given location and urgency
     * [Electronic Transmission of Prescriptions Web Services - SOAP API](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap) - use this to access EPS dispenser (and dispensing appliance contractor) information for a patient via NHS UK Web Services
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
-    * [Coronavirus (COVID 19) walk-in sites](https://developer.api.nhs.uk/nhs-api/documentation/service-search-covid-walkin) - use this endpoint to find details of walk-in sites for coronavirus (COVID 19)
-
+    
     ## API status
 
     This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses). This means the service might be available for testing via a sandbox or an integration environment but we expect breaking changes.
@@ -280,7 +276,7 @@ paths:
 
         | Scenario                    | Request                  | Response                                        |
         | --------------------------- | ------------------------ | ----------------------------------------------- |
-        | All organisation types      | /                        | HTTP status 200 with all organisation tpyes     |
+        | All organisation types      | /                        | HTTP status 200 with all organisation types     |
         | Single organisation type    | `search`=`pharmacy`      | HTTP status 200 with a single organisation type |
         | No organisation types found | `search`=`nothing`       | HTTP status 200 with no organisation types      |
         | Invalid API version         | No api-version parameter | HTTP status 404 with problem description        |
@@ -311,7 +307,7 @@ paths:
             default: "any"
         - name: searchFields
           in: query
-          description: The list of comma-separated field names to search for the specified text.
+          description: A comma-separated list of field names to search for the specified text.
           schema:
             type: string
         - name: queryType
@@ -324,7 +320,7 @@ paths:
               - "full"
             default: "simple"
         - name: $skip
-          description: The number of search results to skip.
+          description: The number of search results to skip. Example ($skip : 25) will return the entries after the first 25 entries in the search results.
           in: query
           schema:
             type: number
