@@ -320,7 +320,7 @@ paths:
               - "full"
             default: "simple"
         - name: $skip
-          description: The number of search results to skip. Example ($skip : 25) will return the entries after the first 25 entries in the search results.
+          description: The number of search results to skip. Example ($skip = 25) will return the entries after the first 25 entries in the search results.
           in: query
           schema:
             type: number
