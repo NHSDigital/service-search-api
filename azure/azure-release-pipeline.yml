@@ -38,8 +38,8 @@ extends:
         post_deploy:
           - template: ./templates/run-integration-tests.yml
       - environment: ref
-        # post_deploy:
-        #   - template: ./templates/run-smoke-tests.yml
+        post_deploy:
+          - template: ./templates/run-smoke-tests.yml
       - environment: internal-qa-sandbox
         proxy_path: sandbox
         post_deploy:
@@ -50,11 +50,11 @@ extends:
           - template: ./templates/run-integration-tests.yml
       - environment: sandbox
         proxy_path: sandbox
-        # post_deploy:
-        #   - template: ./templates/run-smoke-tests.yml
+        post_deploy:
+          - template: ./templates/run-smoke-tests.yml
       - environment: int
         depends_on:
           - internal_qa
           - internal_qa_sandbox
-        # post_deploy:
-        #   - template: ./templates/run-smoke-tests.yml
+        post_deploy:
+          - template: ./templates/run-smoke-tests.yml
