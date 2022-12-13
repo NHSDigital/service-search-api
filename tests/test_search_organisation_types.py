@@ -11,7 +11,6 @@ class TestSearchPostcode:
     endpoint = "organisationtypes"
     api_version = "1"
 
-    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_search_organisation_types(self, get_api_key):
@@ -32,7 +31,6 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_search_single_organisation_type(self, get_api_key):
@@ -54,7 +52,6 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_organisation_type_not_found(self, get_api_key):
@@ -76,7 +73,6 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_invalid_api_version(self, get_api_key):
