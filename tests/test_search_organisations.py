@@ -8,6 +8,7 @@ from .example_loader import load_example
 
 
 class TestSearchOrganisations:
+    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_single_organisation(self, get_api_key):
@@ -29,6 +30,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_organisation_not_found(self, get_api_key):
@@ -50,6 +52,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_search_organisations(self, get_api_key):
@@ -70,6 +73,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.auth
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_not_found(self, get_api_key):
