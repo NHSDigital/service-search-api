@@ -1,9 +1,5 @@
-# This is an OpenAPI Specification (https://swagger.io/specification/)
-# for service-search-api owned by NHS Digital (https://digital.nhs.uk/)
 openapi: "3.0.0"
 info:
-  title: "Service Search - Rest API"
-  version: "Computed and injected at build time by `scripts/set_version.py`"
   description: |
     ## Overview
     Use this API to find information about organisations that provide NHS healthcare services, NHS organisation types, and coronavirus (COVID-19) walk-in sites.
@@ -14,15 +10,9 @@ info:
     * search for coronavirus (COVID-19) walk-in sites
     
     ## Who can use this API
-
-    This API can only be used where there is a legal basis to do so.
-
-    Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support).
-
-    You must do this before you can go live (see ‘Onboarding’ below).
+    This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support). You must do this before you can go live (see ‘Onboarding’ below).
 
     ## Related APIs
-
     The following APIs are related to this API:
 
     * [Directory of Services - Urgent and Emergency Care - SOAP API](https://digital.nhs.uk/developer/api-catalogue/directory-of-services-soap) - use this SOAP API to access information on a wide range of health and care services across England
@@ -31,34 +21,35 @@ info:
     * [Electronic Transmission of Prescriptions Web Services - SOAP API](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap) - use this to access EPS dispenser (and dispensing appliance contractor) information for a patient via NHS UK Web Services
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
     
-    ## API status
-
-    This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses). This means the service might be available for testing via a sandbox or an integration environment but we expect breaking changes.
+    ## API status and roadmap
+    This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
+      * it is available for testing in the integration environment
+      * we expect to make breaking changes based on developer feedback
+    
+    ### Roadmap
+    To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=allexceptdone&tag=service-search-api#controls).
+    If you have any other queries, please [contact us](https://digital.nhs.uk/developer/help-and-support).
 
     ## Service level
-
     This API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.
-
     For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
 
     ## Technology
-
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest).
 
-
     ## Network access
-
     This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
-
     For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
 
-
     ## Security and authorisation
+    This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis),
+    meaning we authenticate the calling application but not the end user.
 
-    This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis), meaning we authenticate the calling application but not the end user.
+    You can use this access mode as follows:
+    * unattended (end user not present)
 
-    For details read the documentation for [API key based authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication).
-
+    To use this access mode, use the following security pattern:
+    * [application-restricted RESTful API - signed JWT authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-signed-jwt-authentication)
 
     ## Environments and testing
 
@@ -68,18 +59,19 @@ info:
     | Integration test  | `https://int.api.service.nhs.uk/service-search-api/`        |
     | Production        | `https://api.service.nhs.uk/service-search-api/`            |
 
-    ### Rate Limiting
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing) is for formal integration testing
+    For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
 
+    ### Rate Limiting
     The integration test environment is rate limited to 1500 requests per week and 1 request per second.
 
     ## Onboarding
-
     This API is not yet available for onboarding.
 
-  
-
+  version: "Computed and injected at build time by `scripts/set_version.py`"
+  title: "Directory of Healthcare Services API - version 3"
   contact:
-    name: "Service Search API Support"
+    name: "Directory of Healthcare Services API - version 3"
     url: "https://digital.nhs.uk/developer/help-and-support"
     email: api.management@nhs.net
 servers:
@@ -89,6 +81,12 @@ servers:
     description: Integration test environment.
   - url: "https://api.service.nhs.uk/service-search-api"
     description: Production environment.
+tags:
+  - name: Organisation
+  - name: OrganisationType
+  - name: SearchPostcode
+security:
+  - OAuth_Token: []
 paths:
   "/":
     get:
@@ -468,7 +466,6 @@ components:
           examples:
             OrganisationTypes:
               $ref: "examples/organisation-types_v1.json"
-            # FIXME: the below two are according to the sandbox
             NotFound:
               $ref: "examples/organisation-types-not-found_v1.json"
             SingleItem:
@@ -784,3 +781,7 @@ components:
           type: object
           additionalProperties: true
       example: '{ "type": "name", "properties": { "name": "EPSG:4326" } }'
+  securitySchemes:
+    OAuth_Token:
+      type: http
+      scheme: bearer
