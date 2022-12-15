@@ -33,6 +33,7 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.skip(reason="returns list of places, each request gives back different size responses")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_place_not_found(self, get_api_key):
@@ -58,19 +59,19 @@ class TestSearchPostcode:
 
     @pytest.mark.sandbox
     @pytest.mark.integration
-    def test_invalid_api_version(self, get_api_key):
+    def test_not_found_api_version(self, get_api_key):
         # Given
         expected_status_code = 404
         expected_body = load_example("bad-api-version-resource-not-found.json")
 
         api_key = get_api_key["apikey"]
-        bad_api_version = "1"
+        search = "manchester"
         body = {}
 
         # When
         response = requests.post(
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
-            params={"api-version": bad_api_version, "apikey": api_key},
+            params={"search": search, "apikey": api_key},
             headers=make_headers(api_key),
             json=body
         )
