@@ -78,3 +78,33 @@ class TestSearchPostcode:
         # Then
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
+
+    @pytest.mark.integration
+    def test_response_payload_urls_are_corrected(self, get_api_key):
+        """
+        Test that the urls returned in the response payload have been routed to the
+        correct hostname for the environment used, and can be followed.
+        """
+        # Given
+        expected_status_code = 200
+
+        api_key = get_api_key["apikey"]
+        search = "manchester"
+
+        # When
+        response = requests.post(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
+            params={"api-version": "2", "apikey": api_key, "search": search},
+            headers=make_headers(api_key),
+            json={}
+        )
+
+        results = response.json()['place']
+        for item in results:
+            url_response = requests.get(
+                url=item['url'],
+                params={"apikey": api_key},
+                headers=make_headers(api_key)
+            )
+            assert_that(url_response.status_code).is_equal_to(expected_status_code)
+
