@@ -8,7 +8,7 @@ from .example_loader import load_example
 
 
 class TestSearchOrganisations:
-    @pytest.mark.skip(reason="search.score changes per request")
+    @pytest.mark.skip(reason="search.score in response payload changes per request")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_single_organisation(self, get_api_key):
@@ -86,6 +86,28 @@ class TestSearchOrganisations:
         response = requests.get(
             url=f"{config.BASE_URL}/{config.BASE_PATH}",
             params={"search": search, "apikey": api_key},
+            headers=make_headers(api_key),
+        )
+
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(response.json()).is_equal_to(expected_body)
+
+    @pytest.mark.sandbox
+    @pytest.mark.integration
+    def test_invalid_api_version(self, get_api_key):
+        # Given
+        expected_status_code = 404
+        expected_body = load_example("bad-api-version-resource-not-found.json")
+
+        api_key = get_api_key["apikey"]
+        search = "DN601"
+        invalid_api_version = 5
+
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"search": search, "api-version": invalid_api_version, "apikey": api_key},
             headers=make_headers(api_key),
         )
 
