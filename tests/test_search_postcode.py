@@ -79,6 +79,7 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.skip
     @pytest.mark.integration
     def test_response_payload_urls_are_corrected(self, get_api_key):
         """
