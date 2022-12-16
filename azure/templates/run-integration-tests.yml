@@ -12,10 +12,7 @@ steps:
       export STATUS_ENDPOINT_API_KEY="$(status-endpoint-api-key)"
       export APIGEE_API_TOKEN="$(secret.AccessToken)"
 
-      if [[ $APIGEE_ENVIRONMENT =~ .*-*sandbox ]]
-      then
-       poetry run pytest  -v -m "sandbox or smoketest" -o junit_logging=all --junitxml=integration_tests_report.xml
-      fi
+      poetry run pytest  -v -o junit_logging=all --junitxml=integration_tests_report.xml
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests
     displayName: run integration tests
 
