@@ -108,4 +108,3 @@ class TestSearchPostcode:
                 headers=make_headers(api_key)
             )
             assert_that(url_response.status_code).is_equal_to(expected_status_code)
-
