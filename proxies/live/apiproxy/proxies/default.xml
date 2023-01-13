@@ -26,6 +26,9 @@
           <Name>RaiseFault.InvalidAPIKey</Name>
         </Step>
         <Step>
+          <Name>KeyValueMapOperations.GetSubscriptionKey</Name>
+        </Step>
+        <Step>
           <Name>ServiceCallout.CallHealthcheckEndpoint</Name>
         </Step>
       </Request>
