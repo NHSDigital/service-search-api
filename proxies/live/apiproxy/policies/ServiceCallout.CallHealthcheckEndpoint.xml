@@ -5,7 +5,7 @@
     <Request>
         <Set>
         <Headers>
-            <Header name="apikey">{private.subscriptionKey}</Header>
+            <Header name="subscription-key">{private.subscriptionKey}</Header>
         </Headers>
         <Verb>GET</Verb>
         </Set>
