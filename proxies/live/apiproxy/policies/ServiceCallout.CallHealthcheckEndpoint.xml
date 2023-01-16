@@ -2,26 +2,17 @@
 <ServiceCallout async="false" continueOnError="true" enabled="true" name="ServiceCallout.CallHealthcheckEndpoint">
     <DisplayName>ServiceCallout.CallHealthcheckEndpoint</DisplayName>
     <Properties/>
-    <Request clearPayload="true" variable="healthcheckRequest">
-        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Request>
+        <Set>
+        <Headers>
+            <Header name="subscription-key">{private.subscriptionKey}</Header>
+        </Headers>
+        <Verb>GET</Verb>
+        </Set>
     </Request>
     <Response>healthcheckResponse</Response>
-<!--    <HTTPTargetConnection>-->
-<!--        <SSLInfo>-->
-<!--            <Enabled>true</Enabled>-->
-<!--        </SSLInfo>-->
-<!--        <LoadBalancer>-->
-<!--            <Server name="service-search-api" />-->
-<!--        </LoadBalancer>-->
-<!--        <Path>/_ping</Path>-->
-<!--    </HTTPTargetConnection>-->
     <HTTPTargetConnection>
-        <URL>http://mocktarget.apigee.net</URL>
-        <Properties>
-            <Property name="supports.http10">true</Property>
-            <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
-            <Property name="retain.queryparams">apikey</Property>
-        </Properties>
+        <URL>https://api.nhs.uk/service-search/organisationtypes?api-version=1</URL>
     </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>
