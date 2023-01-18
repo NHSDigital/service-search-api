@@ -16,7 +16,7 @@ class TestSearchPostcode:
         # Given
         expected_status_code = 200
         expected_body = load_example("search-place_v2.json")
-        expected_place = expected_body["place"][0]['text']
+        expected_place = expected_body["place"][0]["text"]
 
         api_key = get_api_key["apikey"]
         search = "manchester"
@@ -27,30 +27,29 @@ class TestSearchPostcode:
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
             params={"api-version": "2", "apikey": api_key, "search": search},
             headers=make_headers(api_key),
-            json=body
+            json=body,
         )
-        
+
         jsonResponse = response.json()
         result = None
         for place in jsonResponse["place"]:
-            if place['text'] == expected_place:
-                result = place['text']
-            
+            if place["text"] == expected_place:
+                result = place["text"]
 
         # Then
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(result).is_equal_to(expected_place)
-        
+
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_search_postcode(self, get_api_key):
-        
-        #We used ODS code since it will never change - for the given postcode, that ODS code should always appear in the results
-        
+
+        # We used ODS code since it will never change - for the given postcode, that ODS code should always appear in the results
+
         # Given
         expected_status_code = 200
         expected_body = load_example("search-postcode_v2.json")
-        expected_ODS_code = expected_body['value'][1]['ODSCode']
+        expected_ODS_code = expected_body["value"][1]["ODSCode"]
 
         api_key = get_api_key["apikey"]
         search = "WC1N 3JH"
@@ -61,20 +60,22 @@ class TestSearchPostcode:
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
             params={"api-version": "2", "apikey": api_key, "search": search},
             headers=make_headers(api_key),
-            json=body
+            json=body,
         )
-        
+
         jsonResponse = response.json()
         result = None
         for place in jsonResponse["value"]:
-            if place['ODSCode'] == expected_ODS_code:
-                result = place['ODSCode']
-        
+            if place["ODSCode"] == expected_ODS_code:
+                result = place["ODSCode"]
+
         # Then
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(result).is_equal_to(expected_ODS_code)
 
-    @pytest.mark.skip(reason="returns list of places, each request gives back different size responses")
+    @pytest.mark.skip(
+        reason="returns list of places, each request gives back different size responses"
+    )
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_place_not_found(self, get_api_key):
@@ -91,7 +92,7 @@ class TestSearchPostcode:
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
             params={"api-version": "2", "apikey": api_key, "search": search},
             headers=make_headers(api_key),
-            json=body
+            json=body,
         )
 
         # Then
@@ -114,7 +115,7 @@ class TestSearchPostcode:
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
             params={"search": search, "apikey": api_key},
             headers=make_headers(api_key),
-            json=body
+            json=body,
         )
 
         # Then
@@ -136,9 +137,13 @@ class TestSearchPostcode:
         # When
         response = requests.post(
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
-            params={"search": search, "api-version": invalid_api_version, "apikey": api_key},
+            params={
+                "search": search,
+                "api-version": invalid_api_version,
+                "apikey": api_key,
+            },
             headers=make_headers(api_key),
-            json=body
+            json=body,
         )
 
         # Then
@@ -163,14 +168,14 @@ class TestSearchPostcode:
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
             params={"api-version": "2", "apikey": api_key, "search": search},
             headers=make_headers(api_key),
-            json={}
+            json={},
         )
 
-        results = response.json()['place']
+        results = response.json()["place"]
         for item in results:
             url_response = requests.get(
-                url=item['url'],
+                url=item["url"],
                 params={"apikey": api_key},
-                headers=make_headers(api_key)
+                headers=make_headers(api_key),
             )
             assert_that(url_response.status_code).is_equal_to(expected_status_code)
