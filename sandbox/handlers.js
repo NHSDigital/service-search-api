@@ -1,7 +1,7 @@
 "use strict";
 
 const log = require("loglevel");
-const searchPostcodeOrPlaceResponse = require("./responses/search-place_v2.json");
+const searchPostcodeOrPlaceResponse = require("./responses/search-postcode_v2.json");
 const organisationsResponse = require("./responses/organisations_v2.json");
 const organisationsNotFoundResponse = require("./responses/organisations-not-found_v2.json");
 const organisationsSingleResponse = require("./responses/organisations-single_v2.json");
