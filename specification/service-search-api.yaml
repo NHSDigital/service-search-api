@@ -49,7 +49,7 @@ info:
     * unattended (end user not present)
 
     To use this access mode, use the following security pattern:
-    * [application-restricted RESTful API - signed JWT authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-signed-jwt-authentication)
+    * [application-restricted RESTful API - API key authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication)
 
     ## Environments and testing
 
