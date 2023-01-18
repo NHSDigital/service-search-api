@@ -453,7 +453,7 @@ components:
         "application/json":
           examples:
             SearchPostcodeV2:
-              $ref: "examples/search-postcode_v2.json"
+              $ref: "examples/search-place_v2.json"
           schema:
             type: object
             properties:
