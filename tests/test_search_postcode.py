@@ -44,7 +44,8 @@ class TestSearchPostcode:
     @pytest.mark.integration
     def test_search_postcode(self, get_api_key):
 
-        # We used ODS code since it will never change - for the given postcode, that ODS code should always appear in the results
+        # We used ODS code since it will never change - for the given postcode,
+        # that ODS code should always appear in the results
 
         # Given
         expected_status_code = 200
