@@ -56,7 +56,7 @@ async function searchPostcodeOrPlace(req, res, next) {
     res.status(404).json(resourceNotFound);
   } else if (search === "manchester") {
     res.status(200).json(searchPlaceResponse);
-  } else if (search === "WC1N 3JH") {
+  } else if (search === "wc1n 3jh") {
     res.status(200).json(searchPostcodeResponse);
   } else {
     res.status(500).json(populateSearchPostcodeOrPlaceInvalidResponse(search));
