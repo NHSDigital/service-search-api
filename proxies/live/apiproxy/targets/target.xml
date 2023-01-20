@@ -15,6 +15,14 @@
       </Step>
     </Request>
   </PreFlow>
+  <PostFlow>
+    <Request/>
+    <Response>
+      <Step>
+        <Name>javascript.RewriteResponseHost</Name>
+      </Step>
+    </Response>
+  </PostFlow>
   <FaultRules>
     <FaultRule name="api_key_invalid">
       <Step>
