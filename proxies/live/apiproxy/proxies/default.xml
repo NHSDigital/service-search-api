@@ -43,7 +43,7 @@
   </Flows>
   <PreFlow>
     <Step>
-      <Name>javascript.CacheRequestHostname</Name>
+      <Name>javascript.CacheRequestHost</Name>
     </Step>
   </PreFlow>
   <PostClientFlow name="PostClientFlow">

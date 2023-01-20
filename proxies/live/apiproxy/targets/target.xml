@@ -19,7 +19,7 @@
     <Request/>
     <Response>
       <Step>
-        <Name>javascript.RewriteResponseHost</Name>
+        <Name>javascript.RewriteHostName</Name>
       </Step>
     </Response>
   </PostFlow>
