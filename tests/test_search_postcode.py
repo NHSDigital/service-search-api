@@ -104,7 +104,6 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.skip
     @pytest.mark.integration
     def test_response_payload_urls_are_corrected(self, get_api_key):
         """
@@ -127,9 +126,10 @@ class TestSearchPostcode:
 
         results = response.json()['place']
         for item in results:
-            url_response = requests.get(
+            url_response = requests.post(
                 url=item['url'],
                 params={"apikey": api_key},
                 headers=make_headers(api_key)
             )
+            import pdb; pdb.set_trace()
             assert_that(url_response.status_code).is_equal_to(expected_status_code)
