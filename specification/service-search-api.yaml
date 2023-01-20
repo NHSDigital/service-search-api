@@ -216,6 +216,7 @@ paths:
         | Scenario               | Request                  | Response                                 |
         | ---------------------- | ------------------------ | ---------------------------------------- |
         | Place found            | `search`=`manchester`    | HTTP status 200 with 2 locations         |
+        | Postcode found         | `search`=`WC1N 3JH`      | HTTP status 200 with 50 locations        |
         | Postcode not found     | `search`=`LS42PB`        | HTTP status 500 with problem description |
         | No search parameter    | No search parameter      | HTTP status 500 with problem description |
         | Invalid API version    | No api-version parameter | HTTP status 404 with problem description |
@@ -453,7 +454,7 @@ components:
         "application/json":
           examples:
             SearchPostcodeV2:
-              $ref: "examples/search-postcode_v2.json"
+              $ref: "examples/search-place_v2.json"
           schema:
             type: object
             properties:

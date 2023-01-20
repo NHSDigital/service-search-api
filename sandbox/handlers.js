@@ -1,7 +1,8 @@
 "use strict";
 
 const log = require("loglevel");
-const searchPostcodeOrPlaceResponse = require("./responses/search-postcode_v2.json");
+const searchPlaceResponse = require("./responses/search-place_v2.json");
+const searchPostcodeResponse = require("./responses/search-postcode_v2.json");
 const organisationsResponse = require("./responses/organisations_v2.json");
 const organisationsNotFoundResponse = require("./responses/organisations-not-found_v2.json");
 const organisationsSingleResponse = require("./responses/organisations-single_v2.json");
@@ -54,7 +55,9 @@ async function searchPostcodeOrPlace(req, res, next) {
   if (queryStringParameters?.["api-version"] !== "2") {
     res.status(404).json(resourceNotFound);
   } else if (search === "manchester") {
-    res.status(200).json(searchPostcodeOrPlaceResponse);
+    res.status(200).json(searchPlaceResponse);
+  } else if (search === "wc1n 3jh") {
+    res.status(200).json(searchPostcodeResponse);
   } else {
     res.status(500).json(populateSearchPostcodeOrPlaceInvalidResponse(search));
   }
