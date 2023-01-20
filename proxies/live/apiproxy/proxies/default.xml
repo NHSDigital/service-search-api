@@ -42,10 +42,14 @@
     </Flow>
   </Flows>
   <PreFlow>
-    <Request/>
-    <Step>
-      <Name>javascript.CacheRequestHost</Name>
-    </Step>
+    <Request>
+      <Step>
+        <Name>AssignMessage.SetApimGuids</Name>
+      </Step>
+      <Step>
+        <Name>javascript.CacheRequestHostname</Name>
+      </Step>
+    </Request>
   </PreFlow>
   <PostClientFlow name="PostClientFlow">
     <Response>
