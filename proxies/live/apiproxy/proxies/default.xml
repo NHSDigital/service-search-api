@@ -42,6 +42,7 @@
     </Flow>
   </Flows>
   <PreFlow>
+    <Request/>
     <Step>
       <Name>javascript.CacheRequestHost</Name>
     </Step>
