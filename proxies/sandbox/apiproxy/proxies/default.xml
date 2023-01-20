@@ -39,7 +39,16 @@
       </Condition>
     </Flow>
   </Flows>
-  <PreFlow/>
+  <PreFlow>
+    <Request>
+      <Step>
+        <Name>AssignMessage.SetApimGuids</Name>
+      </Step>
+      <Step>
+        <Name>javascript.CacheRequestHost</Name>
+      </Step>
+    </Request>
+  </PreFlow>
   <PostClientFlow name="PostClientFlow">
     <Response>
       <Step>

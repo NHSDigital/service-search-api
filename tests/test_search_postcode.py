@@ -124,6 +124,8 @@ class TestSearchPostcode:
             json={},
         )
 
+        import pdb; pdb.set_trace()
+
         results = response.json()['place']
         for item in results:
             url_response = requests.post(
