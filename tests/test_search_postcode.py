@@ -171,7 +171,7 @@ class TestSearchPostcode:
             json={},
         )
 
-        results = response.json()["place"]
+        results = response.json()['place']
         for item in results:
             url_response = requests.post(
                 url=item['url'],
