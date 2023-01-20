@@ -131,5 +131,4 @@ class TestSearchPostcode:
                 params={"apikey": api_key},
                 headers=make_headers(api_key)
             )
-            import pdb; pdb.set_trace()
             assert_that(url_response.status_code).is_equal_to(expected_status_code)
