@@ -121,14 +121,14 @@ class TestSearchPostcode:
             url=f"{config.BASE_URL}/{config.BASE_PATH}/{self.endpoint}",
             params={"api-version": "2", "apikey": api_key, "search": search},
             headers=make_headers(api_key),
-            json={}
+            json={},
         )
 
         results = response.json()['place']
         for item in results:
             url_response = requests.post(
                 url=item['url'],
-                params={"apikey": api_key},
-                headers=make_headers(api_key)
+                headers=make_headers(api_key),
+                json={},
             )
             assert_that(url_response.status_code).is_equal_to(expected_status_code)
