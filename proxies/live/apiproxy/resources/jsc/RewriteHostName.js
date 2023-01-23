@@ -7,7 +7,7 @@ if (json.place) {
     var request_hostname = context.getVariable("request_hostname_env");
     // Annoyingly, Apigee's version of JS doesn't support regex look-behinds,
     // so we grab the env string including https:// prefix
-    var hostname_regex = /(^https:\/\/[a-zA-Z\-]+)(?=(\.api\.service\.nhs\.uk))/gm;
+    var hostname_regex = /(^https:\/\/([a-zA-Z\-]+\.)+)nhs\.uk/gm;
     var rewritten_url = value.url.replace(hostname_regex, "https://" + request_hostname + ".api.service.nhs.uk");
     value.url = rewritten_url;
     value.url = value.url.replace("api-version=1", "api-version=2");
