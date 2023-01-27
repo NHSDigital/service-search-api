@@ -14,6 +14,14 @@
           </Step>
         </Response>
     </PreFlow>
+    <PostFlow>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>javascript.RewriteHostName</Name>
+        </Step>
+      </Response>
+    </PostFlow>
     <DefaultFaultRule name="DefaultFaultRule">
       <Step>
           <Name>AssignMessage.AddCors</Name>
