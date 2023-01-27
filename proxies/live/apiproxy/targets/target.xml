@@ -35,4 +35,5 @@
       </LoadBalancer>
       <Path>/service-search</Path>
     </HTTPTargetConnection>
+    <!-- Empty comment -->
 </TargetEndpoint>
