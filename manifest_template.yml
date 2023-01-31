@@ -120,17 +120,17 @@ APIGEE_ENVIRONMENTS:
     ratelimit: '15000pm'
     quota: '7800'
     make_spec_visible: true
-    # ratelimiting:
-    #   service-search-api-prod:
-    #     quota:
-    #       enabled: false
-    #     spikeArrest:
-    #       enabled: false
-    #   app:
-    #     quota:
-    #       enabled: false
-    #     spikeArrest:
-    #       enabled: false
+    ratelimiting:
+      service-search-api-prod:
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false
+      app:
+        quota:
+          enabled: false
+        spikeArrest:
+          enabled: false
 ---
 meta:
   api:
