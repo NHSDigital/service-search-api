@@ -116,18 +116,21 @@ APIGEE_ENVIRONMENTS:
   - name: prod
     display_name: Production
     approval_type: manual
-    visibility: false # explicitly making this hidden
-    ratelimiting:
-      service-search-api-prod:
-        quota:
-          enabled: false
-        spikeArrest:
-          enabled: false
-      app:
-        quota:
-          enabled: false
-        spikeArrest:
-          enabled: false
+    visibility: true # explicitly making this visible
+    ratelimit: '15000pm'
+    quota: '7800'
+    make_spec_visible: true
+    # ratelimiting:
+    #   service-search-api-prod:
+    #     quota:
+    #       enabled: false
+    #     spikeArrest:
+    #       enabled: false
+    #   app:
+    #     quota:
+    #       enabled: false
+    #     spikeArrest:
+    #       enabled: false
 ---
 meta:
   api:
