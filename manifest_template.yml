@@ -117,6 +117,9 @@ APIGEE_ENVIRONMENTS:
     display_name: Production
     approval_type: manual
     visibility: false # explicitly making this hidden
+    ratelimit: '15000pm'
+    quota: '7800'
+    make_spec_visible: true
     ratelimiting:
       service-search-api-prod:
         quota:
