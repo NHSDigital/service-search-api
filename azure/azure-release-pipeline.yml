@@ -52,20 +52,17 @@ extends:
           - template: ./templates/run-integration-tests.yml
       - environment: sandbox
         proxy_path: sandbox
-        depends_on:
-          - internal-dev-sandbox
-          - internal-qa-sandbox
         post_deploy:
           - template: ./templates/run-smoke-tests.yml
       - environment: int
         depends_on:
-          - internal-dev
           - internal-qa
         post_deploy:
           - template: ./templates/run-smoke-tests.yml
       - environment: prod
         depends_on:              # which environments to depend on before deploying
           - int
+          - sandbox
         post_deploy:
           - template: ./templates/run-smoke-tests.yml
         jinja_templates:         # any additional values you need to template into your proxy at deploy time
