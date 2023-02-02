@@ -54,13 +54,13 @@ extends:
         proxy_path: sandbox
         depends_on:
           - internal-dev-sandbox
-          - internal_qa_sandbox
+          - internal-qa-sandbox
         post_deploy:
           - template: ./templates/run-smoke-tests.yml
       - environment: int
         depends_on:
           - internal-dev
-          - internal_qa
+          - internal-qa
         post_deploy:
           - template: ./templates/run-smoke-tests.yml
       - environment: prod
