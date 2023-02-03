@@ -43,7 +43,7 @@
     <Flow name="CaptureProxyHostName">
       <Request>
         <Step>
-          <Condition>(proxy.pathsuffix MatchesPath "/_status" negate="true") and (proxy.pathsuffix MatchesPath "/_ping" negate="true") and ((request.verb = "GET") or (request.verb = "HEAD"))
+          <Condition>(proxy.pathsuffix MatchesPath "/_status" negate="true") and (proxy.pathsuffix MatchesPath "/_ping" negate="true") 
           <Name>javascript.CaptureProxyHostName</Name>
         </Step>
       </Request>
