@@ -47,7 +47,7 @@
         <Name>AssignMessage.SetApimGuids</Name>
       </Step>
       <Step>
-        <Name>javascript.CacheRequestHost</Name>
+        <Name>javascript.CaptureProxyHostName</Name>
       </Step>
     </Request>
   </PreFlow>
