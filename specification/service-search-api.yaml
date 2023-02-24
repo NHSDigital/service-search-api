@@ -105,6 +105,8 @@ paths:
         ## Overview
         Use this to get information about services provided by NHS organisations listed in the service search on the NHS website.
 
+        For information on how to use search identifiers and query fields with this endpoint, see [DoHS - guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
 
@@ -210,6 +212,8 @@ paths:
         ## Overview
         You can use this to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
 
+        For information on how to use search identifiers and query fields with this endpoint, see [DoHS - guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
 
@@ -279,6 +283,8 @@ paths:
         ## Overview
         You can use this to get, filter or search the organisation types
 
+        For information on how to use search identifiers and query fields with this endpoint, see [DoHS - guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
 
