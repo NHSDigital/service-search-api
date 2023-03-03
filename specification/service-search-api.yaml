@@ -158,9 +158,10 @@ paths:
             default: "any"
         - name: searchFields
           in: query
-          description: A comma-separated list of field names to search for the specified text. This field works in conjunction with the "search" field.
+          description: 
+            A comma-separated list of field names to search for the specified text. This field works in conjunction with the "search" field.
           
-          Example search field: "searchFields=ODSCode"
+            Example search field: "searchFields=ODSCode"
           
           schema:
             type: string
