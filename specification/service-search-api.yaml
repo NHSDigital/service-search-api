@@ -45,10 +45,7 @@ info:
     This API is [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis),
     meaning we authenticate the calling application but not the end user.
 
-    You can use this access mode as follows:
-    * unattended (end user not present)
-
-    To use this access mode, use the following security pattern:
+    To use this API, use the following security pattern:
     * [application-restricted RESTful API - API key authentication](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/application-restricted-restful-apis-api-key-authentication)
 
     ## Environments and testing
@@ -57,9 +54,25 @@ info:
     | ----------------- |---------------------------------------------------------- |
     | Sandbox           | `https://sandbox.api.service.nhs.uk/service-search-api/`    |
     | Integration test  | `https://int.api.service.nhs.uk/service-search-api/`        |
-    | Production        | `https://api.service.nhs.uk/service-search-api/`            |
+    | Production        | Not yet available         |
 
-    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing) is for formal integration testing
+    ### Sandbox testing
+    Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing):
+    * is for early developer testing
+    * only covers a limited set of scenarios
+    * is stateless, so does not actually persist any updates
+    * is open access, so does not allow you to test authorisation
+    
+    For details of sandbox test scenarios, or to try out the sandbox using our 'Try this API' feature, see the documentation for each endpoint.
+    
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing) is for formal integration testing.
+    
+    ### Integration testing
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing):
+    * is for formal integration testing
+    * is stateful, so persists updates
+    * includes authorisation, with options for appliation-restricted access
+    
     For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
 
     ### Rate Limiting
@@ -103,9 +116,9 @@ paths:
       operationId: search-GET
       description: |
         ## Overview
-        Use this to get information about services provided by NHS organisations listed in the service search on the NHS website.
+        Use this endpoint to find information about services provided by NHS organisations.
 
-        For information on how to use search identifiers and query fields with this endpoint, see [DoHS - guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
         
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
@@ -121,14 +134,17 @@ paths:
 
       parameters:
         - name: api-version
-          description: The API version number can be supplied as a query parameter.
+          description: |
+            The API version number can be supplied as a query parameter. 
+            
+            Other API endpoint calls require a different API version number - these are highlighted in the [migration guide](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap/migrating-from-the-etp-web-services-soap-api-to-the-service-search-api).
           in: query
           schema:
             type: number
             default: 2
         - name: search
           in: query
-          description: The text to search for. All searchable fields are searched by default unless searchFields is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
+          description: The text to search for. All searchable fields are searched by default unless "searchFields" is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
           schema:
             type: string
         - name: searchMode
@@ -142,11 +158,49 @@ paths:
             default: "any"
         - name: searchFields
           in: query
-          description: The list of comma-separated field names to search for the specified text.
+          description: |
+            A comma-separated list of field names to search for the specified text. This field works in conjunction with the "search" field.
+          
+            Example search field: "searchFields=ODSCode"
+          
           schema:
             type: string
         - name: queryType
-          description: Defaults to simple. When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "". When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
+          description: |
+            Default value: simple
+            
+            When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "".
+            
+            When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
+            
+            The following example is a search over independent terms, with a requirement that all matching documents include "pool".
+            
+            For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-simple-syntax).
+            
+            Example using Simple Query Type:
+            
+            "queryType=simple"
+            
+            "search=budget hotel +pool"
+            
+            "searchMode=all"  
+            
+            This particular example shows in-field search and term boosting. It looks for hotels where the category field contains the term "budget".
+            
+            Any documents containing the phrase "recently renovated" are ranked higher as a result of the term boost value.
+            
+            For more information, see [Lucene query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-lucene-syntax).
+            
+            Example using Full Query Type:
+            
+            "queryType=full"
+            
+            "search=category:budget AND \'recently renovated\'^3"
+            
+            "searchMode=all"
+            
+            Allowed values: simple, full
+            
           in: query
           schema:
             type: string
@@ -155,13 +209,13 @@ paths:
               - "full"
             default: "simple"
         - name: $skip
-          description: The number of search results to skip.
+          description: The number of search results to skip. For example, "$skip:25" returns the entries after the first 25 entries in the search results.
           in: query
           schema:
             type: number
             format: int32
         - name: $top
-          description: The number of search results to retrieve. This defaults to 50.
+          description: The number of search results to retrieve. The default is 50.
           in: query
           schema:
             type: number
@@ -175,17 +229,50 @@ paths:
             default: false
         - name: $orderBy
           in: query
-          description: A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by asc to indicate ascending, and desc to indicate descending. The default is ascending order.
+          description: |
+            A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by "asc" to indicate ascending, and "desc" to indicate descending. The default is ascending order.
+          
+            This $orderBy routine orders the results by the distance from the GEO Point included in the expression, the GEO Point can be a position from where you are and the results are order by how local the result are.
+            
+            For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-orderby).
+            
+            Example: "$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
           schema:
             type: string
         - name: $select
           in: query
-          description: A list of comma-separated fields to include in the result set. If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
+          description: |
+            A list of comma-separated fields to include in the result set. 
+            
+            If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
+            
+            Example: "$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
           schema:
             type: string
         - name: $filter
           in: query
-          description: A structured search expression in standard OData syntax.
+          description: |
+            A structured search expression in standard OData syntax.
+            
+            The $filter parameter specifies inclusion or exclusion criteria for returning matches in search results.
+            
+            For more information on using the $filter, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
+            
+            Examples:
+            
+            Filter results by Pharmacies that are EPS-enabled and classed as Community, that is, ServiceCode is EPS0001 and  Organisation Type is 'PHA' and Sub Type is 'Community':
+            
+            "$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+            
+            Filter results that match our postcode, that is "Postcode" field is "NG16":
+            
+            "$filter=search.ismatch('NG16', 'Postcode')"
+            
+            Filter results by "Postcode" is "CW9" and Organisation Type is dentist:
+            
+            "$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'"
+            
+            For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields#organisation-and-service-codes).
           schema:
             type: string
       responses:
@@ -210,9 +297,9 @@ paths:
       operationId: search-postcode-or-place-POST
       description: |
         ## Overview
-        You can use this to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
+        Use this endpoint to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
 
-        For information on how to use search identifiers and query fields with this endpoint, see [DoHS - guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
         
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
@@ -237,7 +324,12 @@ paths:
             default: 2
             enum: [ 2 ]
         - name: search
-          description: Search query term
+          description: |
+            Search query term. 
+            
+            When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world).
+            
+            To match any term, use "*" . Omitting this parameter has the same effect as setting it to "*".
           in: query
           required: true
           schema:
@@ -281,9 +373,9 @@ paths:
       operationId: organisationtypes-GET
       description: |
         ## Overview
-        You can use this to get, filter or search the organisation types
+        Use this endpoint to get, filter or search the organisation types.
 
-        For information on how to use search identifiers and query fields with this endpoint, see [DoHS - guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
         
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
@@ -325,7 +417,41 @@ paths:
           schema:
             type: string
         - name: queryType
-          description: Defaults to simple. When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "". When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
+          description: |
+            Default value: simple
+            
+            When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "".
+            
+            When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
+            
+            The following example is a search over independent terms, with a requirement that all matching documents include "pool".
+            
+            For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-simple-syntax).
+            
+            Example using Simple Query Type:
+            
+            "queryType=simple"
+            
+            "search=budget hotel +pool"
+            
+            "searchMode=all"  
+            
+            This particular example shows in-field search and term boosting. It looks for hotels where the category field contains the term "budget".
+            
+            Any documents containing the phrase "recently renovated" are ranked higher as a result of the term boost value.
+            
+            For more information, see [Lucene query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-lucene-syntax).
+            
+            Example using Full Query Type:
+            
+            "queryType=full"
+            
+            "search=category:budget AND \'recently renovated\'^3"
+            
+            "searchMode=all"
+            
+            Allowed values: simple, full
+             
           in: query
           schema:
             type: string
@@ -334,13 +460,13 @@ paths:
               - "full"
             default: "simple"
         - name: $skip
-          description: The number of search results to skip. Example ($skip:25) will return the entries after the first 25 entries in the search results.
+          description: The number of search results to skip. For example, "$skip:25" returns the entries after the first 25 entries in the search results.
           in: query
           schema:
             type: number
             format: int32
         - name: $top
-          description: The number of search results to retrieve. This defaults to 50.
+          description: The number of search results to retrieve. The default is 50.
           in: query
           schema:
             type: number
@@ -354,17 +480,53 @@ paths:
             default: false
         - name: $orderBy
           in: query
-          description: A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by asc to indicate ascending, and desc to indicate descending. The default is ascending order.
+          description: |
+            A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by "asc" to indicate ascending, and "desc" to indicate descending. The default is ascending order.
+          
+            This $orderBy routine orders the results by the distance from the GEO Point included in the expression, the GEO Point can be a position from where you are and the results are order by how local the result are.
+            
+            For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-orderby).
+            
+            Example: "$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
+            
           schema:
             type: string
         - name: $select
           in: query
-          description: A list of comma-separated fields to include in the result set. If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
+          description:  |
+            A list of comma-separated fields to include in the result set. 
+            
+            If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
+            
+            Example: "$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
+            
           schema:
             type: string
         - name: $filter
           in: query
-          description: A structured search expression in standard OData syntax.
+          description: |
+            A structured search expression in standard OData syntax.
+            
+            The $filter parameter specifies inclusion or exclusion criteria for returning matches in search results.
+            
+            For more information on using the $filter, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
+            
+            Examples:
+            
+            Filter results by Pharmacies that are EPS-enabled and classed as Community, that is, ServiceCode is EPS0001 and  Organisation Type is 'PHA' and Sub Type is 'Community':
+            
+            "$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+            
+            Filter results that match our postcode, that is "Postcode" field is "NG16":
+            
+            "$filter=search.ismatch('NG16', 'Postcode')"
+            
+            Filter results by "Postcode" is "CW9" and Organisation Type is dentist:
+            
+            "$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'"
+            
+            For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields#organisation-and-service-codes).
+
           schema:
             type: string
       responses:
