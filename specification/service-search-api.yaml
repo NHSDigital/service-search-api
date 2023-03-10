@@ -144,7 +144,12 @@ paths:
             default: 2
         - name: search
           in: query
-          description: The text to search for. All searchable fields are searched by default unless "searchFields" is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
+          description: |
+            The text to search for. All searchable fields are searched by default unless `searchFields` is specified. 
+            
+            When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space, for example `search=hello world`. 
+            
+            To match any term, use `*` which can be useful for boolean filter queries. Omitting this parameter has the same effect as setting it to `*`.
           schema:
             type: string
         - name: searchMode
@@ -159,45 +164,43 @@ paths:
         - name: searchFields
           in: query
           description: |
-            A comma-separated list of field names to search for the specified text. This field works in conjunction with the "search" field.
+            A comma-separated list of field names to search for the specified text. This field works in conjunction with the `search` field.
           
-            Example search field: "searchFields=ODSCode"
+            Example search field: `searchFields=ODSCode`
           
           schema:
             type: string
         - name: queryType
           description: |
-            Default value: simple
-            
             When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "".
             
             When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
             
-            The following example is a search over independent terms, with a requirement that all matching documents include "pool".
+            The following example is a search over independent terms, with a requirement that all matching documents include `pool`.
             
             For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-simple-syntax).
             
-            Example using Simple Query Type:
+            Example using simple query type:
             
-            "queryType=simple"
+            `queryType=simple`
             
-            "search=budget hotel +pool"
+            `search=budget hotel +pool`
             
-            "searchMode=all"  
+            `searchMode=all`  
             
-            This particular example shows in-field search and term boosting. It looks for hotels where the category field contains the term "budget".
+            This particular example shows in-field search and term boosting. It looks for hotels where the category field contains the term `budget`.
             
-            Any documents containing the phrase "recently renovated" are ranked higher as a result of the term boost value.
+            Any documents containing the phrase `recently renovated` are ranked higher as a result of the term boost value.
             
             For more information, see [Lucene query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-lucene-syntax).
             
-            Example using Full Query Type:
+            Example using full query type:
             
-            "queryType=full"
+            `queryType=full`
             
-            "search=category:budget AND \'recently renovated\'^3"
+            `search=category:budget AND \'recently renovated\'^3`
             
-            "searchMode=all"
+            `searchMode=all`
             
             Allowed values: simple, full
             
@@ -209,7 +212,7 @@ paths:
               - "full"
             default: "simple"
         - name: $skip
-          description: The number of search results to skip. For example, "$skip:25" returns the entries after the first 25 entries in the search results.
+          description: The number of search results to skip. For example, `$skip:25` returns the entries after the first 25 entries in the search results.
           in: query
           schema:
             type: number
@@ -222,7 +225,14 @@ paths:
             format: int32
             default: 50
         - name: $count
-          description: Optional, defaults to false. Specifies whether to fetch the total count of results. This is the count of all documents that match the search and $filter parameters, ignoring $top and $skip. Setting this value to true may have a performance impact. The count returned is an approximation. If you’d like to get only the count without any documents, you can use $top=0.
+          description: |
+            Optional, defaults to false. Specifies whether to fetch the total count of results. 
+            
+            This is the count of all documents that match the search and `$filter` parameters, ignoring `$top` and `$skip`. 
+            
+            Setting this value to true may have a performance impact. The count returned is an approximation. 
+            
+            If you’d like to get only the count without any documents, you can use `$top=0`.
           in: query
           schema:
             type: boolean
@@ -230,13 +240,18 @@ paths:
         - name: $orderBy
           in: query
           description: |
-            A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by "asc" to indicate ascending, and "desc" to indicate descending. The default is ascending order.
+            A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the `geo.distance()` function. 
+            
+            Each expression can be followed by `asc` to indicate ascending, and `desc` to indicate descending. The default is ascending order.
           
-            This $orderBy routine orders the results by the distance from the GEO Point included in the expression, the GEO Point can be a position from where you are and the results are order by how local the result are.
+            This `$orderBy` routine orders the results by the distance from the geography point included in the expression. 
+            
+            The geography point can be a position from where you are and the results are ordered by how local the results are.
             
             For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-orderby).
             
-            Example: "$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
+            Example: 
+            `$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')`
           schema:
             type: string
         - name: $select
@@ -246,7 +261,7 @@ paths:
             
             If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
             
-            Example: "$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
+            Example: `$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType`
           schema:
             type: string
         - name: $filter
@@ -254,23 +269,23 @@ paths:
           description: |
             A structured search expression in standard OData syntax.
             
-            The $filter parameter specifies inclusion or exclusion criteria for returning matches in search results.
+            The `$filter` parameter specifies inclusion or exclusion criteria for returning matches in search results.
             
-            For more information on using the $filter, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
+            For more information on using the `$filter`, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
             
             Examples:
             
-            Filter results by Pharmacies that are EPS-enabled and classed as Community, that is, ServiceCode is EPS0001 and  Organisation Type is 'PHA' and Sub Type is 'Community':
+            Filter results by Pharmacies that are EPS-enabled and classed as 'Community', that is, `ServiceCode` is `EPS0001`, `Organisation Type` is `PHA` and `Sub Type` is `Community`:
             
-            "$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+            `$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`
             
-            Filter results that match our postcode, that is "Postcode" field is "NG16":
+            Filter results that match our postcode, that is `Postcode` field is `NG16`:
             
-            "$filter=search.ismatch('NG16', 'Postcode')"
+            `$filter=search.ismatch('NG16', 'Postcode')`
             
-            Filter results by "Postcode" is "CW9" and Organisation Type is dentist:
+            Filter results by `Postcode` is `CW9` and `OrganisationTypeId" is a dentist:
             
-            "$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'"
+            `$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'`
             
             For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields#organisation-and-service-codes).
           schema:
@@ -327,9 +342,9 @@ paths:
           description: |
             Search query term. 
             
-            When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world).
+            When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space, for example `search=hello world`.
             
-            To match any term, use "*" . Omitting this parameter has the same effect as setting it to "*".
+            To match any term, use `*`. Omitting this parameter has the same effect as setting it to `*`.
           in: query
           required: true
           schema:
@@ -399,7 +414,12 @@ paths:
             enum: [ 1 ]
         - name: search
           in: query
-          description: The text to search for. All searchable fields are searched by default unless searchFields is specified. When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space (for example search=hello world). To match any term, use * (this can be useful for boolean filter queries). Omitting this parameter has the same effect as setting it to *.
+          description: |
+            The text to search for. All searchable fields are searched by default unless `searchFields` is specified. 
+            
+            When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space, for example `search=hello world`. 
+            
+            To match any term, use `*` which can be useful for boolean filter queries. Omitting this parameter has the same effect as setting it to `*`.
           schema:
             type: string
         - name: searchMode
@@ -418,37 +438,35 @@ paths:
             type: string
         - name: queryType
           description: |
-            Default value: simple
-            
             When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "".
             
             When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
             
-            The following example is a search over independent terms, with a requirement that all matching documents include "pool".
+            The following example is a search over independent terms, with a requirement that all matching documents include `pool`.
             
             For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-simple-syntax).
             
-            Example using Simple Query Type:
+            Example using simple query type:
             
-            "queryType=simple"
+            `queryType=simple`
             
-            "search=budget hotel +pool"
+            `search=budget hotel +pool`
             
-            "searchMode=all"  
+            `searchMode=all`  
             
-            This particular example shows in-field search and term boosting. It looks for hotels where the category field contains the term "budget".
+            The next example shows in-field search and term boosting. It looks for hotels where the category field contains the term `budget`.
             
-            Any documents containing the phrase "recently renovated" are ranked higher as a result of the term boost value.
+            Any documents containing the phrase `recently renovated` are ranked higher as a result of the term boost value.
             
             For more information, see [Lucene query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-lucene-syntax).
             
-            Example using Full Query Type:
+            Example using full query type:
             
-            "queryType=full"
+            `queryType=full`
             
-            "search=category:budget AND \'recently renovated\'^3"
+            `search=category:budget AND \'recently renovated\'^3`
             
-            "searchMode=all"
+            `searchMode=all`
             
             Allowed values: simple, full
              
@@ -460,7 +478,7 @@ paths:
               - "full"
             default: "simple"
         - name: $skip
-          description: The number of search results to skip. For example, "$skip:25" returns the entries after the first 25 entries in the search results.
+          description: The number of search results to skip. For example, `$skip:25` returns the entries after the first 25 entries in the search results.
           in: query
           schema:
             type: number
@@ -473,7 +491,14 @@ paths:
             format: int32
             default: 50
         - name: $count
-          description: Optional, defaults to false. Specifies whether to fetch the total count of results. This is the count of all documents that match the search and $filter parameters, ignoring $top and $skip. Setting this value to true may have a performance impact. The count returned is an approximation. If you’d like to get only the count without any documents, you can use $top=0.
+          description: |
+            Optional, defaults to false. Specifies whether to fetch the total count of results. 
+          
+            This is the count of all documents that match the `search` and `$filter` parameters, ignoring `$top` and `$skip`. 
+            
+            Setting this value to true may have a performance impact. The count returned is an approximation. 
+            
+            If you’d like to get only the count without any documents, you can use `$top=0`.
           in: query
           schema:
             type: boolean
@@ -481,13 +506,18 @@ paths:
         - name: $orderBy
           in: query
           description: |
-            A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the geo.distance() function. Each expression can be followed by "asc" to indicate ascending, and "desc" to indicate descending. The default is ascending order.
+            A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the `geo.distance()` function. 
+            
+            Each expression can be followed by `asc` to indicate ascending, and `desc` to indicate descending. The default is ascending order.
           
-            This $orderBy routine orders the results by the distance from the GEO Point included in the expression, the GEO Point can be a position from where you are and the results are order by how local the result are.
+            This `$orderBy` routine orders the results by the distance from the geography point included in the expression.
+            
+            The geography point can be a position from where you are and the results are ordered by how local they are.
             
             For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-orderby).
             
-            Example: "$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
+            Example: 
+            `$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')`
             
           schema:
             type: string
@@ -496,9 +526,10 @@ paths:
           description:  |
             A list of comma-separated fields to include in the result set. 
             
-            If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
+            If unspecified or set to `*`, all fields marked as retrievable in the schema are included in the projection.
             
-            Example: "$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
+            Example: 
+            `$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType`
             
           schema:
             type: string
@@ -507,23 +538,23 @@ paths:
           description: |
             A structured search expression in standard OData syntax.
             
-            The $filter parameter specifies inclusion or exclusion criteria for returning matches in search results.
+            The `$filter` parameter specifies inclusion or exclusion criteria for returning matches in search results.
             
-            For more information on using the $filter, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
+            For more information on using the `$filter`, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
             
             Examples:
             
-            Filter results by Pharmacies that are EPS-enabled and classed as Community, that is, ServiceCode is EPS0001 and  Organisation Type is 'PHA' and Sub Type is 'Community':
+            Filter results by pharmacies that are EPS-enabled and classed as 'community', that is, `ServiceCode` is `EPS0001` and  `OrganisationTypeID` is `PHA` and `SubType` is `Community`:
             
-            "$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+            `$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`
             
-            Filter results that match our postcode, that is "Postcode" field is "NG16":
+            Filter results that match a postcode, that is `Postcode` field is `NG16`:
             
-            "$filter=search.ismatch('NG16', 'Postcode')"
+            `$filter=search.ismatch('NG16', 'Postcode')`
             
-            Filter results by "Postcode" is "CW9" and Organisation Type is dentist:
+            Filter results by `Postcode` is `CW9` and `OrganisationTypeId` is a dentist:
             
-            "$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'"
+            `$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'`
             
             For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields#organisation-and-service-codes).
 
