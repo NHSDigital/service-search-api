@@ -403,7 +403,10 @@ paths:
 
       parameters:
         - name: api-version
-          description: The API version number can be supplied as a query parameter. This must be 1.
+          description: |
+            The API version number can be supplied as a query parameter. This must be 1.
+            
+            Other API endpoint calls require a different API version number - these are highlighted in the [migration guide](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap/migrating-from-the-etp-web-services-soap-api-to-the-service-search-api).
           in: query
           schema:
             type: number
