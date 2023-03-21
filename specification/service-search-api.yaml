@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 info:
   description: |
-    ## Overview
+    ## Overview   
     Use this API to find information about organisations that provide NHS healthcare services, NHS organisation types, and coronavirus (COVID-19) walk-in sites.
 
     You can:
