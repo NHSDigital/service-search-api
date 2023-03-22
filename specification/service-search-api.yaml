@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 info:
   description: |
-    ## Overview
+    ## Overview   
     Use this API to find information about organisations that provide NHS healthcare services, NHS organisation types, and coronavirus (COVID-19) walk-in sites.
 
     You can:
@@ -60,7 +60,6 @@ info:
     Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing):
     * is for early developer testing
     * only covers a limited set of scenarios
-    * is stateless, so does not actually persist any updates
     * is open access, so does not allow you to test authorisation
     
     For details of sandbox test scenarios, or to try out the sandbox using our 'Try this API' feature, see the documentation for each endpoint.
@@ -70,8 +69,8 @@ info:
     ### Integration testing
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing):
     * is for formal integration testing
-    * is stateful, so persists updates
     * includes authorisation, with options for appliation-restricted access
+    * test data is a close copy of the production data
     
     For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
 
@@ -201,8 +200,6 @@ paths:
             `search=category:budget AND \'recently renovated\'^3`
             
             `searchMode=all`
-            
-            Allowed values: simple, full
             
           in: query
           schema:
@@ -406,7 +403,10 @@ paths:
 
       parameters:
         - name: api-version
-          description: The API version number can be supplied as a query parameter. This must be 1.
+          description: |
+            The API version number can be supplied as a query parameter. This must be 1.
+            
+            Other API endpoint calls require a different API version number - these are highlighted in the [migration guide](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap/migrating-from-the-etp-web-services-soap-api-to-the-service-search-api).
           in: query
           schema:
             type: number
