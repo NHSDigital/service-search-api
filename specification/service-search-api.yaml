@@ -434,7 +434,7 @@ paths:
           description: |
             A comma-separated list of field names to search for the specified text. This field works in conjunction with the `search` field.
 
-            Example search field: `searchFields=ODSCode`
+            Example search field - `searchFields=ODSCode`
 
             Omitting this parameter has the same effect as setting it to `*`.
           
