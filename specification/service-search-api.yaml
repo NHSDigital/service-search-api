@@ -117,7 +117,7 @@ paths:
         ## Overview
         Use this endpoint to find information about services provided by NHS organisations.
 
-        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and service codes](https://digital.nhs.uk//developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes).
         
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
@@ -310,7 +310,7 @@ paths:
         ## Overview
         Use this endpoint to search for information about services provided by NHS organisations, listed in the service search on the NHS website, filtered by postcode or place name.
 
-        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and service codes](https://digital.nhs.uk//developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes).
         
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
@@ -386,7 +386,7 @@ paths:
         ## Overview
         Use this endpoint to get, filter or search the organisation types.
 
-        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and query fields](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields).
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and service codes](https://digital.nhs.uk//developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes).
         
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
