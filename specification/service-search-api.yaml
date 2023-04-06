@@ -135,9 +135,8 @@ paths:
         - name: api-version
           description: |
             The API version number can be supplied as a query parameter. 
-            
-            Other API endpoint calls require a different API version number - these are highlighted in the [migration guide](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap/migrating-from-the-etp-web-services-soap-api-to-the-service-search-api).
           in: query
+          required: true
           schema:
             type: number
             default: 2
@@ -342,7 +341,6 @@ paths:
             
             To match any term, use `*`. Omitting this parameter has the same effect as setting it to `*`.
           in: query
-          required: true
           schema:
             type: string
         - name: latitude
@@ -403,14 +401,14 @@ paths:
       parameters:
         - name: api-version
           description: |
-            The API version number can be supplied as a query parameter. This must be 1.
-            
-            Other API endpoint calls require a different API version number - these are highlighted in the [migration guide](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap/migrating-from-the-etp-web-services-soap-api-to-the-service-search-api).
+            The API version number must be supplied as a query parameter. This must be 1.
+           
           in: query
+          required: true
           schema:
             type: number
             default: 1
-            enum: [ 1 ]
+            enum: [ 1 ]   
         - name: search
           in: query
           description: |
@@ -432,7 +430,14 @@ paths:
             default: "any"
         - name: searchFields
           in: query
-          description: A comma-separated list of field names to search for the specified text.
+          
+          description: |
+            A comma-separated list of field names to search for the specified text. This field works in conjunction with the `search` field.
+
+            Example search field - `searchFields=ODSCode`
+
+            Omitting this parameter has the same effect as setting it to `*`.
+          
           schema:
             type: string
         - name: queryType
