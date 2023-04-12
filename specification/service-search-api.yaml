@@ -286,7 +286,7 @@ paths:
             
             `$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'`
             
-            For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields#organisation-and-service-codes).
+            For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes#organisation-and-service-codes).
           schema:
             type: string
       responses:
@@ -564,7 +564,7 @@ paths:
             
             `$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'`
             
-            For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-query-fields#organisation-and-service-codes).
+            For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes#organisation-and-service-codes).
 
           schema:
             type: string
