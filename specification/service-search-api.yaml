@@ -9,6 +9,8 @@ info:
     * search for NHS organisations that provide healthcare services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
     * search for coronavirus (COVID-19) walk-in sites
     
+    This API does not support the FHIR standard, but we have a mapping of how its response fields could be mapped to it. For details, see [DoHS API guide to FHIR mappings](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/version-3/dohs-api-guide-to-fhir-mappings).
+    
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support). You must do this before you can go live (see ‘Onboarding’ below).
 
@@ -36,7 +38,9 @@ info:
 
     ## Technology
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest).
-
+    
+    This API does not support the FHIR standard, but we have a mapping of how its response fields could be mapped to it. For details, see [DoHS API guide to FHIR mappings](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/version-3/dohs-api-guide-to-fhir-mappings).
+    
     ## Network access
     This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
     For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
