@@ -674,7 +674,7 @@ components:
                       format: uri
 
     OrganisationTypeResults:
-      description: Organisation Type Search Results
+      description: Success
       content:
         "application/json":
           examples:
