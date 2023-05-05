@@ -680,8 +680,6 @@ components:
           examples:
             OrganisationTypes:
               $ref: "examples/organisation-types_v1.json"
-            NotFound:
-              $ref: "examples/organisation-types-not-found_v1.json"
             SingleItem:
               $ref: "examples/organisation-types-single-item_v1.json"
           schema:
