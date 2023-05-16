@@ -291,14 +291,19 @@ paths:
             type: string
       responses:
         "200":
+          description: Successful response
           $ref: "#/components/responses/SearchResponse"
         "400":
+          description: Bad request
           $ref: "#/components/responses/BadRequest"
         "401":
+          description: Unauthorized response
           $ref: "#/components/responses/Unauthorized"
-        "404":
+        "404": 
+          description: Invalid request
           $ref: "#/components/responses/NotFound"
         "429":
+          description: Too many requests
           $ref: "#/components/responses/TooManyRequests"
 
   "/search-postcode-or-place":
@@ -611,7 +616,7 @@ components:
       content:
         application/fhir+json:
           schema:
-            $ref: '#/components/schemas/OperationalOutcome'
+            $ref: "#/specification/invalid-request.yaml"
           example:
             $ref: examples/400-SEND.json
       headers:
@@ -634,7 +639,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     Unauthorized:
       description: Unauthorized
