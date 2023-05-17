@@ -17,11 +17,11 @@
             "coding": [
               {
                 "system": "https://fhir.nhs.uk/Codesystem/http-error-codes",
-                "code": "SEND_BAD_REQUEST"
+                "code": "REC_SERVER_ERROR"
               }
             ]
           },
-          "diagnostics": "The API was unable to process the request."
+          "diagnostics": "The receiver server has encountered an Error processing the request.."
         }
       ]
     }

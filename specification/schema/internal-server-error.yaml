@@ -1,0 +1,15 @@
+summary: Internal server error response.
+value:
+  resourceType: OperationOutcome
+  meta:
+    lastUpdated: "2021-04-14T11:35:00+00:00"
+  issue:
+    - severity: error
+      code: value
+      details:
+        coding:
+          - system: https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode
+            version: "1"
+            code: REC_SERVER_ERROR	
+            display: The receiver server has encountered an Error processing the request.
+

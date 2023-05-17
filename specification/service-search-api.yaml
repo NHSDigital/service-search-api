@@ -293,18 +293,20 @@ paths:
         "200":
           description: Successful response
           $ref: "#/components/responses/SearchResponse"
-        "400":
-          description: Bad request
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          description: Unauthorized response
-          $ref: "#/components/responses/Unauthorized"
-        "404": 
-          description: Invalid request
-          $ref: "#/components/responses/NotFound"
-        "429":
-          description: Too many requests
-          $ref: "#/components/responses/TooManyRequests"
+        "4XX":
+          $ref: "#/components/responses/4XX-SERVICE-SEARCH"
+#        "400":
+#          description: Bad request
+#          $ref: "#/components/responses/BadRequest"
+#        "401":
+#          description: Unauthorized response
+#          $ref: "#/components/responses/Unauthorized"
+#        "404": 
+#          description: Invalid request
+#          $ref: "#/components/responses/NotFound"
+#        "429":
+#          description: Too many requests
+#          $ref: "#/components/responses/TooManyRequests"
 
   "/search-postcode-or-place":
     # --------------------------------------------------------------------------------
@@ -388,7 +390,6 @@ paths:
 
     get:
       summary: Search for organisation types
-      operationId: organisationtypes-GET
       description: |
         ## Overview
         Use this endpoint to get, filter or search the organisation types.
@@ -406,7 +407,7 @@ paths:
         | Invalid API version         | No api-version parameter | HTTP status 404 with problem description        |
 
         You can try out the sandbox using the 'Try this API feature' on this page.
-
+      operationId: organisationtypes-GET
       parameters:
         - name: api-version
           description: |
@@ -576,14 +577,16 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/OrganisationTypeResults"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
+        "4XX":
+          $ref: "#/components/responses/4XX-SERVICE-SEARCH"
+#        "400":
+#          $ref: "#/components/responses/BadRequest"
+#        "401":
+#          $ref: "#/components/responses/Unauthorized"
+#        "404":
+#          $ref: "#/components/responses/NotFound"
+#        "429":
+#          $ref: "#/components/responses/TooManyRequests"
 
 components:
   responses:
@@ -616,7 +619,7 @@ components:
       content:
         application/fhir+json:
           schema:
-            $ref: "#/specification/invalid-request.yaml"
+            $ref: "#/components/schemas/OperationalOutcome"
           example:
             $ref: examples/400-SEND.json
       headers:
@@ -636,42 +639,91 @@ components:
     BadRequest:
       description: Bad Request
       content:
-        application/json:
+        "application/json":
+          examples:
+            BadRequest:
+              $ref: "examples/bad-request.json"
           schema:
-            type: object
-            properties: {}
+            allOf:
+              - $ref: "#/components/schemas/BadRequest"
+              - type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/BadRequest"
 
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
+          examples:
+            Unauthorized:
+              $ref: "examples/unauthorized.json"
           schema:
-            type: object
-            properties: { }
+            allOf:
+              - $ref: "#/components/schemas/Unauthorized"
+              - type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Unauthorized"
 
     Forbidden:
       description: Forbidden
       content:
         application/json:
+          examples:
+            Organisations:
+              $ref: "examples/403-FORBIDDEN.json"
+            SingleItem:
+              $ref: "examples/403-FORBIDDEN.json"
+            NotFound:
+              $ref: "examples/403-FORBIDDEN.json"
           schema:
-            type: object
-            properties: { }
+            allOf:
+              - $ref: "#/components/schemas/Forbidden"
+              - type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Forbidden"
 
     TooManyRequests:
       description: Too Many Requests
       content:
         application/json:
+          examples:
+            TooManyRequests:
+              $ref: "examples/429-TOO-MANY-REQUESTS.json"
           schema:
-            type: object
-            properties: { }
+            allOf:
+              - $ref: "#/components/schemas/TooManyRequests"
+              - type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/TooManyRequests"
 
     InternalServerError:
       description: Internal Server Error
       content:
         application/json:
+          examples:
+            TooManyRequests:
+              $ref: "examples/500-INTERNAL-SERVER-ERROR.json"
           schema:
-            type: object
-            properties: { }
+            allOf:
+              - $ref: "#/components/schemas/InternalServerError"
+              - type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/InternalServerError"
 
     NotFound:
       description: Not found
@@ -681,8 +733,14 @@ components:
             OrganisationNotFound:
               $ref: "examples/organisations-not-found_v2.json"
           schema:
-            type: object
-            properties: { }
+            allOf:
+              - $ref: "#/components/schemas/NotFound"
+              - type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/NotFound"
 
     SearchResponse:
       description: Search Response
@@ -704,6 +762,7 @@ components:
                     type: array
                     items:
                       $ref: "#/components/schemas/Organisation"
+                      
     SearchPostcodeResults:
       description: Postcode search results
       content:
@@ -862,6 +921,26 @@ components:
           type: boolean
         "DisplayName":
           type: string
+          
+          
+          
+    OperationalOutcome:
+      $ref: schema/operational-outcome.yaml
+      
+    BadRequest:
+      $ref: schema/bad-request.yaml
+      
+    Unauthorized:
+      $ref: schema/unauthorized-request.yaml
+      
+    Forbidden:
+      $ref: schema/forbidden.yaml
+    NotFound:
+      $ref: schema/not-found.yaml
+    TooManyRequests:
+      $ref: schema/too-many-requests.yaml
+    InternalServerError:
+      $ref: schema/internal-server-error.yaml
 
     Metric:
       type: object

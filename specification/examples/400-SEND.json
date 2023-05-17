@@ -1,0 +1,28 @@
+{
+  "@odata.context": "https://nhsuksearchproduks.search.windows.net/indexes('syndicationprofiles-2-2-c-prod')/$metadata#docs(*)",
+  "value":
+  {
+    "resourceType": "OperationOutcome",
+    "id": "531e073a-3295-4e67-ae90-e00bd96a9cdd",
+    "meta": {
+      "profile": [
+        "https://fhir.hl7.org.uk/StructureDefinition/UKCore-OperationOutcome"
+      ]
+    },
+    "issue": [
+      {
+        "severity": "error",
+        "code": "invariant",
+        "details": {
+          "coding": [
+            {
+              "system": "https://fhir.nhs.uk/Codesystem/http-error-codes",
+              "code": "SEND_BAD_REQUEST"
+            }
+          ]
+        },
+        "diagnostics": "The API was unable to process the request."
+      }
+    ]
+  }
+}
