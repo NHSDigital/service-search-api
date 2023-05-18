@@ -19,3 +19,4 @@ smoketest-report.xml
 **/integration_tests_report.xml
 
 openapitools.json
+openapi.json
