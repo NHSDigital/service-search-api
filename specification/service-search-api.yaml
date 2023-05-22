@@ -292,14 +292,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/SearchResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
+        "4XX":
+          $ref: "#/components/responses/4XX-BARS"
 
   "/search-postcode-or-place":
     # --------------------------------------------------------------------------------
@@ -571,16 +565,8 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/OrganisationTypeResults"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
+        "4XX":
+          $ref: "#/components/responses/4XX-BARS"
 
 components:
   responses:
@@ -615,9 +601,23 @@ components:
       content:
         application/fhir+json:
           schema:
-            $ref: '#/components/responses/OperationalOutcome'
-          example:
-            $ref: examples/400-send.json
+            type: object
+            $ref: examples/operational-outcome.json
+          examples:
+            example:
+              value:
+                resourceType: OperationOutcome
+                meta:
+                  profile:
+                    - https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-OperationOutcome-1
+                issue:
+                  - severity: error
+                    code: not-found
+                    details:
+                      coding:
+                        - system: https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1
+                          code: NO_RECORD_FOUND
+                          display: No record found
       headers:
         X-Correlation-Id:
           description: 'The X-Correlation-Id from the request header, if supplied, mirrored back.'
@@ -682,9 +682,6 @@ components:
           schema:
             type: object
             properties: { }
-            
-    OperationalOutcome:
-      $ref: examples/operational-outcome.json
 
     SearchResponse:
       description: Search Response
