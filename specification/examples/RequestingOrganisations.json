@@ -1,44 +1,37 @@
 {
   "title": "NHSD-End-User-Organisation",
   "type": "object",
-  "description": "| Requesting Organization described in an object based on a FHIR 'Organization' resource (Standard Base64 encoded JSON). Different BaRS Applications may have different standards and requirements for the Access Control which these headers are used for. In this example an ODS code and the Organisation name is provided. Other identifiers are permitted if required.",
-  "required":
-    "- resourceType",
-  "properties":
-  {
-    "resourceType":
-    {
+  "description": "Requesting Organization described in an object based on a FHIR 'Organization' resource (Standard Base64 encoded JSON).\nDifferent BaRS Applications may have different standards and requirements for the Access Control which these headers are used for. \n\nIn this example an ODS code and the Organisation name is provided. Other identifiers are permitted if required. \n",
+  "required": [
+    "resourceType"
+  ],
+  "properties": {
+    "resourceType": {
       "type": "string",
       "example": "Organization"
     },
-    "identifier":
-    {
+    "identifier": {
       "type": "array",
       "uniqueItems": "true",
-      "items":
-      {
+      "items": {
         "type": "object",
-        "properties":
-        {
-          "value":
-          {
+        "properties": {
+          "value": {
             "type": "string",
             "example": "A1001"
           },
-          "system":
-          {
+          "system": {
             "type": "string",
             "example": "https://fhir.nhs.uk/Id/ods-organization-code"
           }
         },
-        "required":
-        {
-          "value" : "- system"
-        }
+        "required": [
+          "value",
+          "system"
+        ]
       }
     },
-    "name":
-    {
+    "name": {
       "type": "string",
       "example": "My service provider name"
     }
@@ -46,12 +39,14 @@
   "x-examples": {
     "example": {
       "resourceType": "Organization",
-      "identifier": {
-        "- system": "https://fhir.nhs.uk/Id/ods-organization-code"
-      }
+      "identifier": [
+        {
+          "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+          "value": "A1001"
+        }
+      ],
+      "name": "111 North East Service"
     }
-  },
-  "value": "A1001",
-  "name": "111 North East Service"
+  }
 }
 
