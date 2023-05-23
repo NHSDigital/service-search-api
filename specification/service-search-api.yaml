@@ -602,11 +602,10 @@ components:
         application/fhir+json:
           schema:
             type: object
-            $ref: examples/operational-outcome.json
           examples:
             example:
               value:
-                resourceType: OperationOutcome
+                resourceType: examples/operational-outcome.json
                 meta:
                   profile:
                     - https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-OperationOutcome-1
