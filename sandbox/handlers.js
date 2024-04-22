@@ -11,6 +11,8 @@ const organisationTypesResponse = require("./responses/organisation-types_v1.jso
 const organisationTypesNotFoundResponse = require("./responses/organisation-types-not-found_v1.json");
 const organisationTypesSingleItemResponse = require("./responses/organisation-types-single-item_v1.json");
 const resourceNotFound = require("./responses/bad-api-version-resource-not-found.json");
+const organisationByOdsCodeFilteredResponse = require("./responses/search-organisations-service-code-filtered-response.json");
+const organisationByNameFilteredResponse = require("./responses/search-organisations-by-name-filtered-response.json");
 
 function populateSearchPostcodeOrPlaceInvalidResponse(search) {
   const response = Object.assign({}, searchPostcodeOrPlaceInvalidResponse);
@@ -69,14 +71,22 @@ async function searchPostcodeOrPlace(req, res, next) {
 async function organisations(req, res, next) {
   const queryStringParameters = req?.query;
   const search = queryStringParameters?.["search"];
+  const searchFields = queryStringParameters?.["searchFields"];
+  const filter = queryStringParameters?.["$filter"];
   const searchParamWasProvided = typeof search === "string";
+  const filterByServiceCode = "Services / any (x: x/ServiceCode eq 'EPS0001')";
+  const filterByNameAndOrganisationType =  "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
 
-  if (queryStringParameters?.["api-version"] !== "2") {
+  if (queryStringParameters?.["api-version"] !== "3") {
     res.status(404).json(resourceNotFound);
   } else if (search === "DN601") {
     res.status(200).json(organisationsSingleResponse);
-  } else if (searchParamWasProvided) {
+  } else if (!searchParamWasProvided) { // TDOO shouldn't this be not?
     res.status(200).json(organisationsNotFoundResponse);
+  } else if(search === "FKH23" && searchFields === "ODSCode" && filter === filterByServiceCode) {
+    res.status(200).json(organisationByOdsCodeFilteredResponse);
+  } else if(search === "pharmacy2u" && searchFields === "OrganisationName" && filter === filterByNameAndOrganisationType) {
+    res.status(200).json(organisationByNameFilteredResponse);
   } else {
     res.status(200).json(organisationsResponse);
   }

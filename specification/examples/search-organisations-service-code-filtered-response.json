@@ -1,0 +1,38 @@
+{
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-1')/$metadata#docs(*)",
+  "@odata.count": 1,
+  "value": [
+    {
+      "@search.score": 1.6324018,
+      "ODSCode": "FKH23",
+      "OrganisationName": "Pharmaease.Com",
+      "OrganisationType": "Pharmacy",
+      "Address1": "172 Willow Lane",
+      "Address2": "",
+      "Address3": "Bolton",
+      "City": "Lancashire",
+      "Postcode": "BL3 4BU",
+      "OrganisationSubType": "DistanceSelling",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "https://pharmaease.com/about-us"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01204 456390"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "https://pharmaease.com/"
+        }
+      ]
+    }
+  ]
+}
