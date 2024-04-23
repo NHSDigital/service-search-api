@@ -88,7 +88,7 @@ async function organisations(req, res, next) {
     res.status(404).json(resourceNotFound);
   } else if (search === "DN601") {
     res.status(200).json(organisationsSingleResponse);
-  } else if(search === "FKH23" && searchFields === "ODSCode" && filter === filterByServiceCode) {
+  } else if(searchFields === "ODSCode" && filter === filterByServiceCode) {
     res.status(200).json(organisationByOdsCodeFilteredResponse);
   } else if(search === "pharmacy2u" && searchFields === "OrganisationName" && filter === filterByServiceCodeAndOrganisationTypeDistance) {
     res.status(200).json(organisationByNameFilteredResponse);
