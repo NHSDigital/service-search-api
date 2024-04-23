@@ -13,6 +13,9 @@ const organisationTypesSingleItemResponse = require("./responses/organisation-ty
 const resourceNotFound = require("./responses/bad-api-version-resource-not-found.json");
 const organisationByOdsCodeFilteredResponse = require("./responses/search-organisations-service-code-filtered-response.json");
 const organisationByNameFilteredResponse = require("./responses/search-organisations-by-name-filtered-response.json");
+const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
+const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
+const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode.json");
 
 function populateSearchPostcodeOrPlaceInvalidResponse(search) {
   const response = Object.assign({}, searchPostcodeOrPlaceInvalidResponse);
@@ -73,20 +76,30 @@ async function organisations(req, res, next) {
   const search = queryStringParameters?.["search"];
   const searchFields = queryStringParameters?.["searchFields"];
   const filter = queryStringParameters?.["$filter"];
+  const orderBy = queryStringParameters?.["$orderby"];
   const searchParamWasProvided = typeof search === "string";
   const filterByServiceCode = "Services / any (x: x/ServiceCode eq 'EPS0001')";
-  const filterByNameAndOrganisationType =  "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
+  const filterByServiceCodeAndOrganisationTypeDistance =  "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
+  const orderByGeocode = "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')";
+  const filterByServiceCodeAndOrganisationTypeCommunity = "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'";
+  const filterByPostcodeServiceCodeOrganisationType = "search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
 
   if (queryStringParameters?.["api-version"] !== "3") {
     res.status(404).json(resourceNotFound);
   } else if (search === "DN601") {
     res.status(200).json(organisationsSingleResponse);
-  } else if (!searchParamWasProvided) { // TDOO shouldn't this be not?
-    res.status(200).json(organisationsNotFoundResponse);
   } else if(search === "FKH23" && searchFields === "ODSCode" && filter === filterByServiceCode) {
     res.status(200).json(organisationByOdsCodeFilteredResponse);
-  } else if(search === "pharmacy2u" && searchFields === "OrganisationName" && filter === filterByNameAndOrganisationType) {
+  } else if(search === "pharmacy2u" && searchFields === "OrganisationName" && filter === filterByServiceCodeAndOrganisationTypeDistance) {
     res.status(200).json(organisationByNameFilteredResponse);
+  } else if(search === "Bletchley" && searchFields === "Address3,City,County") {
+    res.status(200).json(organisationByLocationResponse);
+  } else if(filter === filterByServiceCodeAndOrganisationTypeCommunity && orderBy === orderByGeocode) {
+    res.status(200).json(organisationByGeocodeFilteredResponse);
+  } else if(filter === filterByPostcodeServiceCodeOrganisationType) {
+    res.status(200).json(organisationsByNearestFilteredResponse);
+  } else if (!searchParamWasProvided) {
+    res.status(200).json(organisationsNotFoundResponse);
   } else {
     res.status(200).json(organisationsResponse);
   }
