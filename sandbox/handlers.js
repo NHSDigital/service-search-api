@@ -98,7 +98,7 @@ async function organisations(req, res, next) {
     res.status(200).json(organisationByGeocodeFilteredResponse);
   } else if(filter === filterByPostcodeServiceCodeOrganisationType) {
     res.status(200).json(organisationsByNearestFilteredResponse);
-  } else if (!searchParamWasProvided) {
+  } else if (searchParamWasProvided) {
     res.status(200).json(organisationsNotFoundResponse);
   } else {
     res.status(200).json(organisationsResponse);
