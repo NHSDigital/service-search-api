@@ -72,6 +72,7 @@ async function searchPostcodeOrPlace(req, res, next) {
 }
 
 async function organisations(req, res, next) {
+  req.body
   const queryStringParameters = req?.query;
   const search = queryStringParameters?.["search"];
   const searchFields = queryStringParameters?.["searchFields"];
@@ -108,9 +109,41 @@ async function organisations(req, res, next) {
   next();
 }
 
+async function organisationsPost(req, res, next) {
+  const queryStringParameters = req?.query;
+  const postBody = req?.body;
+
+  const bodyWasProvided = typeof postBody === "object";
+
+  const search = postBody?.["search"];
+  const searchFields = postBody?.["searchFields"]
+  const filter = postBody?.["filter"];
+
+  const filterByServiceCode = "Services / any (x: x/ServiceCode eq 'EPS0001')";
+  const filterByServiceCodeAndOrganisationTypeDistance =  "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
+
+  if (queryStringParameters?.["api-version"] !== "3") {
+    res.status(404).json(resourceNotFound);
+  } else if(filter === filterByServiceCode) {
+    res.status(200).json(organisationByOdsCodeFilteredResponse)
+  } else if(search === "pharmacy2u" && searchFields === "OrganisationName" && filter === filterByServiceCodeAndOrganisationTypeDistance) {
+    res.status(200).json(organisationByNameFilteredResponse)
+  } else if(search === "Bletchley"  && searchFields === "Address3,City,County") {
+    res.status(200).json(organisationByLocationResponse)
+  } else if (bodyWasProvided) {
+    res.status(200).json(organisationsNotFoundResponse);
+  } else {
+    res.status(200).json(organisationsResponse);
+  }
+
+  res.end();
+  next();
+}
+
 module.exports = {
   status: status,
   organisationTypes,
   searchPostcodeOrPlace,
   organisations,
+  organisationsPost
 };
