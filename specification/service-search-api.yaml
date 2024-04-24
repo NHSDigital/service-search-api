@@ -340,6 +340,63 @@ paths:
           "application/json":
             schema:
                 $ref: '#/components/schemas/OrganisationPostRequest'
+            examples:
+
+              organisationsByServiceCodefiltered:
+                summary: "Organisations filtering by service code"
+                value:
+                  search: "FKH23"
+                  searchMode: "all"
+                  searchFields: "ODSCode"
+                  top: 10
+                  count: true
+                  select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
+                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001')"
+
+              organisationsByNameFilteredRequest:
+                summary: "Organisations by name filtered by service code"
+                value:
+                  search: "pharmacy2u"
+                  searchMode: "all"
+                  searchFields: "OrganisationName"
+                  top: 10
+                  count: true
+                  select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
+                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
+              
+              organisationsByLocation:
+                summary: "Organisations by location"
+                value:
+                  search: "Bletchley"
+                  searchMode: "all"
+                  searchFields: "Address3,City,County"
+                  top: 10,
+                  count: true,
+                  select: "Latitude,Longitude,Address3,City,County,Postcode" 
+
+              organisationsByGeocodeFiltered:
+                summary: "Organisations filtered by service code and organisation type and ordered by geocode"
+                value:
+                  search: "*"
+                  searchMode: "all"
+                  searchFields: "*"
+                  top: 10
+                  count: true
+                  select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
+                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+                  orderby": "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
+
+              organisationsByPostcodeFiltered:
+                summary: "Organisations by postcode, filtered by service code and organisation type"
+                value:
+                  search: "*"
+                  searchMode: "all"
+                  searchFields: "*"
+                  top: 10
+                  count: true
+                  select: "ODSCode, OrganisationType, OrganisationSubType, OrganisationName, Contacts, Address1, Address2, Address3, City, Postcode, Latitude, Longitude"
+                  filter: "search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+              
       responses:
         "200":
           $ref: "#/components/responses/OrganisationSearchPostResponse"
@@ -763,8 +820,29 @@ components:
       content:
         "application/json":
           examples:
-            organisations:
-              $ref: "examples/search-organisation-response-body_v3.json"    
+            AllOrganisations:
+              summary: "All Organisations"
+              $ref: "examples/search-organisation-response-body_v3.json"
+
+            FilteredByServicecode:
+              summary: "Organisations filtered by service code"
+              $ref: "examples/search-organisations-service-code-filtered-response.json"
+
+            ByLocation: 
+              summary: "Organisations by location"
+              $ref: "examples/search-organisations-location-response.json" 
+
+            ByNameFilteredByServicecodeAndOrgType:
+              summary: "Organisations by name filtered by service code"
+              $ref: "examples/search-organisations-by-name-filtered-response.json"
+
+            FilteredByServieCodeAndOrgTypeOrdered:
+              summary: "Organisations filtered by service code and organisation type and ordered by geocode"
+              $ref: "examples/search-organisations-geocode-filtered-response.json"
+
+            ByPostcodeFiltered:
+              summary: "Organisations by postcode, filtered by service code and organisation type"
+              $ref: "examples/search-organisations-by-nearest-filter-postcode.json" 
 
     SearchPostcodeResults:
       description: Postcode search results
@@ -918,7 +996,7 @@ components:
       description: Organisation post request
       type: object
       example:
-        $ref: "examples/search-organisation-request-body_v3.json"    
+        $ref: "examples/search-organisation-request-body_v3.json"
 
     OrganisationType:
       description: Organisation Types
