@@ -842,7 +842,7 @@ components:
 
             ByPostcodeFiltered:
               summary: "Organisations by postcode, filtered by service code and organisation type"
-              $ref: "examples/search-organisations-by-nearest-filter-postcode.json" 
+              $ref: "examples/search-organisations-by-nearest-filter-postcode-response.json" 
 
     SearchPostcodeResults:
       description: Postcode search results
