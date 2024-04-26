@@ -5,7 +5,7 @@ const searchPlaceResponse = require("./responses/search-place_v2.json");
 const searchPostcodeResponse = require("./responses/search-postcode_v2.json");
 const organisationsResponse = require("./responses/organisations_v2.json");
 const organisationsNotFoundResponse = require("./responses/organisations-not-found_v2.json");
-const organisationsSingleResponse = require("./responses/organisations-single_v2.json");
+const organisationsSingleResponse = require("./responses/organisations-single_v3.json");
 const searchPostcodeOrPlaceInvalidResponse = require("./responses/search-postcode-invalid_template_v2.json");
 const organisationTypesResponse = require("./responses/organisation-types_v1.json");
 const organisationTypesNotFoundResponse = require("./responses/organisation-types-not-found_v1.json");
@@ -88,7 +88,7 @@ async function organisations(req, res, next) {
   
   if (queryStringParameters?.["api-version"] !== "3") {
     res.status(404).json(resourceNotFound);
-  } else if (search === "DN601") {
+  } else if (search === "Y02494") {
     res.status(200).json(organisationsSingleResponse);
   } else if(searchFields === "ODSCode" && filter === filterByServiceCode) {
     res.status(200).json(organisationByOdsCodeFilteredResponse);
@@ -121,7 +121,7 @@ async function organisationsPost(req, res, next) {
 
   if (queryStringParameters?.["api-version"] !== "3") {
     res.status(404).json(resourceNotFound);
-  } else if (search === "DN601") {
+  } else if (search === "Y02494") {
     res.status(200).json(organisationsSingleResponse);
   } else if(searchFields === "ODSCode" && filter === filterByServiceCode) {
     res.status(200).json(organisationByOdsCodeFilteredResponse)

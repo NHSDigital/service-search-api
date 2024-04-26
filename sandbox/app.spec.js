@@ -3,7 +3,7 @@ const request = require("supertest");
 const assert = require("chai").assert;
 // const expect = require("chai").expect;
 
-const organisationsSingleResponse = require("./responses/organisations-single_v2.json");
+const organisationsSingleResponse = require("./responses/organisations-single_v3.json");
 const organisationsNotFoundResponse = require("./responses/organisations-not-found_v2.json");
 const organisationByOdsCodeFilteredResponse = require("./responses/search-organisations-service-code-filtered-response.json");
 const organisationByNameFilteredResponse = require("./responses/search-organisations-by-name-filtered-response.json");
@@ -68,7 +68,7 @@ describe("app handler tests", function () {
 
     it("GET A single organisation", (done) => {
         request(server)
-            .get("/?search=DN601&api-version=3")
+            .get("/?search=Y02494&api-version=3")
             .expect(200, organisationsSingleResponse)
             .expect("Content-Type", /json/, done);
     });

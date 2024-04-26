@@ -131,7 +131,7 @@ paths:
         | Scenario                                                           | Request                                                                                                                                                                                                                                   | Response                                 |
         | -------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ---------------------------------------- |
         | All organisations                                                  | No parameters                                                                                                                                                                                                                             | HTTP status 200 with all organisations   |
-        | Single organisation                                                | `search`=`DN601`                                                                                                                                                                                                                          | HTTP status 200 with single organisation |
+        | Single organisation                                                | `search`=`Y02494`                                                                                                                                                                                                                          | HTTP status 200 with single organisation |
         | Search By ODS Code and Filter by service code                      | `searchFields`=`ODSCode` <br /> `$filter`=`Services / any (x: x/ServiceCode eq 'EPS0001')`                                                                                                                                                | HTTP status 200 with filtered results    |
         | Filtered by service code and organisation type                     | `search`=`pharmacy2u` <br /> `searchfields`=`OrganisationName` <br /> `$filter`=`Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'`                             | HTTP status 200 with filtered results    |
         | Search by location                                                 | `search`=`Bletchley` <br /> `searchfields`=`Address3,City,County`                                                                                                                                                                         | HTTP status 200 with found organisations |                                                                                                                             
@@ -319,7 +319,7 @@ paths:
         | Scenario               | Request                    | Response                                 |
         | ---------------------- | -------------------------- | ---------------------------------------- |
         | All organisations      | No parameters              | HTTP status 200 with all organisations   |
-        | Single organisation    | `search`=`DN601`           | HTTP status 200 with single organisation |
+        | Single organisation    | `search`=`Y02494`           | HTTP status 200 with single organisation |
         | No organisations found | `search`=`no-organisation` | HTTP status 200 with no organisations    |
         | Invalid API version    | No api-version parameter   | HTTP status 404 with problem description |
 
@@ -802,7 +802,7 @@ components:
             Organisations:
               $ref: "examples/organisations_v2.json"
             SingleItem:
-              $ref: "examples/organisations-single_v2.json"
+              $ref: "examples/organisations-single_v3.json"
             NotFound:
               $ref: "examples/organisations-not-found_v2.json"
           schema:

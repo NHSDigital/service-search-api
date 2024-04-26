@@ -14,10 +14,10 @@ class TestSearchOrganisations:
     def test_single_organisation(self, get_api_key):
         # Given
         expected_status_code = 200
-        expected_body = load_example("organisations-single_v2.json")
+        expected_body = load_example("organisations-single_v3.json")
 
         api_key = get_api_key["apikey"]
-        search = "DN601"
+        search = "Y02494"
 
         # When
         response = requests.get(
@@ -80,7 +80,7 @@ class TestSearchOrganisations:
         expected_body = load_example("bad-api-version-resource-not-found.json")
 
         api_key = get_api_key["apikey"]
-        search = "DN601"
+        search = "Y02494"
 
         # When
         response = requests.get(
@@ -101,7 +101,7 @@ class TestSearchOrganisations:
         expected_body = load_example("bad-api-version-resource-not-found.json")
 
         api_key = get_api_key["apikey"]
-        search = "DN601"
+        search = "Y02494"
         invalid_api_version = 5
 
         # When
