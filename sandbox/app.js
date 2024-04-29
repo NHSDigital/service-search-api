@@ -135,6 +135,9 @@ app.get("/health", handlers.status);
 app.get("/organisationtypes", handlers.organisationTypes);
 app.post("/search-postcode-or-place", handlers.searchPostcodeOrPlace);
 app.get("/", handlers.organisations);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.post("/", handlers.organisationsPost);
 app.use(on_error);
 app.use(after_request);
 
