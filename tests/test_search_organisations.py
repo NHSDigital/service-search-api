@@ -35,7 +35,7 @@ class TestSearchOrganisations:
     def test_organisation_not_found(self, get_api_key):
         # Given
         expected_status_code = 200
-        expected_body = load_example("organisations-not-found_v2.json")
+        expected_body = load_example("organisations-not-found_v3.json")
 
         api_key = get_api_key["apikey"]
         search = "invalid"
