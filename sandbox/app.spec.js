@@ -4,6 +4,7 @@ const assert = require("chai").assert;
 // const expect = require("chai").expect;
 
 const organisationsSingleResponse = require("./responses/organisations-single_v3.json");
+const organisationsAllResponse = require("./responses/organisations_v3.json");
 const organisationsNotFoundResponse = require("./responses/organisations-not-found_v3.json");
 const organisationByOdsCodeFilteredResponse = require("./responses/search-organisations-service-code-filtered-response.json");
 const organisationByNameFilteredResponse = require("./responses/search-organisations-by-name-filtered-response.json");
@@ -72,6 +73,36 @@ describe("app handler tests", function () {
         request(server)
             .get("/?search=Y02494&api-version=3")
             .expect(200, organisationsSingleResponse)
+            .expect("Content-Type", /json/, done);
+    });
+
+    it("POST A single organisation", (done) => {
+        request(server)
+            .post("/?&api-version=3")
+            .send({
+                "search": "Y02494",
+                "searchFields": "ODSCode",
+                "top": 1,
+                "select": "*"
+            })
+            .expect(200, organisationsSingleResponse)
+            .expect("Content-Type", /json/, done);
+    });
+
+    it("GET All organisations", (done) => {
+        request(server)
+            .get("/?api-version=3")
+            .expect(200, organisationsAllResponse)
+            .expect("Content-Type", /json/, done);
+    });
+
+    it("POST All organisations", (done) => {
+        request(server)
+            .post("/?api-version=3")
+            .send({
+                "search": "*"
+            })
+            .expect(200, organisationsAllResponse)
             .expect("Content-Type", /json/, done);
     });
 
