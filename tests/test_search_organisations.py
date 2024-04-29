@@ -22,7 +22,7 @@ class TestSearchOrganisations:
         # When
         response = requests.get(
             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-            params={"api-version": "2", "search": search},
+            params={"api-version": "3", "search": search},
             headers=make_headers(api_key),
         )
 
@@ -43,7 +43,7 @@ class TestSearchOrganisations:
         # When
         response = requests.get(
             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-            params={"api-version": "2", "search": search},
+            params={"api-version": "3", "search": search},
             headers=make_headers(api_key),
         )
 
@@ -64,7 +64,7 @@ class TestSearchOrganisations:
         # When
         response = requests.get(
             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-            params={"api-version": "2"},
+            params={"api-version": "3"},
             headers=make_headers(api_key),
         )
 
