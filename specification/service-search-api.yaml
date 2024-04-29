@@ -800,7 +800,7 @@ components:
         "application/json":
           examples:
             Organisations:
-              $ref: "examples/organisations_v2.json"
+              $ref: "examples/organisations_v3.json"
             SingleItem:
               $ref: "examples/organisations-single_v3.json"
             NotFound:
@@ -911,7 +911,7 @@ components:
             $ref: "#/components/schemas/SearchResult"
 
     Organisation:
-      description: Organisation v2
+      description: Organisation v3
       type: object
       properties:
         "ODSCode":
@@ -924,11 +924,6 @@ components:
           type: string
         "OrganisationStatus":
           type: string
-        "SummaryText":
-          type: string
-        "URL":
-          type: string
-          format: uri
         "Address1":
           type: string
         "Address2":
@@ -947,13 +942,6 @@ components:
           type: string
         "Geocode":
           $ref: "#/components/schemas/Geocode"
-        "Phone":
-          type: string
-        "Email":
-          type: string
-        "Website":
-          type: string
-          format: uri
         "OrganisationSubType":
           type: string
         "OrganisationAliases":
@@ -968,8 +956,6 @@ components:
           $ref: "#/components/schemas/ContactList"
         "Facilities":
           $ref: "#/components/schemas/FacilityList"
-        "Staff":
-          $ref: "#/components/schemas/StaffList"
         "GSD":
           type: string
         "LastUpdatedDates":
@@ -981,16 +967,14 @@ components:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/Acceptance"
-        "CCG":
-          type: string
         "RelatedIAPTCCGs":
-          $ref: "#/components/schemas/StringArray"
-        "CCGLocalAuthority":
           $ref: "#/components/schemas/StringArray"
         "Trusts":
           $ref: "#/components/schemas/StringArray"
         "Metrics":
           $ref: "#/components/schemas/MetricList"
+        "Country":
+          type: string  
 
     OrganisationPostRequest:
       description: Organisation post request
@@ -1091,25 +1075,6 @@ components:
       items:
         $ref: "#/components/schemas/Facility"
 
-    Staff:
-      type: object
-      properties:
-        "Title":
-          type: string
-        "GivenName":
-          type: string
-        "FamilyName":
-          type: string
-        "Role":
-          type: string
-        "Qualification":
-          type: string
-
-    StaffList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Staff"
-
     Contact:
       type: object
       properties:
@@ -1142,9 +1107,6 @@ components:
               - "Friday"
               - "Saturday"
               - "Sunday"
-          "Times":
-            type: string
-            example: "08:00-18:30"
           "OffsetOpeningTime":
             description: Minutes past midnight
             type: number
