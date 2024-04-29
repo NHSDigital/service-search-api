@@ -727,7 +727,7 @@ components:
         application/json:
           examples:
             OrganisationNotFound:
-              $ref: "examples/organisations-not-found_v2.json"
+              $ref: "examples/organisations-not-found_v3.json"
           schema:
             type: object
             properties: { }
@@ -742,7 +742,7 @@ components:
             SingleItem:
               $ref: "examples/organisations-single_v2.json"
             NotFound:
-              $ref: "examples/organisations-not-found_v2.json"
+              $ref: "examples/organisations-not-found_v3.json"
           schema:
             allOf:
               - $ref: "#/components/schemas/SearchResults"
