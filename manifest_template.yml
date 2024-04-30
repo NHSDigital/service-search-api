@@ -57,7 +57,7 @@ APIGEE_ENVIRONMENTS:
     display_name: Internal Development Sandbox
     visibility: true
     ratelimiting:
-      personal-demographics-internal-dev-sandbox:
+      service-search-api-internal-dev-sandbox:
         quota:
           enabled: false
         spikeArrest:
@@ -71,7 +71,7 @@ APIGEE_ENVIRONMENTS:
     display_name: Internal QA Sandbox
     visibility: true
     ratelimiting:
-      personal-demographics-internal-qa-sandbox:
+      service-search-api-internal-qa-sandbox:
         quota:
           enabled: false
         spikeArrest:
@@ -85,7 +85,7 @@ APIGEE_ENVIRONMENTS:
     display_name: Sandbox
     visibility: true
     ratelimiting:
-      personal-demographics-sandbox:
+      service-search-api-sandbox:
         quota:
           enabled: false
         spikeArrest:
