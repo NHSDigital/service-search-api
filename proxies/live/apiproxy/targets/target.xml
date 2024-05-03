@@ -41,6 +41,6 @@
       <LoadBalancer>
         <Server name="service-search-api" />
       </LoadBalancer>
-      <Path>/service-search</Path>
+      <Path>/service-search/syndicationprofiles</Path>
     </HTTPTargetConnection>
 </TargetEndpoint>
