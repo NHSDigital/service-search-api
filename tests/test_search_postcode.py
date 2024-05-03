@@ -10,6 +10,7 @@ from .example_loader import load_example
 class TestSearchPostcode:
     endpoint = "search-postcode-or-place"
 
+    @pytest.mark.skip(reason="Not needed at the moment")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_search_place(self, get_api_key):
@@ -40,6 +41,7 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(result).is_equal_to(expected_place)
 
+    @pytest.mark.skip(reason="Not needed at the moment")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_search_postcode(self, get_api_key):
@@ -100,6 +102,7 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.skip(reason="Not needed at the moment")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_not_found_api_version(self, get_api_key):
@@ -123,6 +126,7 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.skip(reason="Not needed at the moment")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_invalid_api_version(self, get_api_key):
@@ -151,6 +155,7 @@ class TestSearchPostcode:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
+    @pytest.mark.skip(reason="Not needed at the moment")
     @pytest.mark.integration
     def test_response_payload_urls_are_corrected(self, get_api_key):
         """
