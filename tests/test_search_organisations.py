@@ -115,3 +115,24 @@ class TestSearchOrganisations:
         # Then
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
+
+    @pytest.mark.integration
+    def test_organisation_found(self, get_api_key):
+        # Given
+        expected_status_code = 200
+        expected_body = load_example("search-organisations-single-organisation.json")
+
+        api_key = get_api_key["apikey"]
+        search = "ODSCode eq 'FA002'"
+
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"api-version": "3", "$filter": search},
+            headers=make_headers(api_key),
+        )
+
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(response.json()).is_equal_to(expected_body)
+

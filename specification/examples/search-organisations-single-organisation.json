@@ -1,0 +1,541 @@
+{
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-2')/$metadata#docs(*)",
+  "value": [
+    {
+      "@search.score": 1,
+      "SearchKey": "X3618",
+      "ODSCode": "FA002",
+      "OrganisationName": "Rowlands Pharmacy",
+      "OrganisationTypeId": "PHA",
+      "OrganisationType": "Pharmacy",
+      "OrganisationStatus": "Visible",
+      "Address1": "61 ARUNDEL AVENUE",
+      "Address2": "HAZEL GROVE",
+      "Address3": "STOCKPORT",
+      "City": " ",
+      "County": "",
+      "Latitude": 53.37237930297851,
+      "Longitude": -2.12734055519104,
+      "Postcode": "SK7 5LD",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -2.12734,
+          53.3724
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OrganisationSubType": "Community",
+      "Country": null,
+      "OrganisationAliases": [],
+      "ParentOrganisation": {
+        "ODSCode": "QOP",
+        "OrganisationName": "Greater Manchester Health and Social Care Partnership (STP)"
+      },
+      "Services": [
+        {
+          "ServiceName": "COVID-19 lateral flow tests (eligible NHS patients)",
+          "ServiceCode": "SRV2009",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Minor Ailment Service (NHS)",
+          "ServiceCode": "SRV0198",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "New Medicine Service (NHS)",
+          "ServiceCode": "SRV0257",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "NHS Pharmacy Contraception Service",
+          "ServiceCode": "SRV2000",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Seasonal flu vaccination service: at-risk groups (NHS)",
+          "ServiceCode": "SRV0277",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Travel clinic (paid for)",
+          "ServiceCode": "SRV0516",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Weight management (paid-for)",
+          "ServiceCode": "SRV0271",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        }
+      ],
+      "OpeningTimes": [
+        {
+          "Weekday": "Monday",
+          "OpeningTime": "09:00",
+          "ClosingTime": "13:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 780,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "OpeningTime": "14:00",
+          "ClosingTime": "17:30",
+          "OffsetOpeningTime": 840,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "OpeningTime": "09:00",
+          "ClosingTime": "13:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 780,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "OpeningTime": "14:00",
+          "ClosingTime": "17:30",
+          "OffsetOpeningTime": 840,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "OpeningTime": "09:00",
+          "ClosingTime": "13:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 780,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "OpeningTime": "14:00",
+          "ClosingTime": "17:30",
+          "OffsetOpeningTime": 840,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "OpeningTime": "09:00",
+          "ClosingTime": "13:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 780,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "OpeningTime": "14:00",
+          "ClosingTime": "17:30",
+          "OffsetOpeningTime": 840,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "OpeningTime": "09:00",
+          "ClosingTime": "13:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 780,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Friday",
+          "OpeningTime": "14:00",
+          "ClosingTime": "17:30",
+          "OffsetOpeningTime": 840,
+          "OffsetClosingTime": 1050,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Saturday",
+          "OpeningTime": "09:00",
+          "ClosingTime": "12:00",
+          "OffsetOpeningTime": 540,
+          "OffsetClosingTime": 720,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Sunday",
+          "OpeningTime": null,
+          "ClosingTime": null,
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": false
+        },
+        {
+          "Weekday": "",
+          "OpeningTime": "08:00",
+          "ClosingTime": "17:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1020,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Apr 23 2024",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "",
+          "OpeningTime": "12:00",
+          "ClosingTime": "16:00",
+          "OffsetOpeningTime": 720,
+          "OffsetClosingTime": 960,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Apr 27 2024",
+          "IsOpen": true
+        },
+        {
+          "Weekday": null,
+          "OpeningTime": null,
+          "ClosingTime": null,
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Mar 31 2024",
+          "IsOpen": false
+        }
+      ],
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01614838711"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "https://www.rowlandspharmacy.co.uk"
+        }
+      ],
+      "Facilities": [
+        {
+          "Id": 1,
+          "Name": "Braille translation service",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 2,
+          "Name": "Disabled parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 3,
+          "Name": "Disabled WC",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 4,
+          "Name": "Induction loop",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 5,
+          "Name": "Text Relay",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 6,
+          "Name": "Signing service available",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 35,
+          "Name": "Step free access",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 7,
+          "Name": "Wheelchair access",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 28,
+          "Name": "Car Parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Parking"
+        },
+        {
+          "Id": 29,
+          "Name": "Cycle parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Parking"
+        },
+        {
+          "Id": 30,
+          "Name": "Disabled parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Parking"
+        },
+        {
+          "Id": 145,
+          "Name": "Baby changing facility",
+          "Value": "No",
+          "FacilityGroupName": "Other facilities"
+        },
+        {
+          "Id": 146,
+          "Name": "Consultation room available",
+          "Value": "Yes",
+          "FacilityGroupName": "Other facilities"
+        },
+        {
+          "Id": 144,
+          "Name": "Toilet available",
+          "Value": "No",
+          "FacilityGroupName": "Other facilities"
+        }
+      ],
+      "GSD": null,
+      "LastUpdatedDates": {
+        "OpeningTimes": "2023-12-19T12:03:58.313Z",
+        "BankHolidayOpeningTimes": "2023-12-19T12:04:11.313Z",
+        "TemporaryChangesOpeningTimes": "2024-04-12T13:18:02.81Z",
+        "DentistsAcceptingPatients": null,
+        "Facilities": "2022-01-07T10:28:50Z",
+        "HospitalDepartment": null,
+        "Services": "2024-01-10T16:20:15.83Z",
+        "ContactDetails": "2024-04-12T09:52:58.683Z",
+        "AcceptingPatients": null,
+        "KeyValueData": [
+          {
+            "ServiceCode": "SRV0277",
+            "Key": "OnlineBooking",
+            "LastUpdatedDate": "2023-10-13T13:09:24.97Z"
+          }
+        ]
+      },
+      "AcceptingPatients": {
+        "GP": null,
+        "Dentist": []
+      },
+      "GPRegistration": null,
+      "RelatedIAPTCCGs": [],
+      "Trusts": [],
+      "Metrics": [
+        {
+          "MetricID": 43,
+          "MetricName": "Has Car Parking",
+          "DisplayName": "Car parking",
+          "Description": "Is there car parking at this organisation?",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Parking available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 44,
+          "MetricName": "Has Disabled Car Parking",
+          "DisplayName": "Disabled parking",
+          "Description": "Is disabled car parking available at this organisation?",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Disabled parking available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 45,
+          "MetricName": "Has Disabled Access",
+          "DisplayName": "Disabled access",
+          "Description": "Disabled access",
+          "Value": "no",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Disabled access not available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "no",
+          "BandingName": "No"
+        },
+        {
+          "MetricID": 47,
+          "MetricName": "Has Induction Loop",
+          "DisplayName": "Induction loop",
+          "Description": "Induction loop in place",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Has induction loop",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 48,
+          "MetricName": "Has Signing Service",
+          "DisplayName": "Signing services",
+          "Description": "Signing services",
+          "Value": "no",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Signing service not available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "no",
+          "BandingName": "No"
+        },
+        {
+          "MetricID": 10051,
+          "MetricName": "Electronic prescription service",
+          "DisplayName": "Electronic prescription service",
+          "Description": "Electronic prescription service",
+          "Value": "Yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 5,
+          "MetricDisplayTypeName": "BandingImage",
+          "HospitalSectorType": null,
+          "MetricText": "[BandingName]",
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Electronic prescription service available"
+        },
+        {
+          "MetricID": 99002,
+          "MetricName": "Business Card: Has Car Parking",
+          "DisplayName": "Car parking",
+          "Description": "Is there car parking at this organisation?",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Parking available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 5,
+          "MetricDisplayTypeName": "BandingImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "parking",
+          "BandingName": "Yes"
+        }
+      ]
+    }
+  ]
+}
