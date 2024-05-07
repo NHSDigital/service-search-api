@@ -135,4 +135,3 @@ class TestSearchOrganisations:
         # Then
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
-
