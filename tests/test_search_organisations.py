@@ -8,9 +8,7 @@ from .example_loader import load_example
 
 
 class TestSearchOrganisations:
-    @pytest.mark.skip(reason="search.score in response payload changes per request")
     @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_single_organisation(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -30,7 +28,6 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.skip(reason="Skipping just so we can see the code being deployed to internal-dev")
     @pytest.mark.sandbox
     @pytest.mark.integration
     def test_organisation_not_found(self, get_api_key):
@@ -52,13 +49,11 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.skip(reason="each request gives back different size responses")
     @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_search_organisations(self, get_api_key):
         # Given
         expected_status_code = 200
-        expected_body = load_example("organisations_v2.json")
+        expected_body = load_example("organisations_v3.json")
 
         api_key = get_api_key["apikey"]
 

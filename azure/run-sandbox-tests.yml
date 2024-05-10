@@ -12,7 +12,7 @@ steps:
       export STATUS_ENDPOINT_API_KEY="$(status-endpoint-api-key)"
       export APIGEE_API_TOKEN="$(secret.AccessToken)"
 
-      poetry run pytest  -v -o junit_logging=all --junitxml=integration_tests_report.xml
+      poetry run pytest -m "sandbox" -v -o junit_logging=all --junitxml=sandbox_tests_report.xml
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests
     displayName: run integration tests
 
@@ -20,5 +20,5 @@ steps:
     displayName: 'Publish smoketest results'
     condition: always()
     inputs:
-      testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests/integration_tests_report.xml'
+      testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests/sandbox_tests_report.xml'
       failTaskOnFailedTests: true
