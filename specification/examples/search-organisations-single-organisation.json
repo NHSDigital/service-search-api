@@ -1,27 +1,27 @@
 {
-  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
+  "@odata.context": "https://nhsuksearchdevuks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
   "value": [
     {
       "@search.score": 1,
-      "SearchKey": "X3618",
-      "ODSCode": "FA002",
-      "OrganisationName": "Rowlands Pharmacy",
+      "SearchKey": "X12565",
+      "ODSCode": "FV095",
+      "OrganisationName": "WELL",
       "OrganisationTypeId": "PHA",
       "OrganisationType": "Pharmacy",
       "OrganisationStatus": "Visible",
-      "Address1": "61 ARUNDEL AVENUE",
-      "Address2": "HAZEL GROVE",
-      "Address3": "STOCKPORT",
+      "Address1": "2 QUEENSWAY",
+      "Address2": "MORLEY",
+      "Address3": "LEEDS",
       "City": " ",
       "County": "",
-      "Latitude": 53.37237930297851,
-      "Longitude": -2.12734055519104,
-      "Postcode": "SK7 5LD",
+      "Latitude": 53.746368408203125,
+      "Longitude": -1.6028690338134766,
+      "Postcode": "LS27 9BQ",
       "Geocode": {
         "type": "Point",
         "coordinates": [
-          -2.12734,
-          53.3724
+          -1.60287,
+          53.7464
         ],
         "crs": {
           "type": "name",
@@ -31,16 +31,16 @@
         }
       },
       "OrganisationSubType": "Community",
-      "Country": null,
+      "Country": "England",
       "OrganisationAliases": [],
       "ParentOrganisation": {
-        "ODSCode": "QOP",
-        "OrganisationName": "Greater Manchester Health and Social Care Partnership (STP)"
+        "ODSCode": "QWO",
+        "OrganisationName": "West Yorkshire and Harrogate (Health & Partnership) STP"
       },
       "Services": [
         {
-          "ServiceName": "COVID-19 lateral flow tests (eligible NHS patients)",
-          "ServiceCode": "SRV2009",
+          "ServiceName": "Appliance dispensing (prescription charges apply)",
+          "ServiceCode": "SRV0177",
           "Contacts": [],
           "ServiceProvider": null,
           "Treatments": [],
@@ -50,8 +50,19 @@
           "KeyValueData": []
         },
         {
-          "ServiceName": "Minor Ailment Service (NHS)",
-          "ServiceCode": "SRV0198",
+          "ServiceName": "Appointment booking available for consultations",
+          "ServiceCode": "SRV0520",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Appointment booking for consultations not required",
+          "ServiceCode": "SRV0521",
           "Contacts": [],
           "ServiceProvider": null,
           "Treatments": [],
@@ -72,8 +83,8 @@
           "KeyValueData": []
         },
         {
-          "ServiceName": "NHS Pharmacy Contraception Service",
-          "ServiceCode": "SRV2000",
+          "ServiceName": "NHS Blood Pressure Check Service",
+          "ServiceCode": "SRV0560",
           "Contacts": [],
           "ServiceProvider": null,
           "Treatments": [],
@@ -91,22 +102,40 @@
           "OpeningTimes": [],
           "AgeRange": [],
           "Metrics": [],
-          "KeyValueData": []
+          "KeyValueData": [
+            {
+              "Key": "FluJabLink",
+              "Value": "https://well.co.uk/vaccinations/flu-jabs"
+            },
+            {
+              "Key": "OnlineBooking",
+              "Value": "Web"
+            }
+          ]
         },
         {
-          "ServiceName": "Travel clinic (paid for)",
-          "ServiceCode": "SRV0516",
+          "ServiceName": "Seasonal flu vaccination service: not at-risk groups (paid-for)",
+          "ServiceCode": "SRV0514",
           "Contacts": [],
           "ServiceProvider": null,
           "Treatments": [],
           "OpeningTimes": [],
           "AgeRange": [],
           "Metrics": [],
-          "KeyValueData": []
+          "KeyValueData": [
+            {
+              "Key": "FluJabLink",
+              "Value": "https://well.co.uk/vaccinations/flu-jabs"
+            },
+            {
+              "Key": "OnlineBooking",
+              "Value": "Web"
+            }
+          ]
         },
         {
-          "ServiceName": "Weight management (paid-for)",
-          "ServiceCode": "SRV0271",
+          "ServiceName": "Stop smoking service (NHS)",
+          "ServiceCode": "SRV0273",
           "Contacts": [],
           "ServiceProvider": null,
           "Treatments": [],
@@ -118,114 +147,74 @@
       ],
       "OpeningTimes": [
         {
-          "Weekday": "Monday",
-          "OpeningTime": "09:00",
-          "ClosingTime": "13:00",
-          "OffsetOpeningTime": 540,
-          "OffsetClosingTime": 780,
-          "OpeningTimeType": "General",
-          "AdditionalOpeningDate": "",
-          "IsOpen": true
+          "Weekday": null,
+          "OpeningTime": null,
+          "ClosingTime": null,
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Apr 9 2023",
+          "IsOpen": false
         },
         {
           "Weekday": "Monday",
-          "OpeningTime": "14:00",
-          "ClosingTime": "17:30",
-          "OffsetOpeningTime": 840,
-          "OffsetClosingTime": 1050,
+          "OpeningTime": "08:30",
+          "ClosingTime": "18:30",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1110,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
           "IsOpen": true
         },
         {
           "Weekday": "Tuesday",
-          "OpeningTime": "09:00",
-          "ClosingTime": "13:00",
-          "OffsetOpeningTime": 540,
-          "OffsetClosingTime": 780,
-          "OpeningTimeType": "General",
-          "AdditionalOpeningDate": "",
-          "IsOpen": true
-        },
-        {
-          "Weekday": "Tuesday",
-          "OpeningTime": "14:00",
-          "ClosingTime": "17:30",
-          "OffsetOpeningTime": 840,
-          "OffsetClosingTime": 1050,
+          "OpeningTime": "08:30",
+          "ClosingTime": "18:30",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1110,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
           "IsOpen": true
         },
         {
           "Weekday": "Wednesday",
-          "OpeningTime": "09:00",
-          "ClosingTime": "13:00",
-          "OffsetOpeningTime": 540,
-          "OffsetClosingTime": 780,
-          "OpeningTimeType": "General",
-          "AdditionalOpeningDate": "",
-          "IsOpen": true
-        },
-        {
-          "Weekday": "Wednesday",
-          "OpeningTime": "14:00",
-          "ClosingTime": "17:30",
-          "OffsetOpeningTime": 840,
-          "OffsetClosingTime": 1050,
+          "OpeningTime": "08:30",
+          "ClosingTime": "18:30",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1110,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
           "IsOpen": true
         },
         {
           "Weekday": "Thursday",
-          "OpeningTime": "09:00",
-          "ClosingTime": "13:00",
-          "OffsetOpeningTime": 540,
-          "OffsetClosingTime": 780,
-          "OpeningTimeType": "General",
-          "AdditionalOpeningDate": "",
-          "IsOpen": true
-        },
-        {
-          "Weekday": "Thursday",
-          "OpeningTime": "14:00",
-          "ClosingTime": "17:30",
-          "OffsetOpeningTime": 840,
-          "OffsetClosingTime": 1050,
+          "OpeningTime": "08:30",
+          "ClosingTime": "18:30",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1110,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
           "IsOpen": true
         },
         {
           "Weekday": "Friday",
-          "OpeningTime": "09:00",
-          "ClosingTime": "13:00",
-          "OffsetOpeningTime": 540,
-          "OffsetClosingTime": 780,
-          "OpeningTimeType": "General",
-          "AdditionalOpeningDate": "",
-          "IsOpen": true
-        },
-        {
-          "Weekday": "Friday",
-          "OpeningTime": "14:00",
-          "ClosingTime": "17:30",
-          "OffsetOpeningTime": 840,
-          "OffsetClosingTime": 1050,
+          "OpeningTime": "08:30",
+          "ClosingTime": "18:30",
+          "OffsetOpeningTime": 510,
+          "OffsetClosingTime": 1110,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
           "IsOpen": true
         },
         {
           "Weekday": "Saturday",
-          "OpeningTime": "09:00",
-          "ClosingTime": "12:00",
-          "OffsetOpeningTime": 540,
-          "OffsetClosingTime": 720,
+          "OpeningTime": null,
+          "ClosingTime": null,
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
-          "IsOpen": true
+          "IsOpen": false
         },
         {
           "Weekday": "Sunday",
@@ -236,36 +225,6 @@
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
           "IsOpen": false
-        },
-        {
-          "Weekday": "",
-          "OpeningTime": "08:00",
-          "ClosingTime": "17:00",
-          "OffsetOpeningTime": 480,
-          "OffsetClosingTime": 1020,
-          "OpeningTimeType": "Additional",
-          "AdditionalOpeningDate": "Apr 23 2024",
-          "IsOpen": true
-        },
-        {
-          "Weekday": "",
-          "OpeningTime": "12:00",
-          "ClosingTime": "16:00",
-          "OffsetOpeningTime": 720,
-          "OffsetClosingTime": 960,
-          "OpeningTimeType": "Additional",
-          "AdditionalOpeningDate": "Apr 27 2024",
-          "IsOpen": true
-        },
-        {
-          "Weekday": null,
-          "OpeningTime": null,
-          "ClosingTime": null,
-          "OffsetOpeningTime": 0,
-          "OffsetClosingTime": 0,
-          "OpeningTimeType": "Additional",
-          "AdditionalOpeningDate": "Mar 31 2024",
-          "IsOpen": false
         }
       ],
       "Contacts": [
@@ -273,13 +232,19 @@
           "ContactType": "Primary",
           "ContactAvailabilityType": "Office hours",
           "ContactMethodType": "Telephone",
-          "ContactValue": "01614838711"
+          "ContactValue": "01132533335"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "pharmacy.fv095@nhs.net"
         },
         {
           "ContactType": "Primary",
           "ContactAvailabilityType": "Office hours",
           "ContactMethodType": "Website",
-          "ContactValue": "https://www.rowlandspharmacy.co.uk"
+          "ContactValue": "http://www.well.co.uk"
         }
       ],
       "Facilities": [
@@ -292,7 +257,7 @@
         {
           "Id": 2,
           "Name": "Disabled parking",
-          "Value": "Yes",
+          "Value": "No",
           "FacilityGroupName": "Accessibility"
         },
         {
@@ -322,13 +287,13 @@
         {
           "Id": 35,
           "Name": "Step free access",
-          "Value": "No",
+          "Value": "Yes",
           "FacilityGroupName": "Accessibility"
         },
         {
           "Id": 7,
           "Name": "Wheelchair access",
-          "Value": "No",
+          "Value": "Yes",
           "FacilityGroupName": "Accessibility"
         },
         {
@@ -340,13 +305,13 @@
         {
           "Id": 29,
           "Name": "Cycle parking",
-          "Value": "Yes",
+          "Value": "No",
           "FacilityGroupName": "Parking"
         },
         {
           "Id": 30,
           "Name": "Disabled parking",
-          "Value": "Yes",
+          "Value": "No",
           "FacilityGroupName": "Parking"
         },
         {
@@ -370,20 +335,35 @@
       ],
       "GSD": null,
       "LastUpdatedDates": {
-        "OpeningTimes": "2023-12-19T12:03:58.313Z",
-        "BankHolidayOpeningTimes": "2023-12-19T12:04:11.313Z",
-        "TemporaryChangesOpeningTimes": "2024-04-12T13:18:02.81Z",
+        "OpeningTimes": "2023-10-04T11:24:24.86Z",
+        "BankHolidayOpeningTimes": "2022-06-08T13:41:08.247Z",
+        "TemporaryChangesOpeningTimes": null,
         "DentistsAcceptingPatients": null,
-        "Facilities": "2022-01-07T10:28:50Z",
+        "Facilities": "2022-03-02T14:28:49Z",
         "HospitalDepartment": null,
-        "Services": "2024-01-10T16:20:15.83Z",
-        "ContactDetails": "2024-04-12T09:52:58.683Z",
+        "Services": "2023-10-09T12:47:23.2Z",
+        "ContactDetails": "2023-10-04T11:24:16.987Z",
         "AcceptingPatients": null,
         "KeyValueData": [
           {
+            "ServiceCode": "SRV0514",
+            "Key": "FluJabLink",
+            "LastUpdatedDate": "2023-10-09T12:47:24.257Z"
+          },
+          {
+            "ServiceCode": "SRV0514",
+            "Key": "OnlineBooking",
+            "LastUpdatedDate": "2023-10-09T12:47:24.243Z"
+          },
+          {
+            "ServiceCode": "SRV0277",
+            "Key": "FluJabLink",
+            "LastUpdatedDate": "2023-10-09T12:47:23.767Z"
+          },
+          {
             "ServiceCode": "SRV0277",
             "Key": "OnlineBooking",
-            "LastUpdatedDate": "2023-10-13T13:09:24.97Z"
+            "LastUpdatedDate": "2023-10-09T12:47:23.753Z"
           }
         ]
       },
@@ -420,30 +400,10 @@
           "MetricName": "Has Disabled Car Parking",
           "DisplayName": "Disabled parking",
           "Description": "Is disabled car parking available at this organisation?",
-          "Value": "yes",
-          "Value2": null,
-          "Value3": null,
-          "Text": "Disabled parking available",
-          "LinkUrl": null,
-          "LinkText": null,
-          "MetricDisplayTypeID": 4,
-          "MetricDisplayTypeName": "BooleanImage",
-          "HospitalSectorType": null,
-          "MetricText": null,
-          "DefaultText": null,
-          "IsMetaMetric": true,
-          "BandingClassification": "yes",
-          "BandingName": "Yes"
-        },
-        {
-          "MetricID": 45,
-          "MetricName": "Has Disabled Access",
-          "DisplayName": "Disabled access",
-          "Description": "Disabled access",
           "Value": "no",
           "Value2": null,
           "Value3": null,
-          "Text": "Disabled access not available",
+          "Text": "Disabled parking not available",
           "LinkUrl": null,
           "LinkText": null,
           "MetricDisplayTypeID": 4,
@@ -454,6 +414,26 @@
           "IsMetaMetric": true,
           "BandingClassification": "no",
           "BandingName": "No"
+        },
+        {
+          "MetricID": 45,
+          "MetricName": "Has Disabled Access",
+          "DisplayName": "Disabled access",
+          "Description": "Disabled access",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Disabled access available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
         },
         {
           "MetricID": 47,

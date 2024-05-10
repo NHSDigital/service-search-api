@@ -123,7 +123,7 @@ class TestSearchOrganisations:
         expected_body = load_example("search-organisations-single-organisation.json")
 
         api_key = get_api_key["apikey"]
-        search = "ODSCode eq 'FA002'"
+        search = "ODSCode eq 'FV095'"
 
         # When
         response = requests.get(
