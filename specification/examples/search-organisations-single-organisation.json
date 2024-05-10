@@ -1,5 +1,5 @@
 {
-  "@odata.context": "https://nhsuksearchdevuks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
   "value": [
     {
       "@search.score": 1,
@@ -72,6 +72,17 @@
           "KeyValueData": []
         },
         {
+          "ServiceName": "COVID-19 lateral flow tests (eligible NHS patients)",
+          "ServiceCode": "SRV2009",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
           "ServiceName": "New Medicine Service (NHS)",
           "ServiceCode": "SRV0257",
           "Contacts": [],
@@ -85,6 +96,17 @@
         {
           "ServiceName": "NHS Blood Pressure Check Service",
           "ServiceCode": "SRV0560",
+          "Contacts": [],
+          "ServiceProvider": null,
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "NHS Pharmacy Contraception Service",
+          "ServiceCode": "SRV2000",
           "Contacts": [],
           "ServiceProvider": null,
           "Treatments": [],
@@ -146,16 +168,6 @@
         }
       ],
       "OpeningTimes": [
-        {
-          "Weekday": null,
-          "OpeningTime": null,
-          "ClosingTime": null,
-          "OffsetOpeningTime": 0,
-          "OffsetClosingTime": 0,
-          "OpeningTimeType": "Additional",
-          "AdditionalOpeningDate": "Apr 9 2023",
-          "IsOpen": false
-        },
         {
           "Weekday": "Monday",
           "OpeningTime": "08:30",
@@ -224,6 +236,16 @@
           "OffsetClosingTime": 0,
           "OpeningTimeType": "General",
           "AdditionalOpeningDate": "",
+          "IsOpen": false
+        },
+        {
+          "Weekday": null,
+          "OpeningTime": null,
+          "ClosingTime": null,
+          "OffsetOpeningTime": 0,
+          "OffsetClosingTime": 0,
+          "OpeningTimeType": "Additional",
+          "AdditionalOpeningDate": "Mar 31 2024",
           "IsOpen": false
         }
       ],
@@ -341,7 +363,7 @@
         "DentistsAcceptingPatients": null,
         "Facilities": "2022-03-02T14:28:49Z",
         "HospitalDepartment": null,
-        "Services": "2023-10-09T12:47:23.2Z",
+        "Services": "2023-12-05T13:20:10.46Z",
         "ContactDetails": "2023-10-04T11:24:16.987Z",
         "AcceptingPatients": null,
         "KeyValueData": [
