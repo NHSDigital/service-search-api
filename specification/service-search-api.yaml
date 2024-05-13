@@ -342,7 +342,7 @@ paths:
                 $ref: '#/components/schemas/OrganisationPostRequest'
             examples:
 
-              organisationsByServiceCodefiltered:
+              organisationsByServiceCodeFiltered:
                 summary: "Organisations filtering by service code"
                 value:
                   search: "FKH23"
