@@ -116,6 +116,8 @@ paths:
   "/":
     get:
       summary: Search for organisations
+      tags:
+        - Organisation
       operationId: search-GET
       description: |
         ## Overview
@@ -126,12 +128,17 @@ paths:
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
 
-        | Scenario               | Request                    | Response                                 |
-        | ---------------------- | -------------------------- | ---------------------------------------- |
-        | All organisations      | No parameters              | HTTP status 200 with all organisations   |
-        | Single organisation    | `search`=`DN601`           | HTTP status 200 with single organisation |
-        | No organisations found | `search`=`no-organisation` | HTTP status 200 with no organisations    |
-        | Invalid API version    | No api-version parameter   | HTTP status 404 with problem description |
+        | Scenario                                                           | Request                                                                                                                                                                                                                                   | Response                                 |
+        | -------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ---------------------------------------- |
+        | All organisations                                                  | No parameters                                                                                                                                                                                                                             | HTTP status 200 with all organisations   |
+        | Single organisation                                                | `search`=`Y02494`                                                                                                                                                                                                                          | HTTP status 200 with single organisation |
+        | Search By ODS Code and Filter by service code                      | `searchFields`=`ODSCode` <br /> `$filter`=`Services / any (x: x/ServiceCode eq 'EPS0001')`                                                                                                                                                | HTTP status 200 with filtered results    |
+        | Filtered by service code and organisation type                     | `search`=`pharmacy2u` <br /> `searchfields`=`OrganisationName` <br /> `$filter`=`Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'`                             | HTTP status 200 with filtered results    |
+        | Search by location                                                 | `search`=`Bletchley` <br /> `searchfields`=`Address3,City,County`                                                                                                                                                                         | HTTP status 200 with found organisations |                                                                                                                             
+        | Filtered by service code, organisation type and ordered by geocode | `$filter`=`"Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"` <br /> `$orderby`= `geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')` | HTTP status 200 with ordered results     | 
+        | Filtered by postcode, service code and organisation type           | `$filter`=`search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`                                                                   | Http status 200 with filtered results    | 
+        | No organisations found                                             | `search`=`no-organisation`                                                                                                                                                                                                                | HTTP status 200 with no organisations    |
+        | Invalid API version                                                | No api-version parameter                                                                                                                                                                                                                  | HTTP status 404 with problem description |
 
         You can try out the sandbox using the 'Try this API feature' on this page.
 
@@ -143,7 +150,7 @@ paths:
           required: true
           schema:
             type: number
-            default: 2
+            default: 3
         - name: search
           in: query
           description: |
@@ -295,6 +302,109 @@ paths:
         "4XX":
           $ref: "#/components/responses/4XX-BARS"
 
+    post:  
+      summary: Search for organisations
+      tags:
+        - Organisation
+      operationId: search-POST
+      description: |
+        ## Overview
+        Use this endpoint to find information about services provided by NHS organisations.
+
+        For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes).
+        
+        ## Sandbox test scenarios
+        You can test the following scenarios in our sandbox environment:
+
+        | Scenario               | Request                    | Response                                 |
+        | ---------------------- | -------------------------- | ---------------------------------------- |
+        | All organisations      | No parameters              | HTTP status 200 with all organisations   |
+        | Single organisation    | `search`=`Y02494`           | HTTP status 200 with single organisation |
+        | No organisations found | `search`=`no-organisation` | HTTP status 200 with no organisations    |
+        | Invalid API version    | No api-version parameter   | HTTP status 404 with problem description |
+
+        You can try out the sandbox using the 'Try this API feature' on this page.
+
+      parameters:
+        - name: api-version
+          description: Specify the version of the API.  MUST be 3.
+          in: query
+          required: true
+          schema:
+            type: number
+            default: 3
+      requestBody:
+        description: To generate a response body visit http://api-bridge.azurewebsites.net/servicesearchguide. You can also read Microsoft's search documentation at https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents
+        required: true
+        content:
+          "application/json":
+            schema:
+                $ref: '#/components/schemas/OrganisationPostRequest'
+            examples:
+
+              organisationsByServiceCodeFiltered:
+                summary: "Organisations filtering by service code"
+                value:
+                  search: "FKH23"
+                  searchMode: "all"
+                  searchFields: "ODSCode"
+                  top: 10
+                  count: true
+                  select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
+                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001')"
+
+              organisationsByNameFilteredRequest:
+                summary: "Organisations by name filtered by service code"
+                value:
+                  search: "pharmacy2u"
+                  searchMode: "all"
+                  searchFields: "OrganisationName"
+                  top: 10
+                  count: true
+                  select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
+                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
+              
+              organisationsByLocation:
+                summary: "Organisations by location"
+                value:
+                  search: "Bletchley"
+                  searchMode: "all"
+                  searchFields: "Address3,City,County"
+                  top: 10,
+                  count: true,
+                  select: "Latitude,Longitude,Address3,City,County,Postcode" 
+
+              organisationsByGeocodeFiltered:
+                summary: "Organisations filtered by service code and organisation type and ordered by geocode"
+                value:
+                  search: "*"
+                  searchMode: "all"
+                  searchFields: "*"
+                  top: 10
+                  count: true
+                  select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
+                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+                  orderby": "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
+
+              organisationsByPostcodeFiltered:
+                summary: "Organisations by postcode, filtered by service code and organisation type"
+                value:
+                  search: "*"
+                  searchMode: "all"
+                  searchFields: "*"
+                  top: 10
+                  count: true
+                  select: "ODSCode, OrganisationType, OrganisationSubType, OrganisationName, Contacts, Address1, Address2, Address3, City, Postcode, Latitude, Longitude"
+                  filter: "search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+              
+      responses:
+        "200":
+          $ref: "#/components/responses/OrganisationSearchPostResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   "/search-postcode-or-place":
     # --------------------------------------------------------------------------------
     # POST /search-postcode-or-place
@@ -302,6 +412,8 @@ paths:
 
     post:
       summary: Search for organisations by postcode or place
+      tags:
+        - SearchPostcode
       operationId: search-postcode-or-place-POST
       description: |
         ## Overview
@@ -330,7 +442,6 @@ paths:
           schema:
             type: number
             default: 2
-            enum: [ 2 ]
         - name: search
           description: |
             Search query term. 
@@ -377,6 +488,8 @@ paths:
 
     get:
       summary: Search for organisation types
+      tags:
+        - OrganisationType
       operationId: organisationtypes-GET
       description: |
         ## Overview
@@ -405,8 +518,7 @@ paths:
           required: true
           schema:
             type: number
-            default: 1
-            enum: [ 1 ]   
+            default: 1  
         - name: search
           in: query
           description: |
@@ -677,7 +789,7 @@ components:
         application/json:
           examples:
             OrganisationNotFound:
-              $ref: "examples/organisations-not-found_v2.json"
+              $ref: "examples/organisations-not-found_v3.json"
           schema:
             type: object
             properties: { }
@@ -688,11 +800,11 @@ components:
         "application/json":
           examples:
             Organisations:
-              $ref: "examples/organisations_v2.json"
+              $ref: "examples/organisations_v3.json"
             SingleItem:
-              $ref: "examples/organisations-single_v2.json"
+              $ref: "examples/organisations-single_v3.json"
             NotFound:
-              $ref: "examples/organisations-not-found_v2.json"
+              $ref: "examples/organisations-not-found_v3.json"
           schema:
             allOf:
               - $ref: "#/components/schemas/SearchResults"
@@ -702,6 +814,36 @@ components:
                     type: array
                     items:
                       $ref: "#/components/schemas/Organisation"
+
+    OrganisationSearchPostResponse:
+      description: Organisation post response
+      content:
+        "application/json":
+          examples:
+            AllOrganisations:
+              summary: "All Organisations"
+              $ref: "examples/search-organisation-response-body_v3.json"
+
+            FilteredByServicecode:
+              summary: "Organisations filtered by service code"
+              $ref: "examples/search-organisations-service-code-filtered-response.json"
+
+            ByLocation: 
+              summary: "Organisations by location"
+              $ref: "examples/search-organisations-location-response.json" 
+
+            ByNameFilteredByServicecodeAndOrgType:
+              summary: "Organisations by name filtered by service code"
+              $ref: "examples/search-organisations-by-name-filtered-response.json"
+
+            FilteredByServieCodeAndOrgTypeOrdered:
+              summary: "Organisations filtered by service code and organisation type and ordered by geocode"
+              $ref: "examples/search-organisations-geocode-filtered-response.json"
+
+            ByPostcodeFiltered:
+              summary: "Organisations by postcode, filtered by service code and organisation type"
+              $ref: "examples/search-organisations-by-nearest-filter-postcode-response.json" 
+
     SearchPostcodeResults:
       description: Postcode search results
       content:
@@ -769,7 +911,7 @@ components:
             $ref: "#/components/schemas/SearchResult"
 
     Organisation:
-      description: Organisation v2
+      description: Organisation v3
       type: object
       properties:
         "ODSCode":
@@ -782,11 +924,6 @@ components:
           type: string
         "OrganisationStatus":
           type: string
-        "SummaryText":
-          type: string
-        "URL":
-          type: string
-          format: uri
         "Address1":
           type: string
         "Address2":
@@ -805,13 +942,6 @@ components:
           type: string
         "Geocode":
           $ref: "#/components/schemas/Geocode"
-        "Phone":
-          type: string
-        "Email":
-          type: string
-        "Website":
-          type: string
-          format: uri
         "OrganisationSubType":
           type: string
         "OrganisationAliases":
@@ -826,8 +956,6 @@ components:
           $ref: "#/components/schemas/ContactList"
         "Facilities":
           $ref: "#/components/schemas/FacilityList"
-        "Staff":
-          $ref: "#/components/schemas/StaffList"
         "GSD":
           type: string
         "LastUpdatedDates":
@@ -839,16 +967,20 @@ components:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/Acceptance"
-        "CCG":
-          type: string
         "RelatedIAPTCCGs":
-          $ref: "#/components/schemas/StringArray"
-        "CCGLocalAuthority":
           $ref: "#/components/schemas/StringArray"
         "Trusts":
           $ref: "#/components/schemas/StringArray"
         "Metrics":
           $ref: "#/components/schemas/MetricList"
+        "Country":
+          type: string  
+
+    OrganisationPostRequest:
+      description: Organisation post request
+      type: object
+      example:
+        $ref: "examples/search-organisation-request-body_v3.json"
 
     OrganisationType:
       description: Organisation Types
@@ -943,25 +1075,6 @@ components:
       items:
         $ref: "#/components/schemas/Facility"
 
-    Staff:
-      type: object
-      properties:
-        "Title":
-          type: string
-        "GivenName":
-          type: string
-        "FamilyName":
-          type: string
-        "Role":
-          type: string
-        "Qualification":
-          type: string
-
-    StaffList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Staff"
-
     Contact:
       type: object
       properties:
@@ -994,9 +1107,6 @@ components:
               - "Friday"
               - "Saturday"
               - "Sunday"
-          "Times":
-            type: string
-            example: "08:00-18:30"
           "OffsetOpeningTime":
             description: Minutes past midnight
             type: number

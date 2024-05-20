@@ -1,0 +1,446 @@
+{
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
+  "value": [
+    {
+      "@search.score": 1.6322665,
+      "SearchKey": "X100382",
+      "ODSCode": "Y02494",
+      "OrganisationName": "Shakespeare Medical Practice",
+      "OrganisationTypeId": "GPB",
+      "OrganisationType": "GpBranch",
+      "OrganisationStatus": "Visible",
+      "Address1": "Burmantofts Health Centre",
+      "Address2": "Cromwell Mount",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Latitude": 53.802101135253906,
+      "Longitude": -1.5251809358596802,
+      "Postcode": "LS9 7TA",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.52518,
+          53.8021
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "OrganisationSubType": null,
+      "Country": null,
+      "OrganisationAliases": [
+        {
+          "OrganisationAlias": "Shakespeare Medical Practice",
+          "OrganisationAliasId": "4568"
+        }
+      ],
+      "ParentOrganisation": {
+        "ODSCode": "15F",
+        "OrganisationName": "NHS Leeds CCG"
+      },
+      "Services": [
+        {
+          "ServiceName": "Anticoagulant monitoring and dosing - provided in-house",
+          "ServiceCode": "SRV0279",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Asthma Clinic",
+          "ServiceCode": "SRV0280",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Baby clinic with health visitor",
+          "ServiceCode": "SRV0281",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "COPD clinic with spirometry",
+          "ServiceCode": "SRV0284",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Diabetes Clinic providing insulin initiation",
+          "ServiceCode": "SRV0287",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Learning disability health check",
+          "ServiceCode": "SRV0492",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        },
+        {
+          "ServiceName": "Long-Acting Reversible Contraception (LARC - eg IUD or implant)",
+          "ServiceCode": "SRV0294",
+          "Contacts": [],
+          "ServiceProvider": {
+            "ODSCode": null,
+            "OrganisationName": null
+          },
+          "Treatments": [],
+          "OpeningTimes": [],
+          "AgeRange": [],
+          "Metrics": [],
+          "KeyValueData": []
+        }
+      ],
+      "OpeningTimes": [
+        {
+          "Weekday": "Friday",
+          "OpeningTime": "08:00",
+          "ClosingTime": "18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Monday",
+          "OpeningTime": "08:00",
+          "ClosingTime": "18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Thursday",
+          "OpeningTime": "08:00",
+          "ClosingTime": "18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Tuesday",
+          "OpeningTime": "08:00",
+          "ClosingTime": "18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        },
+        {
+          "Weekday": "Wednesday",
+          "OpeningTime": "08:00",
+          "ClosingTime": "18:00",
+          "OffsetOpeningTime": 480,
+          "OffsetClosingTime": 1080,
+          "OpeningTimeType": "General",
+          "AdditionalOpeningDate": "",
+          "IsOpen": true
+        }
+      ],
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01132951132"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "https://onemedicalgroup.co.uk/surgeries/shakespeare-medical-practice/"
+        }
+      ],
+      "Facilities": [
+        {
+          "Id": 1,
+          "Name": "Braille translation service",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 2,
+          "Name": "Disabled parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 3,
+          "Name": "Disabled WC",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 4,
+          "Name": "Induction loop",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 5,
+          "Name": "Text Relay",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 6,
+          "Name": "Signing service available",
+          "Value": "No",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 35,
+          "Name": "Step free access",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 7,
+          "Name": "Wheelchair access",
+          "Value": "Yes",
+          "FacilityGroupName": "Accessibility"
+        },
+        {
+          "Id": 28,
+          "Name": "Car Parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Parking"
+        },
+        {
+          "Id": 29,
+          "Name": "Cycle parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Parking"
+        },
+        {
+          "Id": 30,
+          "Name": "Disabled parking",
+          "Value": "Yes",
+          "FacilityGroupName": "Parking"
+        }
+      ],
+      "GSD": null,
+      "LastUpdatedDates": {
+        "OpeningTimes": "2020-08-31T13:30:19Z",
+        "BankHolidayOpeningTimes": null,
+        "TemporaryChangesOpeningTimes": null,
+        "DentistsAcceptingPatients": null,
+        "Facilities": "2018-06-03T14:33:58Z",
+        "HospitalDepartment": "2022-10-18T01:36:45.437Z",
+        "Services": "2018-06-03T14:33:58Z",
+        "ContactDetails": "2023-04-19T14:00:39.483Z",
+        "AcceptingPatients": null,
+        "KeyValueData": []
+      },
+      "AcceptingPatients": {
+        "GP": "Yes",
+        "Dentist": []
+      },
+      "GPRegistration": {
+        "RegistrationLink": "https://gp-registration.nhs.uk/Y02494",
+        "AcceptingOutOfArea": true
+      },
+      "RelatedIAPTCCGs": [],
+      "Trusts": [],
+      "Metrics": [
+        {
+          "MetricID": 43,
+          "MetricName": "Has Car Parking",
+          "DisplayName": "Car parking",
+          "Description": "Is there car parking at this organisation?",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Parking available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 44,
+          "MetricName": "Has Disabled Car Parking",
+          "DisplayName": "Disabled parking",
+          "Description": "Is disabled car parking available at this organisation?",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Disabled parking available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 45,
+          "MetricName": "Has Disabled Access",
+          "DisplayName": "Disabled access",
+          "Description": "Disabled access",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Disabled access available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 47,
+          "MetricName": "Has Induction Loop",
+          "DisplayName": "Induction loop",
+          "Description": "Induction loop in place",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Has induction loop",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Yes"
+        },
+        {
+          "MetricID": 48,
+          "MetricName": "Has Signing Service",
+          "DisplayName": "Signing services",
+          "Description": "Signing services",
+          "Value": "no",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Signing service not available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 4,
+          "MetricDisplayTypeName": "BooleanImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "no",
+          "BandingName": "No"
+        },
+        {
+          "MetricID": 10051,
+          "MetricName": "Electronic prescription service",
+          "DisplayName": "Electronic prescription service",
+          "Description": "Electronic prescription service",
+          "Value": "Yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 5,
+          "MetricDisplayTypeName": "BandingImage",
+          "HospitalSectorType": null,
+          "MetricText": "[BandingName]",
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "yes",
+          "BandingName": "Electronic prescription service available"
+        },
+        {
+          "MetricID": 99002,
+          "MetricName": "Business Card: Has Car Parking",
+          "DisplayName": "Car parking",
+          "Description": "Is there car parking at this organisation?",
+          "Value": "yes",
+          "Value2": null,
+          "Value3": null,
+          "Text": "Parking available",
+          "LinkUrl": null,
+          "LinkText": null,
+          "MetricDisplayTypeID": 5,
+          "MetricDisplayTypeName": "BandingImage",
+          "HospitalSectorType": null,
+          "MetricText": null,
+          "DefaultText": null,
+          "IsMetaMetric": true,
+          "BandingClassification": "parking",
+          "BandingName": "Yes"
+        }
+      ]
+    }
+  ]
+}

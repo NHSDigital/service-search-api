@@ -1,0 +1,32 @@
+{
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
+  "@odata.count": 1,
+  "value": [
+    {
+      "@search.score": 12.548297,
+      "ODSCode": "FLM49",
+      "OrganisationName": "PHARMACY2U",
+      "OrganisationType": "Pharmacy",
+      "Address1": "Unit 4B",
+      "Address2": "Victoria Road",
+      "Address3": "Leeds",
+      "City": "West Yorkshire",
+      "Postcode": "LS14 2LA",
+      "OrganisationSubType": "DistanceSelling",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "0113 2650222"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "https://www.pharmacy2u.co.uk/"
+        }
+      ]
+    }
+  ]
+}

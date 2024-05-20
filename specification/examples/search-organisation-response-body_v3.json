@@ -1,0 +1,96 @@
+{
+  "@odata.context": "https://nhsuksearchdevuks.search.windows.net/indexes('service-search-syndication-3-0')/$metadata#docs(*)",
+  "@odata.count": 23,
+  "value": [
+    {
+      "@search.score": 9.36376,
+      "Address3": null,
+      "City": "Bletchley",
+      "County": null,
+      "Latitude": 51.99380111694336,
+      "Longitude": -0.7334651947021484,
+      "Postcode": "MK2 2HE"
+    },
+    {
+      "@search.score": 9.339742,
+      "Address3": null,
+      "City": "Bletchley",
+      "County": "",
+      "Latitude": 51.99380111694336,
+      "Longitude": -0.7334651947021484,
+      "Postcode": "MK2 2HE"
+    },
+    {
+      "@search.score": 8.636848,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": "Buckinghamshire",
+      "Latitude": 51.997413635253906,
+      "Longitude": -0.7476235032081604,
+      "Postcode": "MK3 6EN"
+    },
+    {
+      "@search.score": 8.6264925,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": "Buckinghamshire",
+      "Latitude": 51.9984245300293,
+      "Longitude": -0.7151558995246887,
+      "Postcode": "MK2 2BL"
+    },
+    {
+      "@search.score": 8.615717,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": "Buckinghamshire",
+      "Latitude": 51.986045837402344,
+      "Longitude": -0.7297666668891907,
+      "Postcode": "MK2 3HU"
+    },
+    {
+      "@search.score": 8.613936,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": "",
+      "Latitude": 51.979278564453125,
+      "Longitude": -0.7257938385009767,
+      "Postcode": "MK2 3HN"
+    },
+    {
+      "@search.score": 8.065871,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": "Buckinghamshire",
+      "Latitude": 52.00082015991211,
+      "Longitude": -0.7644409537315368,
+      "Postcode": "MK3 7QR"
+    },
+    {
+      "@search.score": 8.065871,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": "Buckinghamshire",
+      "Latitude": 51.99625015258789,
+      "Longitude": -0.7215787172317506,
+      "Postcode": "MK2 2EH"
+    },
+    {
+      "@search.score": 8.063061,
+      "Address3": "Bletchley",
+      "City": "Milton Keynes",
+      "County": null,
+      "Latitude": 51.99628448486328,
+      "Longitude": -0.7228931784629823,
+      "Postcode": "MK2 2EH"
+    },
+    {
+      "@search.score": 8.063061,
+      "Address3": "Bletchley",
+      "City": null,
+      "County": null,
+      "Latitude": 51.99628448486328,
+      "Longitude": -0.7228931784629823,
+      "Postcode": "MK2 2EH"
+    }
+  ]
+}
