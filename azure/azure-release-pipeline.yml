@@ -35,21 +35,21 @@ extends:
     apigee_deployments:
       - environment: internal-dev
         post_deploy:
-          - template: ./templates/run-integration-tests.yml
+          - template: ./run-integration-tests.yml
       - environment: internal-qa
         post_deploy:
-          - template: ./templates/run-integration-tests.yml
+          - template: ./run-integration-tests.yml
       - environment: ref
         post_deploy:
-          - template: ./templates/run-integration-tests.yml
+          - template: ./run-integration-tests.yml
       - environment: internal-qa-sandbox
         proxy_path: sandbox
         post_deploy:
-          - template: ./templates/run-integration-tests.yml
+          - template: ./run-sandbox-tests.yml
       - environment: internal-dev-sandbox
         proxy_path: sandbox
         post_deploy:
-          - template: ./templates/run-integration-tests.yml
+          - template: ./run-sandbox-tests.yml
       - environment: sandbox
         proxy_path: sandbox
         depends_on:
