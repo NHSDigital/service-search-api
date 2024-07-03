@@ -11,8 +11,6 @@ class TestSearchPostcode:
     endpoint = "search-postcode-or-place"
 
     @pytest.mark.skip(reason="Not needed at the moment")
-    @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_search_place(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -42,8 +40,6 @@ class TestSearchPostcode:
         assert_that(result).is_equal_to(expected_place)
 
     @pytest.mark.skip(reason="Not needed at the moment")
-    @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_search_postcode(self, get_api_key):
 
         # We used ODS code since it will never change - for the given postcode,
@@ -79,8 +75,6 @@ class TestSearchPostcode:
     @pytest.mark.skip(
         reason="returns list of places, each request gives back different size responses"
     )
-    @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_place_not_found(self, get_api_key):
         # Given
         expected_status_code = 500
@@ -103,8 +97,6 @@ class TestSearchPostcode:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.skip(reason="Not needed at the moment")
-    @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_not_found_api_version(self, get_api_key):
         # Given
         expected_status_code = 404
@@ -127,8 +119,6 @@ class TestSearchPostcode:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.skip(reason="Not needed at the moment")
-    @pytest.mark.sandbox
-    @pytest.mark.integration
     def test_invalid_api_version(self, get_api_key):
         # Given
         expected_status_code = 404
@@ -156,7 +146,6 @@ class TestSearchPostcode:
         assert_that(response.json()).is_equal_to(expected_body)
 
     @pytest.mark.skip(reason="Not needed at the moment")
-    @pytest.mark.integration
     def test_response_payload_urls_are_corrected(self, get_api_key):
         """
         Test that the urls returned in the response payload have been routed to the
