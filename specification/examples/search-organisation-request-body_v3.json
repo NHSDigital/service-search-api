@@ -1,0 +1,8 @@
+{
+  "search": "Bletchley",
+  "searchMode": "all",
+  "searchFields": "Address3,City,County",
+  "top": 10,
+  "count": true,
+  "select": "Latitude,Longitude,Address3,City,County,Postcode"
+}

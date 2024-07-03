@@ -1,0 +1,56 @@
+{
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-1')/$metadata#docs(*)",
+  "@odata.count": 2,
+  "value": [
+    {
+      "@search.score": 1,
+      "ODSCode": "FFA63",
+      "OrganisationName": "THE PHARMACY PRACTICE",
+      "OrganisationType": "Pharmacy",
+      "Address1": "282 Stratford Road",
+      "Address2": "Sparkbrook",
+      "Address3": "Birmingham",
+      "City": "",
+      "Latitude": 52.45951461791992,
+      "Longitude": -1.8713716268539429,
+      "Postcode": "B11 1AA",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01217712978"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "thepharmacypractice07@gmail.com"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FG295",
+      "OrganisationName": "Barkat Pharmacy",
+      "OrganisationType": "Pharmacy",
+      "Address1": "775 STRATFORD ROAD",
+      "Address2": "SPARKHILL",
+      "Address3": "BIRMINGHAM",
+      "City": "",
+      "Latitude": 52.4449577331543,
+      "Longitude": -1.8596144914627075,
+      "Postcode": "B11 4DG",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01217776680"
+        }
+      ]
+    }
+  ]
+}

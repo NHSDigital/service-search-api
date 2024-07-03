@@ -1,0 +1,250 @@
+{
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-1')/$metadata#docs(*)",
+  "@odata.count": 482,
+  "value": [
+    {
+      "@search.score": 1,
+      "ODSCode": "FDF16",
+      "OrganisationName": "West Street Pharmacy",
+      "Address1": "8-10 WEST STREET",
+      "Address2": "DUNSTABLE",
+      "Address3": "BEDFORDSHIRE",
+      "City": " ",
+      "Postcode": "LU6 1SX",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "weststreetpharmacy.fdf16@nhs.net"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01582 699854"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FQE61",
+      "OrganisationName": "Mayfield Pharmacy",
+      "Address1": "12 MAYFIELD ROAD",
+      "Address2": "DUNSTABLE",
+      "Address3": "BEDFORDSHIRE",
+      "City": " ",
+      "Postcode": "LU5 4AP",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "nhspharmacy.dunstable.mayfieldpfqe61@nhs.net"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01582661677"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FA660",
+      "OrganisationName": "Dr Pharmacy",
+      "Address1": "351 DUNSTABLE ROAD",
+      "Address2": " ",
+      "Address3": "LUTON",
+      "City": " ",
+      "Postcode": "LU4 8BY",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01582 583870"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "http://www.drpharmacy.org.uk"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FLM05",
+      "OrganisationName": "Farley Hill Chemist",
+      "Address1": "3-4 MARKET SQUARE",
+      "Address2": " ",
+      "Address3": "LUTON",
+      "City": "BEDFORDSHIRE",
+      "Postcode": "LU1 5RD",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "farleyhillchemist@googlemail.com"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01582 721069"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FFH29",
+      "OrganisationName": "Krish Chemist",
+      "Address1": "JANSEL HOUSE",
+      "Address2": "650 HITCHIN ROAD",
+      "Address3": "STOPSLEY",
+      "City": "LUTON",
+      "Postcode": "LU2 7XH",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01582 450208        "
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FWD45",
+      "OrganisationName": "Croyland Ltd",
+      "Address1": "77 LONDON ROAD",
+      "Address2": "WOLLASTON",
+      "Address3": "WELLINGBOROUGH",
+      "City": "NORTHAMPTONSHIRE",
+      "Postcode": "NN29 7QP",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "croylandpharmacy@gmail.com"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01933 664353"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "www.croylandpharmacy.co.uk"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FNE14",
+      "OrganisationName": "Park Square Pharmacy",
+      "Address1": "10 Park Square",
+      "Address2": "Kings Heath",
+      "Address3": "Northampton",
+      "City": "",
+      "Postcode": "NN5 7LQ",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01604 751564        "
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FND95",
+      "OrganisationName": "Manor Pharmacy",
+      "Address1": "2 HIGH STREET",
+      "Address2": "",
+      "Address3": "WHEATHAMPSTEAD",
+      "City": "HERTFORDSHIRE",
+      "Postcode": "AL4 8AA",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01582832102"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "wheathampstead@manorpharmacygroup.co.uk"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Website",
+          "ContactValue": "https://speedwell-pharmacy.co.uk/manor-pharmacy-group"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FH880",
+      "OrganisationName": "ST.NICHOLAS PHARMACY",
+      "Address1": "ST NICHOLAS PHARMACY",
+      "Address2": "61 CANTERBURY WAY",
+      "Address3": "STEVENAGE",
+      "City": "HERTFORDSHIRE",
+      "Postcode": "SG1 4LJ",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01438 357208"
+        }
+      ]
+    },
+    {
+      "@search.score": 1,
+      "ODSCode": "FDK52",
+      "OrganisationName": "Ahmeys Late Night Pharmacy",
+      "Address1": "150 OXFORD ROAD",
+      "Address2": "COWLEY",
+      "Address3": "OXFORD",
+      "City": "",
+      "Postcode": "OX4 2EA",
+      "OrganisationSubType": "Community",
+      "Contacts": [
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Telephone",
+          "ContactValue": "01865770121"
+        },
+        {
+          "ContactType": "Primary",
+          "ContactAvailabilityType": "Office hours",
+          "ContactMethodType": "Email",
+          "ContactValue": "ahmeysltd@gmail.com"
+        }
+      ]
+    }
+  ]
+}

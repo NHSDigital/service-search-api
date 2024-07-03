@@ -17,6 +17,10 @@ def main(file: str):
         req_examples = req_path.find(spec)
         inline_examples(spec, req_examples)
 
+        req_path = parse("$.paths.['/'].post.responses.*.content.['application/json'].examples.*.['$ref']")
+        req_examples = req_path.find(spec)
+        inline_examples(spec, req_examples)
+
         req_path = parse(
             "$.paths.['/search-postcode-or-place'].post.responses.*.content.['application/json'].examples.*.['$ref']")
         req_examples = req_path.find(spec)
