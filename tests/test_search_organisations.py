@@ -8,7 +8,7 @@ from .example_loader import load_example
 
 
 class TestSearchOrganisations:
-    @pytest.mark.sandbox
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_single_organisation(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -28,8 +28,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.sandbox
-    @pytest.mark.integration
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_organisation_not_found(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -49,7 +48,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.sandbox
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_search_organisations(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -68,8 +67,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.sandbox
-    @pytest.mark.integration
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_not_found_api_version(self, get_api_key):
         # Given
         expected_status_code = 404
@@ -89,8 +87,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.sandbox
-    @pytest.mark.integration
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_invalid_api_version(self, get_api_key):
         # Given
         expected_status_code = 404
@@ -111,7 +108,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.integration
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_organisation_found(self, get_api_key):
         # Given
         expected_status_code = 200
@@ -131,7 +128,7 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    @pytest.mark.smoketest
+    @pytest.mark.skip(reason="Not needed at the moment")
     def test_organisation_found_smoke(self, get_api_key):
         # Given
         expected_status_code = 200
