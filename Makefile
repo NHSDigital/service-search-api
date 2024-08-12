@@ -4,18 +4,18 @@ all: install publish release serve
 
 #Installs dependencies using poetry.
 install-python:
-	$(info ">>>>>>>>>>> INSTALL-PYTHON <<<<<<<<<<<<<<")
+	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
 	poetry install --no-root
 
 #Installs dependencies using npm.
 install-node: 
-	$(info ">>>>>>>>>>> INSTALL-NODE <<<<<<<<<<<<<<")
+	$(info ">>>>>>>>>>> INSTALL NODE DEPENDENCIES <<<<<<<<<<<<<<")
 	npm install --legacy-peer-deps
 	cd sandbox && npm install --legacy-peer-deps
 
 #Configures Git Hooks, which are scipts that run given a specified event.
 .git/hooks/pre-commit: 
-	$(info ">>>>>>>>>>> GIT HOOKS PRE-COMMIT <<<<<<<<<<<<<<")
+	$(info ">>>>>>>>>>> GIT PRE-COMMIT HOOKS <<<<<<<<<<<<<<")
 	cp scripts/pre-commit .git/hooks/pre-commit
 
 #Condensed Target to run all targets above.
@@ -67,8 +67,8 @@ release: clean copy-examples publish build-proxy
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-dev-sandbox.yml
 
 #Command to run end-to-end smoktests post-deployment to verify the environment is working
-# smoketest:
-# 	poetry run pytest -v --junitxml=smoketest-report.xml -s -m smoketest
+smoketest:
+	poetry run pytest -v --junitxml=smoketest-report.xml -s -m smoketest
 
 serve: clean publish
 	npm run serve
