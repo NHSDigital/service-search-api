@@ -1,6 +1,6 @@
 SHELL=/bin/bash -euo pipefail
 
-all: install publish release serve
+all: install publish release smoketest serve
 
 #Installs dependencies using poetry.
 install-python:
@@ -68,7 +68,8 @@ release: clean copy-examples publish build-proxy
 
 #Command to run end-to-end smoktests post-deployment to verify the environment is working
 smoketest:
-	poetry run pytest -v --junitxml=smoketest-report.xml -s -m smoketest
+	source tests/configuration/getApigeeToken.sh
+	poetry run pytest -v --junitxml=smoketest-report.xml
 
 serve: clean publish
 	npm run serve
