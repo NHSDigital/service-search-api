@@ -67,6 +67,7 @@ release: clean copy-examples publish build-proxy
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-dev-sandbox.yml
 
 #Command to run end-to-end smoktests post-deployment to verify the environment is working
+# Not currently called
 smoketest:
 	poetry run pytest -v --junitxml=smoketest-report.xml -s -m smoketest
 
