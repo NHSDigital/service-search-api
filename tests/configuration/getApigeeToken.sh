@@ -44,6 +44,6 @@ fi
 SSO_LOGIN_URL="https://login.apigee.com"
 export SSO_LOGIN_URL
 
-APIGEE_ACCESS_TOKEN=$(~/get_token) 
-export APIGEE_ACCESS_TOKEN
+APIGEE_ACCESS_TOKEN=$(~/apigee-token-management/get_token) 
 echo "access token refreshed"
+echo $APIGEE_ACCESS_TOKEN
