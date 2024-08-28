@@ -1,5 +1,7 @@
 import os
+from dotenv import load_dotenv
 
+load_dotenv(override=True)
 
 def get_env(variable_name: str) -> str:
     """Returns a environment variable"""

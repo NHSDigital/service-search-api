@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script needs a lot of improvement.
+
 # Check for a folder apigee-token-management in $HOME directory
 apigee_get_token_dir=$(find $HOME -name 'apigee-token-management')
 
@@ -45,5 +47,11 @@ SSO_LOGIN_URL="https://login.apigee.com"
 export SSO_LOGIN_URL
 
 APIGEE_ACCESS_TOKEN=$(~/apigee-token-management/get_token) 
+
+# manipulate environment file to include result of executable
+sed -i '/^APIGEE_ACCESS_TOKEN/d' ./.env
+echo "APIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
+
+export APIGEE_ACCESS_TOKEN
 echo "access token refreshed"
 echo $APIGEE_ACCESS_TOKEN
