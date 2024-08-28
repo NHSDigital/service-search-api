@@ -12,8 +12,7 @@ if [ -z $apigee_get_token_dir ]; then
         You must have unzip installed on your system (enter command  \"which unzip\" to check).
     "
     read -p "
-        Download get_token to $HOME/apigee-token-management? (Y/N): 
-    " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+        Download get_token to $HOME/apigee-token-management? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
     current_directory=$(pwd)
 
