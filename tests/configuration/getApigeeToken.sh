@@ -9,7 +9,7 @@ if [ -z $apigee_get_token_dir ]; then
         It looks like you don't have apigee's get_token utility installed where this script is looking for it.
 
         If you would like the get_token utility automatically installed to $HOME/apigee-token-management, press [y]. Press any other key to exit. 
-        You must have unzip installed on your system (enter command  \"which unzip\" to check).
+        Doing this will also install unzip on your system if you do not already have it installed.
     "
     read -p "
         Download get_token to $HOME/apigee-token-management? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
@@ -26,8 +26,12 @@ if [ -z $apigee_get_token_dir ]; then
         echo "an error has occured and the curl has failed."
     fi
 
-    # Unzip download
+    # Check if unzip is available and download if not, then unzip ssocli-bundle.zip
     echo "UNZIPPING..."
+    IS_UNZIP_AVAILABLE=$(which unzip)
+    if [ -z $IS_UNZIP_AVAILABLE ]; then
+        sudo apt install unzip
+    fi
     unzip ssocli-bundle.zip
 
     # Install get_token
@@ -44,6 +48,12 @@ export SSO_LOGIN_URL
 
 # Get new token. Will prompt for username, password and mfa if refresh token is expired.
 APIGEE_ACCESS_TOKEN=$(~/apigee-token-management/get_token) 
+
+# Check for .env file.
+ENV_FILE_PATH=$(find . -name '.env')
+if [ -z $ENV_FILE_PATH ]; then
+    touch '.env'
+fi
 
 # Manipulate environment file to include result of executable
 sed -i '/^APIGEE_ACCESS_TOKEN/d' ./.env
