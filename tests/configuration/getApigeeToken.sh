@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# This script needs a lot of improvement.
-
 # Check for a folder apigee-token-management in $HOME directory
 apigee_get_token_dir=$(find $HOME -name 'apigee-token-management')
 
@@ -41,17 +39,15 @@ if [ -z $apigee_get_token_dir ]; then
     cd $current_directory
 fi
 
-# Get new token. Will prompt for username, password and mfa if refresh token is expired.
-# This should really be in a user's environment variables and read here tbh.
+# export correct login url.
 SSO_LOGIN_URL="https://login.apigee.com"
 export SSO_LOGIN_URL
 
+# Get new token. Will prompt for username, password and mfa if refresh token is expired.
 APIGEE_ACCESS_TOKEN=$(~/apigee-token-management/get_token) 
 
-# manipulate environment file to include result of executable
+# Manipulate environment file to include result of executable
 sed -i '/^APIGEE_ACCESS_TOKEN/d' ./.env
 echo "APIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
 
-export APIGEE_ACCESS_TOKEN
 echo "access token refreshed"
-echo $APIGEE_ACCESS_TOKEN
