@@ -13,8 +13,6 @@ const organisationByGeocodeFilteredResponse = require("./responses/search-organi
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
 
 
-
-
 describe("app handler tests", function () {
     let server;
     let env;
@@ -33,18 +31,13 @@ describe("app handler tests", function () {
         });
         server = app.start();
     });
-
-    beforeEach(function () {
-
-    });
-    afterEach(function () {
-
-    });
+    
     after(function () {
         process.env = env;
         server.close();
     });
 
+    // delete
     it("responds to /_ping", (done) => {
         request(server)
             .get("/_ping")
@@ -57,6 +50,7 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
+    // delete
     it("responds to /_status", (done) => {
         request(server)
             .get("/_status")
@@ -181,6 +175,7 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
+    // delete (?)
     it("POST Organisation filtered by location and type ordered by geocode", (done) => {
         request(server)
             .post("/?api-version=3")
@@ -205,6 +200,7 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
+    // delete (?)
     it("POST Organisation filtered by postcode, service code and organisation type", (done) => {
         request(server)
             .post("/?api-version=3")
