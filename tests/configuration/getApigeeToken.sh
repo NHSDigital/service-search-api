@@ -28,8 +28,8 @@ if [ -z $apigee_get_token_dir ]; then
 
     # Check if unzip is available and download if not, then unzip ssocli-bundle.zip
     echo "UNZIPPING..."
-    IS_UNZIP_AVAILABLE=$(which unzip)
-    if [ -z $IS_UNZIP_AVAILABLE ]; then
+    which unzip
+    if [ $? -ne 0 ]; then
         sudo apt install unzip
     fi
     unzip ssocli-bundle.zip

@@ -8,6 +8,7 @@ newman/
 .DS_Store
 .#*
 sandbox/responses/*.json
+specification/postman-collection.json
 
 __pycache__/
 .envrc
