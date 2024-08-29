@@ -57,6 +57,16 @@ fi
 
 # Manipulate environment file to include result of executable
 sed -i '/^APIGEE_ACCESS_TOKEN/d' ./.env
-echo "APIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
+if ! file_ends_with_newline ./.env; then
+    echo "file does not end with newline"
+    echo -e "\nAPIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
+else
+    echo "file ends with new line"
+    echo "APIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
+fi
 
 echo "access token refreshed"
+
+function file_ends_with_newline() {
+    [[ $(tail -c1 "$1" | wc -l) -gt 0 ]]
+}
