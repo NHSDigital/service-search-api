@@ -1,3 +1,4 @@
+import pytest
 import requests
 from assertpy import assert_that
 
@@ -47,7 +48,8 @@ class TestSearchOrganisations:
         assert_that(response.status_code).is_equal_to(expected_status_code)
         assert_that(response.json()).is_equal_to(expected_body)
 
-    # @pytest.mark.skip(reason="Not needed at the moment")
+    @pytest.mark.integration
+    @pytest.mark.smoketest
     def test_search_organisations(self, get_api_key):
         # Given
         expected_status_code = 200
