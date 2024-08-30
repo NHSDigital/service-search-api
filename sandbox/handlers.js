@@ -96,8 +96,6 @@ async function organisationsPost(req, res, next) {
 
 module.exports = {
   status: status,
-  organisationTypes,
-  searchPostcodeOrPlace,
   organisations,
   organisationsPost
 };
