@@ -7,8 +7,22 @@
 # from api_test_utils.api_test_session_config import APITestSessionConfig
 
 
-# async def _is_deployed(resp: ClientResponse, api_test_config: APITestSessionConfig) -> bool:
+import json
+import requests
+from .configuration import config
+from .conftest import make_headers
 
+def test_ping(get_api_key):
+    api_key = get_api_key["apikey"]
+    resp = requests.get(
+        url=f"{config.BASE_URL}/{config.BASE_PATH}/_ping",
+        headers=make_headers(api_key),
+    )
+    assert resp.status_code == 200
+    ping_data = json.loads(resp.text)
+    assert "version" in ping_data
+
+# async def _is_deployed(resp: ClientResponse, api_test_config: APITestSessionConfig) -> bool:
 #     if resp.status != 200:
 #         return False
 #     body = await resp.json()
@@ -26,6 +40,8 @@
 #     print(api_test_config)
 
 
+# # api_client not available as a fixture. Will have to port everything over somehow.
+# # there's a function called "test_ping_endpoint" in pytest_nhsd_apim
 # @pytest.mark.e2e
 # @pytest.mark.smoketest
 # @pytest.mark.asyncio
