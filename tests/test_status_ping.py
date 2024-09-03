@@ -12,7 +12,10 @@ import requests
 from .configuration import config
 from .conftest import make_headers
 
+
 def test_ping(get_api_key):
+    # need a poll until - something to keep doing it til a timeout, success or error.
+    # also, is this the url I need to be pinging? I would suppose so, right?
     api_key = get_api_key["apikey"]
     resp = requests.get(
         url=f"{config.BASE_URL}/{config.BASE_PATH}/_ping",
@@ -21,6 +24,7 @@ def test_ping(get_api_key):
     assert resp.status_code == 200
     ping_data = json.loads(resp.text)
     assert "version" in ping_data
+
 
 # async def _is_deployed(resp: ClientResponse, api_test_config: APITestSessionConfig) -> bool:
 #     if resp.status != 200:
