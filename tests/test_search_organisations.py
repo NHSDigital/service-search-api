@@ -9,6 +9,8 @@ from .example_loader import load_example
 
 class TestSearchOrganisations:
     # @pytest.mark.skip(reason="Not needed at the moment")
+    @pytest.mark.integration
+    @pytest.mark.smoketest
     def test_single_organisation(self, get_api_key):
         # Given
         expected_status_code = 200
