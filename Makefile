@@ -68,6 +68,7 @@ release: clean copy-examples publish build-proxy
 
 #Command to run end-to-end smoktests post-deployment to verify the environment is working
 smoketest:
+	$(info ">>>>>>>>>>>> SMOKETEST <<<<<<<<<<<<")
 	. tests/configuration/getApigeeToken.sh
 	poetry run pytest -v --junitxml=smoketest-report.xml
 

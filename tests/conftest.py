@@ -15,7 +15,7 @@ def client():
 
 
 @pytest.fixture(scope="session")
-def default_apigee_app_response(client):
+def default_apigee_app(client):
     apigee_app = DeveloperAppsAPI(client=client)
     body = {
         "apiProducts": ["service-search-api-internal-dev"],
@@ -34,19 +34,14 @@ def default_apigee_app_response(client):
 
 
 @pytest.fixture(scope="session")
-async def get_api_key(default_apigee_app_response):
+async def get_api_key(default_apigee_app):
     # print("response is:")
     # print(default_apigee_app_reponse)
     if "sandbox" in ENVIRONMENT:
         # Sandbox environments don't need authentication. Return fake one
         return {"apikey": "not_needed"}
 
-    return {"apikey": default_apigee_app_response["credentials"][0]["consumerKey"]}
-
-
-@pytest.fixture(scope="session")
-async def get_app_id(default_apigee_app_response):
-    return {"appId": default_apigee_app_response["appId"]}
+    return {"apikey": default_apigee_app["credentials"][0]["consumerKey"]}
 
 
 @pytest.fixture(scope="session")
