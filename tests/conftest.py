@@ -15,7 +15,7 @@ def client():
 
 
 @pytest.fixture(scope="session")
-def default_apigee_app_reponse(client):
+def default_apigee_app_response(client):
     apigee_app = DeveloperAppsAPI(client=client)
     body = {
         "apiProducts": ["service-search-api-internal-dev"],
@@ -27,19 +27,26 @@ def default_apigee_app_reponse(client):
     }
 
     response = apigee_app.create_app(email="andrew.littlewood1@nhs.net", body=body)
-    yield response["credentials"][0]
+    yield response
 
     print("\nDestroying Default app")
     apigee_app.delete_app_by_name(email="andrew.littlewood1@nhs.net", app_name="myapp_test")
 
 
 @pytest.fixture(scope="session")
-async def get_api_key(default_apigee_app_reponse):
+async def get_api_key(default_apigee_app_response):
+    # print("response is:")
+    # print(default_apigee_app_reponse)
     if "sandbox" in ENVIRONMENT:
         # Sandbox environments don't need authentication. Return fake one
         return {"apikey": "not_needed"}
 
-    return {"apikey": default_apigee_app_reponse["consumerKey"]}
+    return {"apikey": default_apigee_app_response["credentials"][0]["consumerKey"]}
+
+
+@pytest.fixture(scope="session")
+async def get_app_id(default_apigee_app_response):
+    return {"appId": default_apigee_app_response["appId"]}
 
 
 @pytest.fixture(scope="session")
@@ -49,9 +56,10 @@ def event_loop(request):
     loop.close()
 
 
-def make_headers(api_key):
+def make_headers(api_key, app_id=""):
     return {
         "apikey": api_key,
+        "appId": app_id,
         "X-Request-Id": str(uuid.uuid4()),
         "X-Correlation-Id": str(uuid.uuid4())
     }
