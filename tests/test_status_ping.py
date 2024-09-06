@@ -24,11 +24,9 @@ from .conftest import make_headers
 
 @pytest.mark.e2e
 @pytest.mark.smoketest
-def test_ping(get_api_key):
-    api_key = get_api_key["apikey"]
+def test_ping():
     resp = requests.get(
         url=f"{config.BASE_URL}/{config.BASE_PATH}/_ping",
-        headers=make_headers(api_key),
     )
     assert resp.status_code == 200
     ping_data = json.loads(resp.text)
@@ -40,11 +38,14 @@ def test_status_is_secured(get_api_key):
     api_key = get_api_key["apikey"]
     resp = requests.get(
         url=f"{config.BASE_URL}/{config.BASE_PATH}/_status",
+        params={"api-version": "3"},
         headers=make_headers(api_key),
     )
     # assert resp.status_code == 200
     ping_data = json.loads(resp.text)
+    status_data = resp.json()
     print(ping_data)
+    print(status_data)
     assert False
 
 
