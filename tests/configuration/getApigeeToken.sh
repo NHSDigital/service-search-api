@@ -1,15 +1,22 @@
 #!/bin/bash
 
 # Check for a folder apigee-token-management in $HOME directory
-apigee_get_token_dir=$(find $HOME -name 'apigee-token-management')
+APIGEE_GET_TOKEN_DIR=$(find $HOME -name 'apigee-token-management')
 
-if [ -z $apigee_get_token_dir ]; then
+# Check for the get_token tool within this folder
+APIGEE_GET_TOKEN_PATH=""
+if [ ! -z $APIGEE_GET_TOKEN_DIR ]; then
+    APIGEE_GET_TOKEN_PATH=$(find "$HOME/apigee-token-management" -name 'get_token')
+fi
+
+# Download necessary tools
+if [ -z $APIGEE_GET_TOKEN_DIR ] || [ -z $APIGEE_GET_TOKEN_PATH ]; then
     # Prompt user to download get_token
     echo "
         It looks like you don't have apigee's get_token utility installed where this script is looking for it.
 
         If you would like the get_token utility automatically installed to $HOME/apigee-token-management, press [y]. Press any other key to exit. 
-        Doing this will also install unzip on your system if you do not already have it installed.
+        Proceeding will install unzip on your system if you do not already have it.
     "
     read -p "
         Download get_token to $HOME/apigee-token-management? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
@@ -55,16 +62,14 @@ if [ -z $ENV_FILE_PATH ]; then
     touch '.env'
 fi
 
-# Manipulate environment file to include result of executable
+# Delete current APIGEE_ACCESS_TOKEN
 sed -i '/^APIGEE_ACCESS_TOKEN/d' ./.env
-if [ ! file_ends_with_newline ] ./.env; then
-    echo -e "\nAPIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
-else
+
+# Check if .env file ends with newline and add new APIGEE_ACCESS_TOKEN appropriately
+if [ -z "$(tail -c 1 < "./.env")" ]; then
     echo "APIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
+else
+    echo -e "\nAPIGEE_ACCESS_TOKEN=$APIGEE_ACCESS_TOKEN" >> ./.env
 fi
 
 echo "access token refreshed"
-
-function file_ends_with_newline() {
-    [[ $(tail -c1 "$1" | wc -l) -gt 0 ]]
-}
