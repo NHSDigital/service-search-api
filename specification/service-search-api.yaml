@@ -9,7 +9,7 @@ info:
     * search for NHS organisations that provide healthcare services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
     * search for coronavirus (COVID-19) walk-in sites
     
-    This API does not support the FHIR standard, but we have a mapping of how its response fields could be mapped to it. For details, see [DoHS API guide to FHIR mappings](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/version-3/dohs-api-guide-to-fhir-mappings).
+    This API does not support the FHIR standard.
     
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support). You must do this before you can go live (see ‘Onboarding’ below).
@@ -39,7 +39,7 @@ info:
     ## Technology
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest).
     
-    This API does not support the FHIR standard, but we have a mapping of how its response fields could be mapped to it. For details, see [DoHS API guide to FHIR mappings](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/version-3/dohs-api-guide-to-fhir-mappings).
+    This API does not support the FHIR standard.
     
     ## Network access
     This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
@@ -433,25 +433,6 @@ components:
         | 429         | SEND_TOO_MANY_REQUESTS     | The user has sent too many requests in a given amount of time|
         | 429         | REC_TOO_MANY_REQUESTS      | The user has sent too many requests in a given amount of time|
 
-      content:
-        application/fhir+json:
-          schema:
-            type: object
-          examples:
-            example:
-              value:
-                resourceType: examples/operational-outcome.json
-                meta:
-                  profile:
-                    - https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-OperationOutcome-1
-                issue:
-                  - severity: error
-                    code: not-found
-                    details:
-                      coding:
-                        - system: https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1
-                          code: NO_RECORD_FOUND
-                          display: No record found
       headers:
         X-Correlation-Id:
           description: 'The X-Correlation-Id from the request header, if supplied, mirrored back.'
