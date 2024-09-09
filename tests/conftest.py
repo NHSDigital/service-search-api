@@ -51,10 +51,9 @@ def event_loop(request):
     loop.close()
 
 
-def make_headers(api_key, app_id=""):
+def make_headers(api_key):
     return {
         "apikey": api_key,
-        "appId": app_id,
         "X-Request-Id": str(uuid.uuid4()),
         "X-Correlation-Id": str(uuid.uuid4())
     }
