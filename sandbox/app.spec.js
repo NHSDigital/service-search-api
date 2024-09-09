@@ -13,8 +13,6 @@ const organisationByGeocodeFilteredResponse = require("./responses/search-organi
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
 
 
-
-
 describe("app handler tests", function () {
     let server;
     let env;
@@ -34,12 +32,6 @@ describe("app handler tests", function () {
         server = app.start();
     });
 
-    beforeEach(function () {
-
-    });
-    afterEach(function () {
-
-    });
     after(function () {
         process.env = env;
         server.close();

@@ -132,8 +132,6 @@ app.use(before_request);
 app.get("/_ping", handlers.status);
 app.get("/_status", handlers.status);
 app.get("/health", handlers.status);
-app.get("/organisationtypes", handlers.organisationTypes);
-app.post("/search-postcode-or-place", handlers.searchPostcodeOrPlace);
 app.get("/", handlers.organisations);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
