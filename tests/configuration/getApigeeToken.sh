@@ -26,7 +26,9 @@ if [ -z $APIGEE_GET_TOKEN_DIR ] || [ -z $APIGEE_GET_TOKEN_PATH ]; then
     # Download zip to $HOME/apigee-token-management
     echo "DOWNLOADING ZIP TO $HOME/apigee-token-management"
     cd $HOME
-    mkdir apigee-token-management
+    if [ -z $APIGEE_GET_TOKEN_DIR ]; then
+        mkdir apigee-token-management
+    fi
     cd apigee-token-management
     curl -s -f https://login.apigee.com/resources/scripts/sso-cli/ssocli-bundle.zip -O
     if [ $? -ne 0 ]; then
@@ -34,9 +36,12 @@ if [ -z $APIGEE_GET_TOKEN_DIR ] || [ -z $APIGEE_GET_TOKEN_PATH ]; then
     fi
 
     # Check if unzip is available and download if not, then unzip ssocli-bundle.zip
+    # Why doesn't this work?
     echo "UNZIPPING..."
-    which unzip
+    UNZIP_PATH=$(which "unzip")
+    echo "which unzip exit status is: $?"
     if [ $? -ne 0 ]; then
+        echo "uh oh..."
         sudo apt install unzip
     fi
     unzip ssocli-bundle.zip
