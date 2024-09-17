@@ -20,6 +20,4 @@ ENV = {
     "environment": get_env("APIGEE_ENVIRONMENT"),
     "base_path": get_env("SERVICE_BASE_PATH"),
     "status_api_key": get_env("STATUS_ENDPOINT_API_KEY"),
-    "apigee_username": get_env("APIGEE_USERNAME"),
-    "apigee_otp_key": get_env("APIGEE_OTP_KEY")
 }

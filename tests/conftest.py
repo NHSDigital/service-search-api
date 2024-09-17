@@ -9,13 +9,7 @@ from tests.configuration.config import ENVIRONMENT
 
 @pytest.fixture(scope="session")
 def client():
-    # Can I check environment and use particular env variables depending on that?
-    # How do I check the environment?
-    config = ApigeeNonProdCredentials(
-        apigee_nhsd_nonprod_password=os.environ["APIGEE_PASSWORD"],
-        apigee_nhsd_nonprod_username=os.environ["APIGEE_USERNAME"],
-        apigee_nhsd_nonprod_otp_key=os.environ["APIGEE_OTP_KEY"]
-        ) # should use exported token
+    config = ApigeeNonProdCredentials() # should use exported token
     client = ApigeeClient(config=config)
     return client
 
