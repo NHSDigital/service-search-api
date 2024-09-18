@@ -12,7 +12,6 @@
   "license": "MIT",
   "homepage": "https://github.com/NHSDigital/service-search-api",
   "dependencies": {
-    "@redocly/cli": "^1.25.2",
     "decode-uri-component": "^0.2.2",
     "json5": "^2.2.3",
     "minimatch": "^3.1.2",
@@ -24,6 +23,7 @@
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.5.2",
+    "@redocly/cli": "^1.25.3",
     "apigeetool": "^0.16.1",
     "license-checker": "^25.0.1",
     "minimist": "^1.2.8",
