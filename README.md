@@ -86,13 +86,14 @@ SOURCE_COMMIT_ID="7aad0db8d58e2f67eeaf7b2ebc930fceb18b991a"
 
 -   [**openapi-yaml-mode**](https://github.com/esc-emacs/openapi-yaml-mode) provides syntax highlighting, completion, and path help
 
-### OpenAPI Generator
+### Speccy
 
-> [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator-cli) *OpenAPI Generator allows generation of API client libraries (SDK generation), server stubs, documentation and configuration automatically given an OpenAPI Spec*
+>> [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator-cli) *OpenAPI Generator allows generation of API client libraries (SDK generation), server stubs, documentation and configuration automatically given an OpenAPI Spec*
 OpenAPI Generator does the lifting for the following npm scripts:
 
  * `lint` -- Lints the definition
  * `publish` -- Outputs the specification as a **single file** into the `dist/` directory
+ * `serve` -- Uses redocly to serve a preview of the specification in human-readable format
 
 (Workflow detailed in a [post](https://developerjack.com/blog/2018/maintaining-large-design-first-api-specs/) on the _developerjack_ blog.)
 
