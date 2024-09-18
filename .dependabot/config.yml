@@ -7,7 +7,6 @@ update_configs:
       - match:
           dependency_type: "all"
           update_type: "security:patch"
-    target_branch: "PROF-3947-address-dependabot-issues"
   - package_manager: "javascript"
     directory: "/sandbox"
     update_schedule: "live"
@@ -15,7 +14,6 @@ update_configs:
       - match:
           dependency_type: "all"
           update_type: "security:patch"
-    target_branch: "PROF-3947-address-dependabot-issues"
   - package_manager: "python"
     directory: "/"
     update_schedule: "live"
@@ -23,4 +21,3 @@ update_configs:
       - match:
           dependency_type: "all"
           update_type: "security:patch"
-    target_branch: "PROF-3947-address-dependabot-issues"
