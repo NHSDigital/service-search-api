@@ -93,7 +93,10 @@ OpenAPI Generator does the lifting for the following npm scripts:
 
  * `lint` -- Lints the definition
  * `publish` -- Outputs the specification as a **single file** into the `dist/` directory
- * `serve` -- Uses redocly to serve a preview of the specification in human-readable format
+
+>> [ReDocly](https://redocly.com/docs) does the lifting for the serve npm script. 
+
+ * `serve` -- Uses redocly command preview-docs to serve a preview of the specification in human-readable format
 
 (Workflow detailed in a [post](https://developerjack.com/blog/2018/maintaining-large-design-first-api-specs/) on the _developerjack_ blog.)
 
