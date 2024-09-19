@@ -19,4 +19,6 @@ smoketest-report.xml
 **/.env
 **/integration_tests_report.xml
 
+specification/postman-collection.json
+
 openapitools.json
