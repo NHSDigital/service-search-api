@@ -9,7 +9,7 @@ from tests.configuration.config import ENVIRONMENT
 
 @pytest.fixture(scope="session")
 def client():
-    config = ApigeeNonProdCredentials(os.environ["secret.AccessToken"]) # should use exported token
+    config = ApigeeNonProdCredentials() # should use exported token
     client = ApigeeClient(config=config)
     return client
 
