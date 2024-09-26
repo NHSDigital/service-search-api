@@ -10,9 +10,9 @@ steps:
       export APIGEE_ENVIRONMENT="$(ENVIRONMENT)"
       export SERVICE_BASE_PATH="$(SERVICE_BASE_PATH)"
       export STATUS_ENDPOINT_API_KEY="$(status-endpoint-api-key)"
-      export APIGEE_API_TOKEN="$(secret.AccessToken)"
+      export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
 
-      poetry run pytest -m "integration" -v -o junit_logging=all --junitxml=integration_tests_report.xml
+      poetry run pytest -m "integration" -v -o --api-name=$(SERVICE_NAME) --proxy-name=$(FULLY_QUALIFIED_SERVICE_NAME) junit_logging=all --junitxml=integration_tests_report.xml
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests
     displayName: run integration tests
 

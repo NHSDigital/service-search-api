@@ -70,7 +70,7 @@ release: clean copy-examples publish build-proxy
 smoketest:
 	$(info ">>>>>>>>>>>> SMOKETEST <<<<<<<<<<<<")
 	. tests/configuration/getApigeeToken.sh
-	poetry run pytest -v --junitxml=smoketest-report.xml
+	poetry run pytest -v --junitxml=smoketest-report.xml --api-name=service-search-api --proxy-name=service-search-api-internal-dev
 
 serve: clean publish
 	npm run serve
