@@ -22,7 +22,7 @@
     "qs": "^6.5.3"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "@openapitools/openapi-generator-cli": "^2.13.9",
     "@redocly/cli": "^1.25.3",
     "apigeetool": "^0.16.1",
     "license-checker": "^25.0.1",
