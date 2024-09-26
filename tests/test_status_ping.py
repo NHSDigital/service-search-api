@@ -5,6 +5,8 @@ from .configuration import config
 # from .conftest import make_headers
 
 
+@pytest.mark.integration
+@pytest.mark.smoketest
 @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
 def test_organisation_found(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
     expected_status_code = 200
