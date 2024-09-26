@@ -13,7 +13,7 @@ steps:
       export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
       export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT
 
-      poetry run pytest -m "integration" -v -o --api-name=$(SERVICE_NAME) --proxy-name=$(FULLY_QUALIFIED_SERVICE_NAME) junit_logging=all --junitxml=integration_tests_report.xml
+      poetry run pytest -m "integration" -v -o junit_logging=all --junitxml=integration_tests_report.xml --api-name=$(SERVICE_NAME) --proxy-name=$(FULLY_QUALIFIED_SERVICE_NAME)
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests
     displayName: run integration tests
 
