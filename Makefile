@@ -25,6 +25,7 @@ install: install-node install-python .git/hooks/pre-commit
 # xargs doesn't seem to work. 
 lint: 
 	$(info ">>>>>>>>>>> LINT <<<<<<<<<<<<<<")
+	export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT
 	npm run lint
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8 
 
