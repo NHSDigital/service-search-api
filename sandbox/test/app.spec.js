@@ -3,14 +3,14 @@ const request = require("supertest");
 const assert = require("chai").assert;
 // const expect = require("chai").expect;
 
-const organisationsSingleResponse = require("./responses/organisations-single_v3.json");
-const organisationsAllResponse = require("./responses/organisations_v3.json");
-const organisationsNotFoundResponse = require("./responses/organisations-not-found_v3.json");
-const organisationByOdsCodeFilteredResponse = require("./responses/search-organisations-service-code-filtered-response.json");
-const organisationByNameFilteredResponse = require("./responses/search-organisations-by-name-filtered-response.json");
-const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
-const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
-const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
+const organisationsSingleResponse = require("../responses/organisations-single_v3.json");
+const organisationsAllResponse = require("../responses/organisations_v3.json");
+const organisationsNotFoundResponse = require("../responses/organisations-not-found_v3.json");
+const organisationByOdsCodeFilteredResponse = require("../responses/search-organisations-service-code-filtered-response.json");
+const organisationByNameFilteredResponse = require("../responses/search-organisations-by-name-filtered-response.json");
+const organisationByLocationResponse = require("../responses/search-organisations-location-response.json")
+const organisationByGeocodeFilteredResponse = require("../responses/search-organisations-geocode-filtered-response.json");
+const organisationsByNearestFilteredResponse = require("../responses/search-organisations-by-nearest-filter-postcode-response.json");
 
 
 describe("app handler tests", function () {
@@ -24,7 +24,7 @@ describe("app handler tests", function () {
 
     before(function () {
         env = process.env;
-        let app = require("./app");
+        let app = require("../app");
         app.setup({
             VERSION_INFO: JSON.stringify(version_info),
             LOG_LEVEL: (process.env.NODE_ENV === "test" ? "warn": "debug")
