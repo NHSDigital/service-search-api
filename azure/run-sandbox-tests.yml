@@ -12,7 +12,7 @@ steps:
       export STATUS_ENDPOINT_API_KEY="$(status-endpoint-api-key)"
       export APIGEE_API_TOKEN="$(secret.AccessToken)"
 
-      NODE_ENV=test npx mocha --reporter spec
+      NODE_ENV=test npx mocha --reporter mocha-junit-reporter --reporter-options mochaFile=sandbox_tests_report.xml
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/tests
     displayName: run integration tests
 
