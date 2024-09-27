@@ -19,7 +19,7 @@ APIGEE_ENVIRONMENTS:
           timeunit: week
         spikeArrest:
           enabled: true
-          ratelimit: 60pm
+          ratelimit: 1000pm
   - name: internal-qa
     display_name: Internal QA
     visibility: true
