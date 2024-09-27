@@ -1,23 +1,8 @@
-import pytest
-import requests
-from assertpy import assert_that
-from .configuration import config
+# import pytest
+# import requests
+# from assertpy import assert_that
+# from .configuration import config
 # from .conftest import make_headers
-
-
-@pytest.mark.integration
-@pytest.mark.smoketest
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-def test_organisation_found(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    expected_status_code = 200
-    search = "ODSCode eq 'FV095'"
-    response = requests.get(
-        url=f"{config.BASE_URL}/{config.BASE_PATH}",
-        params={"api-version": "3", "$filter": search},
-        headers=nhsd_apim_auth_headers,
-    )
-
-    assert_that(response.status_code).is_equal_to(expected_status_code)
 
 
 # @pytest.mark.e2e

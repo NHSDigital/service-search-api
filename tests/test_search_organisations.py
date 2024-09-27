@@ -1,156 +1,145 @@
-# import pytest
-# import requests
-# from assertpy import assert_that
-
-# from .configuration import config
-# from .conftest import make_headers
-# from .example_loader import load_example
+import pytest
+import requests
+from assertpy import assert_that
+from .example_loader import load_example
+from .configuration import config
 
 
-# class TestSearchOrganisations:
-#     # @pytest.mark.skip(reason="Not needed at the moment")
-#     @pytest.mark.integration
-#     @pytest.mark.smoketest
-#     def test_single_organisation(self, get_api_key):
-#         # Given
-#         expected_status_code = 200
-#         api_key = get_api_key["apikey"]
-#         search = "Y02494"
+class TestSearchOrganisations:
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_organisation_found(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+        search = "ODSCode eq 'FV095'"
 
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"api-version": "3", "search": search},
-#             headers=make_headers(api_key),
-#         )
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"api-version": "3", "$filter": search},
+            headers=nhsd_apim_auth_headers,
+        )
 
-#         data = response.json()
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
 
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
-#         assert_that(len(data["value"])).is_equal_to(1)
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_single_organisation(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+        search = "Y02494"
 
-#     # @pytest.mark.skip(reason="Not needed at the moment")
-#     def test_organisation_not_found(self, get_api_key):
-#         # Given
-#         expected_status_code = 200
-#         expected_body = load_example("organisations-not-found_v3.json")
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"api-version": "3", "search": search},
+            headers=nhsd_apim_auth_headers
+        )
 
-#         api_key = get_api_key["apikey"]
-#         search = "invalid"
+        data = response.json()
 
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"api-version": "3", "search": search},
-#             headers=make_headers(api_key),
-#         )
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(len(data["value"])).is_equal_to(1)
 
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
-#         assert_that(response.json()).is_equal_to(expected_body)
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_organisation_not_found(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+        expected_body = load_example("organisations-not-found_v3.json")
+        search = "invalid"
 
-#     @pytest.mark.integration
-#     @pytest.mark.smoketest
-#     def test_search_organisations(self, get_api_key):
-#         # Given
-#         expected_status_code = 200
-#         max_organisations_returned = 50
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"api-version": "3", "search": search},
+            headers=nhsd_apim_auth_headers
+        )
 
-#         api_key = get_api_key["apikey"]
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(response.json()).is_equal_to(expected_body)
 
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"api-version": "3"},
-#             headers=make_headers(api_key),
-#         )
-#         data = response.json()
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_search_organisations(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+        max_organisations_returned = 50
 
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
-#         assert_that(len(data["value"])).is_equal_to(max_organisations_returned)
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"api-version": "3"},
+            headers=nhsd_apim_auth_headers
+        )
+        data = response.json()
 
-#     # @pytest.mark.skip(reason="Not needed at the moment")
-#     def test_not_found_api_version(self, get_api_key):
-#         # Given
-#         expected_status_code = 404
-#         expected_body = load_example("bad-api-version-resource-not-found.json")
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(len(data["value"])).is_equal_to(max_organisations_returned)
 
-#         api_key = get_api_key["apikey"]
-#         search = "Y02494"
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_not_found_api_version(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 404
+        expected_body = load_example("bad-api-version-resource-not-found.json")
+        search = "Y02494"
 
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"search": search, "apikey": api_key},
-#             headers=make_headers(api_key),
-#         )
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"search": search},
+            headers=nhsd_apim_auth_headers
+        )
 
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
-#         assert_that(response.json()).is_equal_to(expected_body)
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(response.json()).is_equal_to(expected_body)
 
-#     # @pytest.mark.skip(reason="Not needed at the moment")
-#     def test_invalid_api_version(self, get_api_key):
-#         # Given
-#         expected_status_code = 404
-#         expected_body = load_example("bad-api-version-resource-not-found.json")
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_invalid_api_version(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 404
+        expected_body = load_example("bad-api-version-resource-not-found.json")
+        search = "Y02494"
+        invalid_api_version = 5
 
-#         api_key = get_api_key["apikey"]
-#         search = "Y02494"
-#         invalid_api_version = 5
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"search": search, "api-version": invalid_api_version},
+            headers=nhsd_apim_auth_headers,
+        )
 
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"search": search, "api-version": invalid_api_version, "apikey": api_key},
-#             headers=make_headers(api_key),
-#         )
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(response.json()).is_equal_to(expected_body)
 
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
-#         assert_that(response.json()).is_equal_to(expected_body)
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_organisation_found_smoke(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+        search = "ODSCode eq 'FV095'"
 
-#     # @pytest.mark.skip(reason="Not needed at the moment")
-#     def test_organisation_found(self, get_api_key):
-#         # Given
-#         expected_status_code = 200
-#         api_key = get_api_key["apikey"]
-#         ods_code = "'FNC84'"
-#         search = f"ODSCode eq {ods_code}"
+        # When
+        response = requests.get(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            params={"api-version": "3", "$filter": search},
+            headers=nhsd_apim_auth_headers
+        )
 
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"api-version": "3", "$filter": search},
-#             headers=make_headers(api_key),
-#         )
-#         data = response.json()
-
-#         is_code_found = False
-#         for item in data["value"]:
-#             if (item['ODSCode'] == ods_code.replace("'", "")):
-#                 is_code_found = True
-
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
-#         assert_that(is_code_found).is_true()
-
-#     # @pytest.mark.skip(reason="Not needed at the moment")
-#     def test_organisation_found_smoke(self, get_api_key):
-#         # Given
-#         expected_status_code = 200
-
-#         api_key = get_api_key["apikey"]
-#         search = "ODSCode eq 'FV095'"
-
-#         # When
-#         response = requests.get(
-#             url=f"{config.BASE_URL}/{config.BASE_PATH}",
-#             params={"api-version": "3", "$filter": search},
-#             headers=make_headers(api_key),
-#         )
-
-#         # Then
-#         assert_that(response.status_code).is_equal_to(expected_status_code)
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
