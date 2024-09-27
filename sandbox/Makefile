@@ -18,7 +18,7 @@ update:
 	npm update
 
 test:
-	NODE_ENV=test npx mocha --reporter spec
+	NODE_ENV=test npx mocha app.spec.js --reporter spec
 
 test-report:
 	NODE_ENV=test npx mocha --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/tests/$(dirname).xml || true
