@@ -15,6 +15,7 @@
     "decode-uri-component": "^0.2.2",
     "json5": "^2.2.3",
     "minimatch": "^3.1.2",
+    "mocha": "^10.7.3",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.39",
     "newman-reporter-htmlextra": "^1.23.1",
