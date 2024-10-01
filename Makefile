@@ -63,6 +63,7 @@ release: clean copy-examples publish build-proxy
 	$(info ">>>>>>>>>>> RELEASE <<<<<<<<<<<<<<")
 	mkdir -p dist
 	for f in $(_dist_include); do cp -r $$f dist; done
+	cp -r sandbox dist/sandbox
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-sandbox.yml
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-qa-sandbox.yml
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-dev-sandbox.yml

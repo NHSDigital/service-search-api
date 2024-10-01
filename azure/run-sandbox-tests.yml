@@ -12,8 +12,8 @@ steps:
       export STATUS_ENDPOINT_API_KEY="$(status-endpoint-api-key)"
       export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
 
-      NODE_ENV=test npx mocha sandbox/app.spec.js --reporter spec
-    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+      NODE_ENV=test npx mocha app.spec.js --reporter spec
+    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/sandbox
     displayName: run integration tests
 
   - task: PublishTestResults@2
