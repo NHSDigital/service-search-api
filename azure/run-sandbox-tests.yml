@@ -14,6 +14,7 @@ steps:
 
       make install
       make test
+      make test-report
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/sandbox
     displayName: run integration tests
 
