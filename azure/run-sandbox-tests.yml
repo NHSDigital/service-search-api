@@ -12,6 +12,7 @@ steps:
       export STATUS_ENDPOINT_API_KEY="$(status-endpoint-api-key)"
       export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
 
+      make install
       make test
     workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/sandbox
     displayName: run integration tests
