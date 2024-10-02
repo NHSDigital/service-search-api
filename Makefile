@@ -50,7 +50,7 @@ build-proxy:
 	scripts/build_proxy.sh
 
 #Files to loop over in release
-_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. sandbox tests specification"
+_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests specification"
 
 copy-examples: 
 	$(info ">>>>>>>>>>> COPY EXAMPLES <<<<<<<<<<<<<<")
@@ -63,8 +63,8 @@ release: clean copy-examples publish build-proxy
 	$(info ">>>>>>>>>>> RELEASE <<<<<<<<<<<<<<")
 	mkdir -p dist
 	for f in $(_dist_include); do cp -r $$f dist; done
-# Horrible hack to delete copied node_modules dir in dist
-	rm -r dist/sandbox/node_modules 
+	mkdir dist/sandbox
+	find sandbox -type f -maxdepth 1 ! -name node_modules -exec cp -t dist/sandbox {} +
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-sandbox.yml
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-qa-sandbox.yml
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-dev-sandbox.yml
