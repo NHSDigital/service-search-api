@@ -1,7 +1,7 @@
 steps:
   - bash: |
       make install
-    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/sandbox
     displayName: Setup JS tests
 
   - bash: |
