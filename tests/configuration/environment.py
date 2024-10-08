@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 
 def get_env(variable_name: str) -> str:
@@ -16,4 +19,5 @@ ENV = {
     # Apigee
     "environment": get_env("APIGEE_ENVIRONMENT"),
     "base_path": get_env("SERVICE_BASE_PATH"),
+    "status_api_key": get_env("STATUS_ENDPOINT_API_KEY"),
 }

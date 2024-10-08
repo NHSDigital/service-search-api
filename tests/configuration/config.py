@@ -4,3 +4,4 @@ from .environment import ENV
 ENVIRONMENT = ENV["environment"]
 BASE_URL = f"https://{ENVIRONMENT}.api.service.nhs.uk"
 BASE_PATH = ENV["base_path"]
+STATUS_ENDPOINT_API_KEY = ENV["status_api_key"]
