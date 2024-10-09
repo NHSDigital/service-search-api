@@ -95,7 +95,7 @@ class TestSearchOrganisations:
 
         # When
         response = requests.post(
-            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            url=f"{config.BASE_URL}/{config.BASE_PATH}/search",
             params={"api-version": "3"},
             json={"search": "*"},
             headers=nhsd_apim_auth_headers
@@ -174,7 +174,7 @@ class TestSearchOrganisations:
 
         # When
         response = requests.post(
-            url=f"{config.BASE_URL}/{config.BASE_PATH}",
+            url=f"{config.BASE_URL}/{config.BASE_PATH}/search",
             params={"api-version": "3"},
             json={"search": "FV095"},
             headers=nhsd_apim_auth_headers
