@@ -68,7 +68,7 @@ class TestSearchOrganisations:
     @pytest.mark.integration
     @pytest.mark.smoketest
     @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-    def test_search_organisations(self, nhsd_apim_auth_headers):
+    def test_search_organisations_get(self, nhsd_apim_auth_headers):
         # Given
         expected_status_code = 200
         max_organisations_returned = 50
@@ -77,6 +77,27 @@ class TestSearchOrganisations:
         response = requests.get(
             url=f"{config.BASE_URL}/{config.BASE_PATH}",
             params={"api-version": "3"},
+            headers=nhsd_apim_auth_headers
+        )
+        data = response.json()
+
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+        assert_that(len(data["value"])).is_equal_to(max_organisations_returned)
+
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_search_organisations_post(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+        max_organisations_returned = 50
+
+        # When
+        response = requests.post(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}/search",
+            params={"api-version": "3"},
+            json={"search": "*"},
             headers=nhsd_apim_auth_headers
         )
         data = response.json()
@@ -129,7 +150,7 @@ class TestSearchOrganisations:
     @pytest.mark.integration
     @pytest.mark.smoketest
     @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-    def test_organisation_found_smoke(self, nhsd_apim_auth_headers):
+    def test_organisation_found_smoke_get(self, nhsd_apim_auth_headers):
         # Given
         expected_status_code = 200
         search = "ODSCode eq 'FV095'"
@@ -138,6 +159,24 @@ class TestSearchOrganisations:
         response = requests.get(
             url=f"{config.BASE_URL}/{config.BASE_PATH}",
             params={"api-version": "3", "$filter": search},
+            headers=nhsd_apim_auth_headers
+        )
+
+        # Then
+        assert_that(response.status_code).is_equal_to(expected_status_code)
+
+    @pytest.mark.integration
+    @pytest.mark.smoketest
+    @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
+    def test_organisation_found_smoke_post(self, nhsd_apim_auth_headers):
+        # Given
+        expected_status_code = 200
+
+        # When
+        response = requests.post(
+            url=f"{config.BASE_URL}/{config.BASE_PATH}/search",
+            params={"api-version": "3"},
+            json={"search": "FV095"},
             headers=nhsd_apim_auth_headers
         )
 
