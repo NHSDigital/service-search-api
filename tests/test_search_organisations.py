@@ -88,7 +88,7 @@ class TestSearchOrganisations:
     @pytest.mark.integration
     @pytest.mark.smoketest
     @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-    def test_search_organisations(self, nhsd_apim_auth_headers):
+    def test_search_organisations_post(self, nhsd_apim_auth_headers):
         # Given
         expected_status_code = 200
         max_organisations_returned = 50
