@@ -37,7 +37,7 @@ APIGEE_ENVIRONMENTS:
           timeunit: week
         spikeArrest:
           enabled: true
-          ratelimit: 60pm
+          ratelimit: 1000pm
   - name: ref
     display_name: Reference
     visibility: true
