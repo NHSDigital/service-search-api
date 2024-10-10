@@ -98,7 +98,7 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
-    it("GET Organisation filtered by service code", (done) => {
+    it("GET Organisation filtered by EPS enabled", (done) => {
         request(server)
             .get("?searchFields=ODSCode&$filter=IsEpsEnabled eq 'true'&api-version=3")
             .expect(200, organisationByOdsCodeFilteredResponse)
@@ -106,7 +106,7 @@ describe("app handler tests", function () {
     });
 
     // AND THIS ONE
-    it("POST Organisation filtered by service code", (done) => {
+    it("POST Organisation filtered by EPS enabled", (done) => {
         request(server)
             .post("/?api-version=3")
             .send({
@@ -122,14 +122,14 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
-    it("GET Organisation by name, filtered by service code and organisation type", (done) => {
+    it("GET Organisation by name, filtered by EPS enabled and organisation type", (done) => {
         request(server)
             .get("?search=pharmacy2u&searchFields=OrganisationName&$filter=IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'&api-version=3")
             .expect(200, organisationByNameFilteredResponse)
             .expect("Content-Type", /json/, done);
     });
 
-    it("POST Organisation by name, filtered by service code and organisation type", (done) => {
+    it("POST Organisation by name, filtered by EPS enabled and organisation type", (done) => {
         request(server)
             .post("/?api-version=3")
             .send({
@@ -191,14 +191,14 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
-    it("GET Organisation filtered by postcode, service code and organisation type", (done) => {
+    it("GET Organisation filtered by postcode, EPS enabled and organisation type", (done) => {
         request(server)
             .get("?$filter=search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'&api-version=3")
             .expect(200, organisationsByNearestFilteredResponse)
             .expect("Content-Type", /json/, done);
     });
 
-    it("POST Organisation filtered by postcode, service code and organisation type", (done) => {
+    it("POST Organisation filtered by postcode, EPS enabled and organisation type", (done) => {
         request(server)
             .post("/?api-version=3")
             .send({	
