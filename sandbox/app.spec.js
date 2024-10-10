@@ -100,11 +100,12 @@ describe("app handler tests", function () {
 
     it("GET Organisation filtered by service code", (done) => {
         request(server)
-            .get("?searchFields=ODSCode&$filter=Services / any (x: x/ServiceCode eq 'EPS0001')&api-version=3")
+            .get("?searchFields=ODSCode&$filter=IsEpsEnabled eq 'true'&api-version=3")
             .expect(200, organisationByOdsCodeFilteredResponse)
             .expect("Content-Type", /json/, done);
     });
 
+    // AND THIS ONE
     it("POST Organisation filtered by service code", (done) => {
         request(server)
             .post("/?api-version=3")
@@ -115,7 +116,7 @@ describe("app handler tests", function () {
                 "top": 10,
                 "count": true,
                 "select": "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType",
-                "filter": "Services / any (x: x/ServiceCode eq 'EPS0001')"
+                "filter": "IsEpsEnabled eq 'true'"
             })
             .expect(200, organisationByOdsCodeFilteredResponse)
             .expect("Content-Type", /json/, done);
@@ -123,7 +124,7 @@ describe("app handler tests", function () {
 
     it("GET Organisation by name, filtered by service code and organisation type", (done) => {
         request(server)
-            .get("?search=pharmacy2u&searchFields=OrganisationName&$filter=Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'&api-version=3")
+            .get("?search=pharmacy2u&searchFields=OrganisationName&$filter=IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'&api-version=3")
             .expect(200, organisationByNameFilteredResponse)
             .expect("Content-Type", /json/, done);
     });
@@ -138,7 +139,7 @@ describe("app handler tests", function () {
                 "top": 10,
                 "count": true,
                 "select": "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType",
-                "filter": "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
+                "filter": "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
             })
             .expect(200, organisationByNameFilteredResponse)
             .expect("Content-Type", /json/, done);
@@ -168,7 +169,7 @@ describe("app handler tests", function () {
 
     it("GET Organisation filtered by location and type ordered by geocode", (done) => {
         request(server)
-            .get("?$filter=Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'&$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')&api-version=3")
+            .get("?$filter=IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'&$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')&api-version=3")
             .expect(200, organisationByGeocodeFilteredResponse)
             .expect("Content-Type", /json/, done);
     });
@@ -183,7 +184,7 @@ describe("app handler tests", function () {
                 "top": 10, 
                 "count": true, 
                 "select": "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType",
-                "filter": "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'", 
+                "filter": "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'", 
                 "orderby": "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
             })
             .expect(200, organisationByGeocodeFilteredResponse)
@@ -192,7 +193,7 @@ describe("app handler tests", function () {
 
     it("GET Organisation filtered by postcode, service code and organisation type", (done) => {
         request(server)
-            .get("?$filter=search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'&api-version=3")
+            .get("?$filter=search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'&api-version=3")
             .expect(200, organisationsByNearestFilteredResponse)
             .expect("Content-Type", /json/, done);
     });
@@ -207,7 +208,7 @@ describe("app handler tests", function () {
                 "top": 10,
                 "count": true,
                 "select": "ODSCode, OrganisationType, OrganisationSubType, OrganisationName, Contacts, Address1, Address2, Address3, City, Postcode, Latitude, Longitude",
-                "filter": "search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+                "filter": "search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
             })
             .expect(200, organisationsByNearestFilteredResponse)
             .expect("Content-Type", /json/, done);
