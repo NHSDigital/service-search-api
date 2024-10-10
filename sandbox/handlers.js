@@ -11,11 +11,11 @@ const organisationByLocationResponse = require("./responses/search-organisations
 const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
 
-const filterByServiceCode = "Services / any (x: x/ServiceCode eq 'EPS0001')";
-const filterByServiceCodeAndOrganisationTypeDistance =  "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
-const filterByServiceCodeAndOrganisationTypeCommunity = "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'";
+const filterByServiceCode = "IsEpsEnabled eq 'true'";
+const filterByServiceCodeAndOrganisationTypeDistance =  "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
+const filterByServiceCodeAndOrganisationTypeCommunity = "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'";
 const orderByGeocode = "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')";
-const filterByPostcodeServiceCodeOrganisationType = "search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+const filterByPostcodeServiceCodeOrganisationType = "search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
 
 async function status(req, res, next) {
   res.json({
