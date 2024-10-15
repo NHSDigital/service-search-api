@@ -134,7 +134,8 @@ paths:
         | Filtered by EPS enabled and organisation type                      | `search`=`pharmacy2u` <br /> `searchfields`=`OrganisationName` <br /> `$filter`=`IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'`                             | HTTP status 200 with filtered results    |
         | Search by location                                                 | `search`=`Bletchley` <br /> `searchfields`=`Address3,City,County`                                                                                                                                                                         | HTTP status 200 with found organisations |                                                                                                                             
         | Filtered by EPS enabled, organisation type and ordered by geocode  | `$filter`=`"IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"` <br /> `$orderby`= `geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')` | HTTP status 200 with ordered results     | 
-        | Filtered by postcode, EPS enabled and organisation type           | `$filter`=`search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`                                                                   | Http status 200 with filtered results    | 
+        | Filtered by postcode, EPS enabled and organisation type            | `$filter`=`search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`                                                                   | Http status 200 with filtered results    | 
+        | Filtered by closing time and location                              | `search`=`Bletchley` <br /> `searchFields`=`Address3` <br /> `$filter=OpeningTimes / any (x: x/ClosingTime eq '14:00')`
         | No organisations found                                             | `search`=`no-organisation`                                                                                                                                                                                                                | HTTP status 200 with no organisations    |
         | Invalid API version                                                | No api-version parameter                                                                                                                                                                                                                  | HTTP status 404 with problem description |
 
@@ -384,6 +385,14 @@ paths:
                   filter: "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
                   orderby": "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
 
+              organisationsByLocationAndClosingTimeFiltered:
+                summary: "Organisations searched by location, filtered by closing time"
+                value:
+                  search: "Bletchley"
+                  searchFields: "Address3"
+                  select: "*"
+                  filter: "OpeningTimes / any (x: x/ClosingTime eq '14:00')"
+
               organisationsByPostcodeFiltered:
                 summary: "Organisations by postcode, filtered by EPS enabled and organisation type"
                 value:
@@ -543,6 +552,10 @@ components:
             FilteredByServieCodeAndOrgTypeOrdered:
               summary: "Organisations filtered by service code and organisation type and ordered by geocode"
               $ref: "examples/search-organisations-geocode-filtered-response.json"
+
+            ByLocationAndClosingTimeFiltered:
+              summary: "Organisations searched by location, filtered by closing time"
+              $ref: "examples/search-organisation-closing-time-location-filtered.json"
 
             ByPostcodeFiltered:
               summary: "Organisations by postcode, filtered by service code and organisation type"
