@@ -1,32 +1,133 @@
 {
-  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-1')/$metadata#docs(*)",
-  "@odata.count": 1,
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-10')/$metadata#docs(*)",
   "value": [
-    {
-      "@search.score": 12.548297,
-      "ODSCode": "FLM49",
-      "OrganisationName": "PHARMACY2U",
-      "OrganisationType": "Pharmacy",
-      "Address1": "Unit 4B",
-      "Address2": "Victoria Road",
-      "Address3": "Leeds",
-      "City": "West Yorkshire",
-      "Postcode": "LS14 2LA",
-      "OrganisationSubType": "DistanceSelling",
-      "Contacts": [
-        {
-          "ContactType": "Primary",
-          "ContactAvailabilityType": "Office hours",
-          "ContactMethodType": "Telephone",
-          "ContactValue": "0113 2650222"
-        },
-        {
-          "ContactType": "Primary",
-          "ContactAvailabilityType": "Office hours",
-          "ContactMethodType": "Website",
-          "ContactValue": "https://www.pharmacy2u.co.uk/"
-        }
-      ]
-    }
+      {
+          "@search.score": 12.70549,
+          "SearchKey": "X153746",
+          "ODSCode": "FLM49",
+          "OrganisationName": "PHARMACY2U",
+          "OrganisationTypeId": "PHA",
+          "OrganisationType": "Pharmacy",
+          "OrganisationStatus": "Visible",
+          "Address1": "Unit 4B",
+          "Address2": "Victoria Road",
+          "Address3": "Leeds",
+          "City": "West Yorkshire",
+          "County": "",
+          "Latitude": 53.832794189453125,
+          "Longitude": -1.4575526714324951,
+          "Postcode": "LS14 2LA",
+          "Geocode": {
+              "type": "Point",
+              "coordinates": [
+                  -1.45755,
+                  53.8328
+              ],
+              "crs": {
+                  "type": "name",
+                  "properties": {
+                      "name": "EPSG:4326"
+                  }
+              }
+          },
+          "OrganisationSubType": "DistanceSelling",
+          "Country": "England",
+          "IsEpsEnabled": "true",
+          "OrganisationAliases": [],
+          "ParentOrganisation": {
+              "ODSCode": "QWO",
+              "OrganisationName": "West Yorkshire and Harrogate (Health & Partnership) STP"
+          },
+          "Services": [
+              {
+                  "ServiceName": "Pharmacy Service:  Internet Pharmacy",
+                  "ServiceCode": "EPS0004",
+                  "Contacts": [],
+                  "ServiceProvider": {
+                      "ODSCode": null,
+                      "OrganisationName": null
+                  },
+                  "Treatments": [],
+                  "OpeningTimes": [],
+                  "AgeRange": [],
+                  "Metrics": [],
+                  "KeyValueData": []
+              },
+              {
+                  "ServiceName": "Pharmacy Service: Electronic Prescription Service",
+                  "ServiceCode": "EPS0001",
+                  "Contacts": [],
+                  "ServiceProvider": {
+                      "ODSCode": null,
+                      "OrganisationName": null
+                  },
+                  "Treatments": [],
+                  "OpeningTimes": [],
+                  "AgeRange": [],
+                  "Metrics": [],
+                  "KeyValueData": []
+              }
+          ],
+          "OpeningTimes": [],
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "0113 2650222"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Website",
+                  "ContactValue": "https://www.pharmacy2u.co.uk/"
+              }
+          ],
+          "Facilities": [],
+          "GSD": null,
+          "LastUpdatedDates": {
+              "OpeningTimes": null,
+              "BankHolidayOpeningTimes": null,
+              "TemporaryChangesOpeningTimes": null,
+              "DentistsAcceptingPatients": null,
+              "Facilities": "2020-01-21T16:28:13.533Z",
+              "HospitalDepartment": null,
+              "Services": "2020-01-21T16:28:13.533Z",
+              "ContactDetails": "2020-01-21T16:28:13.533Z",
+              "AcceptingPatients": null,
+              "ServiceOpeningTimes": null,
+              "KeyValueData": []
+          },
+          "AcceptingPatients": {
+              "GP": null,
+              "Dentist": []
+          },
+          "GPRegistration": null,
+          "RelatedIAPTCCGs": [],
+          "Trusts": [],
+          "Metrics": [
+              {
+                  "MetricID": 10051,
+                  "MetricName": "Electronic prescription service",
+                  "DisplayName": "Electronic prescription service",
+                  "Description": "Electronic prescription service",
+                  "Value": "Yes",
+                  "Value2": null,
+                  "Value3": null,
+                  "Text": "",
+                  "LinkUrl": null,
+                  "LinkText": null,
+                  "MetricDisplayTypeID": 5,
+                  "MetricDisplayTypeName": "BandingImage",
+                  "HospitalSectorType": null,
+                  "MetricText": "[BandingName]",
+                  "DefaultText": null,
+                  "IsMetaMetric": true,
+                  "BandingClassification": "yes",
+                  "BandingName": "Electronic prescription service available"
+              }
+          ],
+          "ServiceOpeningTimes": []
+      }
   ]
 }
