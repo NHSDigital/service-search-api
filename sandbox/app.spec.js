@@ -11,7 +11,7 @@ const organisationByNameFilteredResponse = require("./responses/search-organisat
 const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
 const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
-const organisationsByClosingTime = require("./responses/search-organisation-closing-time.json")
+const organisationsByClosingTime = require("./responses/search-organisation-closing-time-city-filtered.json")
 
 
 describe("app handler tests", function () {
@@ -234,10 +234,10 @@ describe("app handler tests", function () {
             .expect("Content-Type", /json/, done);
     });
 
-    // it("GET single organisation by closing time", (done) => {
-    //     request(server)
-    //         .get("?api-version=3&$filter=OpeningTimes / any (x: x/ClosingTime eq '08:00')&search=H82043")
-    //         .expect(200, organisationsByClosingTime)
-    //         .expect("Content-Type", /json/, done);
-    // });
+    it("GET single organisation by closing time", (done) => {
+        request(server)
+            .get("?search=Bletchley&searchFields=Address3&api-version=3&$filter=OpeningTimes / any (x: x/ClosingTime eq '14:00')")
+            .expect(200, organisationsByClosingTime)
+            .expect("Content-Type", /json/, done);
+    });
 });

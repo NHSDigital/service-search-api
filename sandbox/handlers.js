@@ -10,14 +10,14 @@ const organisationByNameFilteredResponse = require("./responses/search-organisat
 const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
 const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
-const organisationsByClosingTime = require("./responses/search-organisation-closing-time.json")
+const organisationsByClosingTimeAndLocation = require("./responses/search-organisation-closing-time-city-filtered.json")
 
 const filterByServiceCode = "IsEpsEnabled eq 'true'";
 const filterByServiceCodeAndOrganisationTypeDistance =  "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'";
 const filterByServiceCodeAndOrganisationTypeCommunity = "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'";
 const orderByGeocode = "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')";
 const filterByPostcodeServiceCodeOrganisationType = "search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
-const filterByClosingTime = "OpeningTimes / any (x: x/ClosingTime eq '08:00')"
+const filterByClosingTimeAndLocation = "OpeningTimes / any (x: x/ClosingTime eq '14:00')"
 
 async function status(req, res, next) {
   res.json({
@@ -53,10 +53,10 @@ async function organisations(req, res, next) {
     res.status(200).json(organisationByGeocodeFilteredResponse);
   } else if(filter === filterByPostcodeServiceCodeOrganisationType) {
     res.status(200).json(organisationsByNearestFilteredResponse);
+  } else if (search === "Bletchley" && searchFields === "Address3" && filter === filterByClosingTimeAndLocation) {
+    res.status(200).json(organisationsByClosingTimeAndLocation)
   } else if (searchParamWasProvided) {
     res.status(200).json(organisationsNotFoundResponse);
-  } else if (search == "H82043" && filter === filterByClosingTime) {
-    res.status(200).json(organisationsByClosingTime)
   } else {
     res.status(200).json(organisationsResponse);
   }
@@ -88,6 +88,8 @@ async function organisationsPost(req, res, next) {
     res.status(200).json(organisationByGeocodeFilteredResponse);
   } else if(filter === filterByPostcodeServiceCodeOrganisationType) {
     res.status(200).json(organisationsByNearestFilteredResponse);
+  } else if (/*search === "Bletchley"  && searchFields === "Address3"*/ filter === filterByClosingTimeAndLocation) {
+    res.status(200).json(organisationsByClosingTimeAndLocation)
   } else if (!bodyWasProvided || search === "no-organisation") {
     res.status(200).json(organisationsNotFoundResponse);
   } else {
