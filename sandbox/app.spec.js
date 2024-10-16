@@ -12,6 +12,7 @@ const organisationByLocationResponse = require("./responses/search-organisations
 const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
 const organisationsByClosingTimeAndLocation = require("./responses/search-organisation-closing-time-city-filtered.json")
+const organisationsByLocationFilteredByWheelchairAccess = require("./responses/search-organisations-by-location-filter-by-wheelchair-access.json")
 
 
 describe("app handler tests", function () {
@@ -251,6 +252,26 @@ describe("app handler tests", function () {
                 "select": "*"
             })
             .expect(200, organisationsByClosingTimeAndLocation)
+            .expect("Content-Type", /json/, done);
+    });
+
+    it("GET Organisation by location and wheelchair access", (done) => {
+        request(server)
+            .get("?search=Bletchley&searchFields=Address3&api-version=3&$filter=Facilities / any (x: x/Name eq 'Wheelchair access' and x/Value eq 'Yes') and IsEpsEnabled eq 'true'")
+            .expect(200, organisationsByLocationFilteredByWheelchairAccess)
+            .expect("Content-Type", /json/, done);
+    });
+
+    it("POST Organisation by location and wheelchair access", (done) => {
+        request(server)
+            .post("?api-version=3")
+            .send({
+                "search": "Bletchley",
+                "searchFields": "Address3",
+                "filter": "Facilities / any (x: x/Name eq 'Wheelchair access' and x/Value eq 'Yes') and IsEpsEnabled eq 'true'",
+                "select": "Facilities, ODSCode, IsEpsEnabled"
+            })
+            .expect(200, organisationsByLocationFilteredByWheelchairAccess)
             .expect("Content-Type", /json/, done);
     });
 });

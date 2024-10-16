@@ -10,6 +10,7 @@ const organisationByNameFilteredResponse = require("./responses/search-organisat
 const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
 const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
+const organisationsByLocationFilteredByWheelchairAccess = require("./responses/search-organisations-by-location-filter-by-wheelchair-access.json")
 const organisationsByClosingTimeAndLocation = require("./responses/search-organisation-closing-time-city-filtered.json")
 
 const filterByServiceCode = "IsEpsEnabled eq 'true'";
@@ -18,6 +19,7 @@ const filterByServiceCodeAndOrganisationTypeCommunity = "IsEpsEnabled eq 'true' 
 const orderByGeocode = "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')";
 const filterByPostcodeServiceCodeOrganisationType = "search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
 const filterByClosingTime = "OpeningTimes / any (x: x/ClosingTime eq '14:00')"
+const filterByWheelchairAccess = "Facilities / any (x: x/Name eq 'Wheelchair access' and x/Value eq 'Yes') and IsEpsEnabled eq 'true'"
 
 async function status(req, res, next) {
   res.json({
@@ -39,6 +41,10 @@ async function organisations(req, res, next) {
   const orderBy = queryStringParameters?.["$orderby"];
   const searchParamWasProvided = typeof search === "string";
   
+  console.log(search);
+  console.log(searchFields);
+  console.log(filter);
+
   if (queryStringParameters?.["api-version"] !== "3") {
     res.status(404).json(resourceNotFound);
   } else if (search === "Y02494") {
@@ -53,7 +59,9 @@ async function organisations(req, res, next) {
     res.status(200).json(organisationByGeocodeFilteredResponse);
   } else if(filter === filterByPostcodeServiceCodeOrganisationType) {
     res.status(200).json(organisationsByNearestFilteredResponse);
-  } else if (search === "Bletchley" && searchFields === "Address3" && filter === filterByClosingTime) {
+  } else if (filter === filterByWheelchairAccess && search === "Bletchley" && searchFields === "Address3") {
+    res.status(200).json(organisationsByLocationFilteredByWheelchairAccess)
+  } else if (filter === filterByClosingTime && search === "Bletchley" && searchFields === "Address3") {
     res.status(200).json(organisationsByClosingTimeAndLocation)
   } else if (searchParamWasProvided) {
     res.status(200).json(organisationsNotFoundResponse);
@@ -86,6 +94,8 @@ async function organisationsPost(req, res, next) {
     res.status(200).json(organisationByLocationResponse)
   } else if(filter === filterByServiceCodeAndOrganisationTypeCommunity && orderBy === orderByGeocode) {
     res.status(200).json(organisationByGeocodeFilteredResponse);
+  } else if (search === "Bletchley" && searchFields === "Address3" && filter === filterByWheelchairAccess) {
+    res.status(200).json(organisationsByLocationFilteredByWheelchairAccess)
   } else if (search === "Bletchley" && searchFields === "Address3" && filter === filterByClosingTime) {
     res.status(200).json(organisationsByClosingTimeAndLocation)
   } else if(filter === filterByPostcodeServiceCodeOrganisationType) {
