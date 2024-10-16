@@ -139,7 +139,7 @@ describe("app handler tests", function () {
                 "searchFields": "OrganisationName",
                 "top": 10,
                 "count": true,
-                "select": "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType",
+                "select": "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Country,Postcode,OrganisationType,OrganisationSubType",
                 "filter": "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
             })
             .expect(200, organisationByNameFilteredResponse)
@@ -162,7 +162,7 @@ describe("app handler tests", function () {
                 "searchFields": "Address3,City,County",
                 "top": 10,
                 "count": true,
-                "select": "Latitude,Longitude,Address3,City,County,Postcode" 
+                "select": "Latitude,Longitude,Address3,City,County,Country,Postcode" 
             })
             .expect(200, organisationByLocationResponse)
             .expect("Content-Type", /json/, done);
