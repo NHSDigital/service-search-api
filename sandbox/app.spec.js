@@ -11,7 +11,7 @@ const organisationByNameFilteredResponse = require("./responses/search-organisat
 const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
 const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
 const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
-const organisationsByClosingTimeAndLocation = require("./responses/search-organisation-closing-time-city-filtered.json")
+const organisationsByClosingTimeAndLocation = require("./responses/search-organisation-closing-time-location.json")
 const organisationsByLocationFilteredByWheelchairAccess = require("./responses/search-organisations-by-location-filter-by-wheelchair-access.json")
 
 
