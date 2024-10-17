@@ -1,56 +1,262 @@
 {
-  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-1')/$metadata#docs(*)",
-  "@odata.count": 2,
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-10')/$metadata#docs(*)",
+  "@odata.count": 12,
   "value": [
-    {
-      "@search.score": 1,
-      "ODSCode": "FFA63",
-      "OrganisationName": "THE PHARMACY PRACTICE",
-      "OrganisationType": "Pharmacy",
-      "Address1": "282 Stratford Road",
-      "Address2": "Sparkbrook",
-      "Address3": "Birmingham",
-      "City": "",
-      "Latitude": 52.45951461791992,
-      "Longitude": -1.8713716268539429,
-      "Postcode": "B11 1AA",
-      "OrganisationSubType": "Community",
-      "Contacts": [
-        {
-          "ContactType": "Primary",
-          "ContactAvailabilityType": "Office hours",
-          "ContactMethodType": "Telephone",
-          "ContactValue": "01217712978"
-        },
-        {
-          "ContactType": "Primary",
-          "ContactAvailabilityType": "Office hours",
-          "ContactMethodType": "Email",
-          "ContactValue": "thepharmacypractice07@gmail.com"
-        }
-      ]
-    },
-    {
-      "@search.score": 1,
-      "ODSCode": "FG295",
-      "OrganisationName": "Barkat Pharmacy",
-      "OrganisationType": "Pharmacy",
-      "Address1": "775 STRATFORD ROAD",
-      "Address2": "SPARKHILL",
-      "Address3": "BIRMINGHAM",
-      "City": "",
-      "Latitude": 52.4449577331543,
-      "Longitude": -1.8596144914627075,
-      "Postcode": "B11 4DG",
-      "OrganisationSubType": "Community",
-      "Contacts": [
-        {
-          "ContactType": "Primary",
-          "ContactAvailabilityType": "Office hours",
-          "ContactMethodType": "Telephone",
-          "ContactValue": "01217776680"
-        }
-      ]
-    }
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FTN75",
+          "OrganisationName": "Greet Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "SYNERGY HOUSE",
+          "Address2": "109-113 PERCY ROAD",
+          "Address3": "SPARKHILL",
+          "City": "BIRMINGHAM",
+          "Latitude": 52.45265197753906,
+          "Longitude": -1.8586925268173216,
+          "Postcode": "B11 3NQ",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217720233"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FFA63",
+          "OrganisationName": "THE PHARMACY PRACTICE",
+          "OrganisationType": "Pharmacy",
+          "Address1": "282 Stratford Road",
+          "Address2": "Sparkbrook",
+          "Address3": "Birmingham",
+          "City": "",
+          "Latitude": 52.45951461791992,
+          "Longitude": -1.8713716268539429,
+          "Postcode": "B11 1AA",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217712978"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Email",
+                  "ContactValue": "thepharmacypractice07@gmail.com"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FA215",
+          "OrganisationName": "STAG CHEMIST BIRMINGHAM LIMITED",
+          "OrganisationType": "Pharmacy",
+          "Address1": "553-555 STRATFORD ROAD",
+          "Address2": "SPARKHILL",
+          "Address3": "BIRMINGHAM",
+          "City": " ",
+          "Latitude": 52.45338821411133,
+          "Longitude": -1.8663126230239868,
+          "Postcode": "B11 4LP",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217720795"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FVR41",
+          "OrganisationName": "Sparkbrook Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "153A STRATFORD ROAD",
+          "Address2": "SPARKBROOK",
+          "Address3": "BIRMINGHAM",
+          "City": "",
+          "Latitude": 52.46355056762695,
+          "Longitude": -1.8767776489257812,
+          "Postcode": "B11 1RD",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217720165"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Email",
+                  "ContactValue": "sparkbrookpharmacy@outlook.com"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FTP87",
+          "OrganisationName": "Laser Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "854 STRATFORD ROAD",
+          "Address2": "SPARKHILL",
+          "Address3": "BIRMINGHAM",
+          "City": " ",
+          "Latitude": 52.44519805908203,
+          "Longitude": -1.8591135740280151,
+          "Postcode": "B11 4BS",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217782921"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Email",
+                  "ContactValue": "info@laserpharmacy.com"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FPP39",
+          "OrganisationName": "Olive Tree Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "463 STRATFORD ROAD",
+          "Address2": null,
+          "Address3": "SPARKHILL",
+          "City": "BIRMINGHAM",
+          "Latitude": 52.45504379272461,
+          "Longitude": -1.8677055835723877,
+          "Postcode": "B11 4LD",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217737177"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FEH43",
+          "OrganisationName": "Sparkbrook Health Centre Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "Grantham Road",
+          "Address2": "Sparkbrook",
+          "Address3": "Birmingham",
+          "City": "",
+          "Latitude": 52.46266174316406,
+          "Longitude": -1.871318221092224,
+          "Postcode": "B11 1LU",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217726351"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FCL95",
+          "OrganisationName": "Masters Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "741a Stratford Road",
+          "Address2": "Sparkhill",
+          "Address3": "Birmingham",
+          "City": "",
+          "Latitude": 52.4449577331543,
+          "Longitude": -1.8596144914627075,
+          "Postcode": "B11 4DG",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217772906"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Website",
+                  "ContactValue": "https://www.masterspharmacy.net"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FJ079",
+          "OrganisationName": "Shah Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "491 STRATFORD ROAD",
+          "Address2": "SPARKHILL",
+          "Address3": "BIRMINGHAM",
+          "City": " ",
+          "Latitude": 52.454341888427734,
+          "Longitude": -1.867045521736145,
+          "Postcode": "B11 4LE",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217720792"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Email",
+                  "ContactValue": "pharmacy.fj079@nhs.net"
+              },
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Website",
+                  "ContactValue": "http://shahpharmacy.co.uk"
+              }
+          ]
+      },
+      {
+          "@search.score": 1.0,
+          "ODSCode": "FG295",
+          "OrganisationName": "Barkat Pharmacy",
+          "OrganisationType": "Pharmacy",
+          "Address1": "775 STRATFORD ROAD",
+          "Address2": "SPARKHILL",
+          "Address3": "BIRMINGHAM",
+          "City": "",
+          "Latitude": 52.4449577331543,
+          "Longitude": -1.8596144914627075,
+          "Postcode": "B11 4DG",
+          "OrganisationSubType": "Community",
+          "Contacts": [
+              {
+                  "ContactType": "Primary",
+                  "ContactAvailabilityType": "Office hours",
+                  "ContactMethodType": "Telephone",
+                  "ContactValue": "01217776680"
+              }
+          ]
+      }
   ]
 }

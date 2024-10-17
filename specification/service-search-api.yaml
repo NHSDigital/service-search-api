@@ -129,12 +129,14 @@ paths:
         | Scenario                                                           | Request                                                                                                                                                                                                                                   | Response                                 |
         | -------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ---------------------------------------- |
         | All organisations                                                  | No parameters                                                                                                                                                                                                                             | HTTP status 200 with all organisations   |
-        | Single organisation                                                | `search`=`Y02494`                                                                                                                                                                                                                          | HTTP status 200 with single organisation |
-        | Search By ODS Code and Filter by service code                      | `searchFields`=`ODSCode` <br /> `$filter`=`Services / any (x: x/ServiceCode eq 'EPS0001')`                                                                                                                                                | HTTP status 200 with filtered results    |
-        | Filtered by service code and organisation type                     | `search`=`pharmacy2u` <br /> `searchfields`=`OrganisationName` <br /> `$filter`=`Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'`                             | HTTP status 200 with filtered results    |
+        | Single organisation                                                | `search`=`Y02494`                                                                                                                                                                                                                         | HTTP status 200 with single organisation |
+        | Search By ODS Code and Filter by EPS enabled                       | `searchFields`=`ODSCode` <br /> `$filter`=`IsEpsEnabled eq 'true'`                                                                                                                                                                        | HTTP status 200 with filtered results    |
+        | Filtered by EPS enabled and organisation type                      | `search`=`pharmacy2u` <br /> `searchfields`=`OrganisationName` <br /> `$filter`=`IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'`                                                     | HTTP status 200 with filtered results    |
         | Search by location                                                 | `search`=`Bletchley` <br /> `searchfields`=`Address3,City,County`                                                                                                                                                                         | HTTP status 200 with found organisations |                                                                                                                             
-        | Filtered by service code, organisation type and ordered by geocode | `$filter`=`"Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"` <br /> `$orderby`= `geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')` | HTTP status 200 with ordered results     | 
-        | Filtered by postcode, service code and organisation type           | `$filter`=`search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`                                                                   | Http status 200 with filtered results    | 
+        | Filtered by EPS enabled, organisation type and ordered by geocode  | `$filter`=`"IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"` <br /> `$orderby`= `geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')`                         | HTTP status 200 with ordered results     | 
+        | Filtered by postcode, EPS enabled and organisation type            | `$filter`=`search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`                                                                                           | Http status 200 with filtered results    | 
+        | Filtered by closing time and location                              | `search`=`Bletchley` <br /> `searchFields`=`Address3` <br /> `$filter`=`OpeningTimes / any (x: x/ClosingTime eq '14:00')`                                                                                                                 | Http status 200 with filtered results    | 
+        | Filtered by location, EPS enabled and wheelchair access            | `search`=`Bletchley` <br /> `searchFields`=`Address3` <br /> `$filter`=`Facilities / any (x: x/Name eq 'Wheelchair access' and x/Value eq 'Yes') and IsEpsEnabled eq 'true'`                                                              | Http status 200 with filtered results    | 
         | No organisations found                                             | `search`=`no-organisation`                                                                                                                                                                                                                | HTTP status 200 with no organisations    |
         | Invalid API version                                                | No api-version parameter                                                                                                                                                                                                                  | HTTP status 404 with problem description |
 
@@ -279,9 +281,9 @@ paths:
             
             Examples:
             
-            Filter results by Pharmacies that are EPS-enabled and classed as 'Community', that is, `ServiceCode` is `EPS0001`, `Organisation Type` is `PHA` and `Sub Type` is `Community`:
+            Filter results by Pharmacies that are EPS-enabled and classed as 'Community', that is, `IsEpsEnabled` is `true`, `Organisation Type` is `PHA` and `Sub Type` is `Community`:
             
-            `$filter=Services / any (x: x/ServiceCode eq 'EPS0001' ) and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`
+            `$filter=IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`
             
             Filter results that match our postcode, that is `Postcode` field is `NG16`:
             
@@ -341,7 +343,7 @@ paths:
             examples:
 
               organisationsByServiceCodeFiltered:
-                summary: "Organisations filtering by service code"
+                summary: "Organisations filtering by EPS enabled"
                 value:
                   search: "FKH23"
                   searchMode: "all"
@@ -349,10 +351,10 @@ paths:
                   top: 10
                   count: true
                   select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
-                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001')"
+                  filter: "IsEpsEnabled eq 'true'"
 
               organisationsByNameFilteredRequest:
-                summary: "Organisations by name filtered by service code"
+                summary: "Organisations by name filtered by EPS enabled"
                 value:
                   search: "pharmacy2u"
                   searchMode: "all"
@@ -360,7 +362,7 @@ paths:
                   top: 10
                   count: true
                   select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
-                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
+                  filter: "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
               
               organisationsByLocation:
                 summary: "Organisations by location"
@@ -373,7 +375,7 @@ paths:
                   select: "Latitude,Longitude,Address3,City,County,Postcode" 
 
               organisationsByGeocodeFiltered:
-                summary: "Organisations filtered by service code and organisation type and ordered by geocode"
+                summary: "Organisations filtered by EPS enabled and organisation type and ordered by geocode"
                 value:
                   search: "*"
                   searchMode: "all"
@@ -381,11 +383,27 @@ paths:
                   top: 10
                   count: true
                   select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType"
-                  filter: "Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+                  filter: "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
                   orderby": "geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')"
 
+              organisationsByLocationAndClosingTimeFiltered:
+                summary: "Organisations searched by location, filtered by closing time"
+                value:
+                  search: "Bletchley"
+                  searchFields: "Address3"
+                  select: "*"
+                  filter: "OpeningTimes / any (x: x/ClosingTime eq '14:00')"
+
+              organisationsByLocationAndWheelchairAccessFiltered:
+                summary: "Organisations search by location, filtered by available wheelchair access and EPS enabled"
+                value:
+                  search: "Bletchley"
+                  searchFields: "Address3"
+                  select: "Facilities, ODSCode, IsEpsEnabled"
+                  filter: "Facilities / any (x: x/Name eq 'Wheelchair access' and x/Value eq 'Yes') and IsEpsEnabled eq 'true'"
+
               organisationsByPostcodeFiltered:
-                summary: "Organisations by postcode, filtered by service code and organisation type"
+                summary: "Organisations by postcode, filtered by EPS enabled and organisation type"
                 value:
                   search: "*"
                   searchMode: "all"
@@ -393,7 +411,7 @@ paths:
                   top: 10
                   count: true
                   select: "ODSCode, OrganisationType, OrganisationSubType, OrganisationName, Contacts, Address1, Address2, Address3, City, Postcode, Latitude, Longitude"
-                  filter: "search.ismatch('B11', 'Postcode') and Services / any (x: x/ServiceCode eq 'EPS0001') and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
+                  filter: "search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
               
       responses:
         "200":
@@ -543,6 +561,14 @@ components:
             FilteredByServieCodeAndOrgTypeOrdered:
               summary: "Organisations filtered by service code and organisation type and ordered by geocode"
               $ref: "examples/search-organisations-geocode-filtered-response.json"
+
+            ByLocationAndClosingTimeFiltered:
+              summary: "Organisations searched by location, filtered by closing time"
+              $ref: "examples/search-organisation-closing-time-location.json"
+
+            ByLocationAndWheelchairAccessFiltered:
+              summary: "Organisations search by location, filtered by available wheelchair access and EPS enabled"
+              $ref: "examples/search-organisations-by-location-filter-by-wheelchair-access.json"
 
             ByPostcodeFiltered:
               summary: "Organisations by postcode, filtered by service code and organisation type"
