@@ -1,0 +1,145 @@
+{
+    "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-10')/$metadata#docs(*)",
+    "value": [
+        {
+            "@search.score": 12.246937,
+            "ODSCode": "FA796",
+            "IsEpsEnabled": "true",
+            "Facilities": [
+                {
+                    "Id": 1,
+                    "Name": "Braille translation service",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 2,
+                    "Name": "Disabled parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 3,
+                    "Name": "Disabled toilet",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 4,
+                    "Name": "Induction loop",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 6,
+                    "Name": "Signing service",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 35,
+                    "Name": "Step-free access",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 5,
+                    "Name": "Text relay",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 7,
+                    "Name": "Wheelchair access",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 28,
+                    "Name": "Car parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Parking"
+                },
+                {
+                    "Id": 29,
+                    "Name": "Cycle parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Parking"
+                },
+                {
+                    "Id": 2,
+                    "Name": "Disabled parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Parking"
+                },
+                {
+                    "Id": 146,
+                    "Name": "Consultation room",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Other facilities"
+                }
+            ]
+        },
+        {
+            "@search.score": 11.701518,
+            "ODSCode": "FD207",
+            "IsEpsEnabled": "true",
+            "Facilities": [
+                {
+                    "Id": 2,
+                    "Name": "Disabled parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 3,
+                    "Name": "Disabled toilet",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 4,
+                    "Name": "Induction loop",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 35,
+                    "Name": "Step-free access",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 7,
+                    "Name": "Wheelchair access",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Accessibility"
+                },
+                {
+                    "Id": 28,
+                    "Name": "Car parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Parking"
+                },
+                {
+                    "Id": 29,
+                    "Name": "Cycle parking",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Parking"
+                },
+                {
+                    "Id": 146,
+                    "Name": "Consultation room",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Other facilities"
+                },
+                {
+                    "Id": 144,
+                    "Name": "Toilet",
+                    "Value": "Yes",
+                    "FacilityGroupName": "Other facilities"
+                }
+            ]
+        }
+    ]
+}
