@@ -41,10 +41,6 @@ async function organisations(req, res, next) {
   const orderBy = queryStringParameters?.["$orderby"];
   const searchParamWasProvided = typeof search === "string";
   
-  console.log(search);
-  console.log(searchFields);
-  console.log(filter);
-
   if (queryStringParameters?.["api-version"] !== "3") {
     res.status(404).json(resourceNotFound);
   } else if (search === "Y02494") {
