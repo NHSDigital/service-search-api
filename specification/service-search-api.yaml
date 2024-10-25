@@ -632,6 +632,10 @@ components:
           $ref: "#/components/schemas/Geocode"
         "OrganisationSubType":
           type: string
+        "Country":
+          type: string
+        "IsEpsEnabled":
+          type: string
         "OrganisationAliases":
           $ref: "#/components/schemas/StringArray"
         "ParentOrganisation":
@@ -641,9 +645,9 @@ components:
         "OpeningTimes":
           $ref: "#/components/schemas/OpeningTimes"
         "Contacts":
-          $ref: "#/components/schemas/ContactList"
+          $ref: "#/components/schemas/Contacts"
         "Facilities":
-          $ref: "#/components/schemas/FacilityList"
+          $ref: "#/components/schemas/Facilities"
         "GSD":
           type: string
         "LastUpdatedDates":
@@ -660,28 +664,27 @@ components:
         "Trusts":
           $ref: "#/components/schemas/StringArray"
         "Metrics":
-          $ref: "#/components/schemas/MetricList"
-        "Country":
-          type: string  
+          $ref: "#/components/schemas/Metric"
 
+    # Is this supposed to be here?
     OrganisationPostRequest:
       description: Organisation post request
       type: object
       example:
         $ref: "examples/search-organisation-request-body_v3.json"
 
-    OrganisationType:
-      description: Organisation Types
-      type: object
-      properties:
-        "OrganisationTypeID":
-          type: string
-        "OrganisationTypeName":
-          type: string
-        "IsDeleted":
-          type: boolean
-        "DisplayName":
-          type: string
+    # OrganisationType:
+    #   description: Organisation Types
+    #   type: object
+    #   properties:
+    #     "OrganisationTypeID":
+    #       type: string
+    #     "OrganisationTypeName":
+    #       type: string
+    #     "IsDeleted":
+    #       type: boolean
+    #     "DisplayName":
+    #       type: string
 
     Metric:
       type: object
@@ -723,7 +726,7 @@ components:
         "BandingName":
           type: string
 
-    MetricList:
+    Metrics:
       type: array
       items:
         $ref: "#/components/schemas/Metric"
@@ -758,7 +761,7 @@ components:
         "FacilityGroupName":
           type: string
 
-    FacilityList:
+    Facilities:
       type: array
       items:
         $ref: "#/components/schemas/Facility"
@@ -775,7 +778,7 @@ components:
         "ContactValue":
           type: string
 
-    ContactList:
+    Contacts:
       type: array
       items:
         $ref: "#/components/schemas/Contact"
