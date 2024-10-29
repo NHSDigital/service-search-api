@@ -8,9 +8,13 @@ APIGEE_ENVIRONMENTS:
     ratelimiting:
       service-search-api-internal-dev:
         quota:
-          enabled: false
+          enabled: true
+          limit: 1000
+          interval: 1
+          timeunit: day
         spikeArrest:
-          enabled: false
+          enabled: true
+          ratelimit: 600pm
       app:
         quota:
           enabled: true
@@ -87,7 +91,7 @@ APIGEE_ENVIRONMENTS:
     ratelimiting:
       service-search-api-sandbox:
         quota:
-          enabled: false
+          enabled: false  
         spikeArrest:
           enabled: false
       app:
@@ -104,7 +108,7 @@ APIGEE_ENVIRONMENTS:
           enabled: true
           limit: 1000
           interval: 1
-          timeunit: day # I feel like this should definitely be set. 
+          timeunit: day 
         spikeArrest:
           enabled: true
           timeunit: 1000pm
@@ -121,8 +125,6 @@ APIGEE_ENVIRONMENTS:
     display_name: Production
     approval_type: manual
     visibility: false # explicitly making this hidden
-    # ratelimit: '15000pm' #  why is the pattern changed for production? Why not put these in the quota and spikeArrest labels? There's no reason to have both of them.
-    # quota: '7800'
     make_spec_visible: true
     ratelimiting:
       service-search-api-prod:
