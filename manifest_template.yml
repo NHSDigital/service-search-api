@@ -111,7 +111,7 @@ APIGEE_ENVIRONMENTS:
           timeunit: day 
         spikeArrest:
           enabled: true
-          timeunit: 1000pm
+          ratelimit: 1000pm
       app:
         quota:
           enabled: true
@@ -125,20 +125,26 @@ APIGEE_ENVIRONMENTS:
     display_name: Production
     approval_type: manual
     visibility: false # explicitly making this hidden
-    ratelimit: '15000pm'
-    quota: '7800'
     make_spec_visible: true
     ratelimiting:
       service-search-api-prod:
         quota:
-          enabled: false
+          enabled: true # not sure what numbers I should put here. Something low before load testing. 
+          limit: 7800
+          interval: 1
+          timeunit: day
         spikeArrest:
-          enabled: false
+          enabled: true
+          ratelimit: 15000pm
       app:
         quota:
-          enabled: false
+          enabled: true
+          limit: 1500
+          interval: 1
+          timeunit: day
         spikeArrest:
-          enabled: false
+          enabled: true
+          ratelimit: 1000pm
 ---
 meta:
   api:
