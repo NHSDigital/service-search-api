@@ -9,39 +9,37 @@ APIGEE_ENVIRONMENTS:
       service-search-api-internal-dev:
         quota:
           enabled: true
-          limit: 1000
+          limit: 300
           interval: 1
-          timeunit: day
+          timeunit: minute
         spikeArrest:
           enabled: true
           ratelimit: 600pm
       app:
         quota:
-          enabled: true
-          limit: 1500
-          interval: 1
-          timeunit: week
+          enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 1000pm
+          ratelimit: 300pm
   - name: internal-qa
     display_name: Internal QA
     visibility: true
     ratelimiting:
       service-search-api-internal-qa:
         quota:
-          enabled: false
+          enabled: true
+          limit: 300
+          interval: 1
+          timeunit: minute
         spikeArrest:
-          enabled: false
+          enabled: true
+          ratelimit: 600pm
       app:
         quota:
-          enabled: true
-          limit: 1500
-          interval: 1
-          timeunit: week
+          enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 1000pm
+          ratelimit: 300pm
   - name: ref
     display_name: Reference
     visibility: true
@@ -106,21 +104,18 @@ APIGEE_ENVIRONMENTS:
       service-search-api-int:
         quota:
           enabled: true
-          limit: 1000
+          limit: 1200
           interval: 1
-          timeunit: day 
+          timeunit: minute
+        spikeArrest:
+          enabled: true
+          ratelimit: 2400pm
+      app:
+        quota:
+          enabled: false
         spikeArrest:
           enabled: true
           ratelimit: 1000pm
-      app:
-        quota:
-          enabled: true
-          limit: 1500
-          interval: 1
-          timeunit: week
-        spikeArrest:
-          enabled: true
-          ratelimit: 500pm
   - name: prod
     display_name: Production
     approval_type: manual
@@ -132,19 +127,16 @@ APIGEE_ENVIRONMENTS:
           enabled: true # not sure what numbers I should put here. Something low before load testing. 
           limit: 7800
           interval: 1
-          timeunit: day
+          timeunit: minute
         spikeArrest:
           enabled: true
           ratelimit: 15000pm
       app:
         quota:
-          enabled: true
-          limit: 1500
-          interval: 1
-          timeunit: day
+          enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 1000pm
+          ratelimit: 2400pm
 ---
 meta:
   api:
