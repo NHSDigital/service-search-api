@@ -124,7 +124,7 @@ APIGEE_ENVIRONMENTS:
     ratelimiting:
       service-search-api-prod:
         quota:
-          enabled: true # not sure what numbers I should put here. Something low before load testing. 
+          enabled: true 
           limit: 7800
           interval: 1
           timeunit: minute

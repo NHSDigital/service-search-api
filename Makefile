@@ -22,7 +22,6 @@ install-node:
 install: install-node install-python .git/hooks/pre-commit
 
 #Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
-# xargs doesn't seem to work. 
 lint: 
 	$(info ">>>>>>>>>>> LINT <<<<<<<<<<<<<<")
 	export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT
