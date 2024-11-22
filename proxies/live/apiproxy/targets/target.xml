@@ -27,6 +27,10 @@
       <Step>
         <Name>javascript.RewriteHostName</Name>
       </Step>
+      <Step>
+        <Name>JavaScript.FhirTransformer</Name>
+        <Condition>response.header.Content-Type = "application/fhir+json"</Condition>
+      </Step>
     </Response>
   </PostFlow>
   <FaultRules>
