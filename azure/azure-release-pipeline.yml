@@ -39,14 +39,11 @@ extends:
       - environment: internal-qa
         post_deploy:
          - template: ./run-integration-tests.yml
-      - environment: ref
-        post_deploy:
-         - template: ./run-integration-tests.yml
       - environment: internal-qa-sandbox
         proxy_path: sandbox
         post_deploy:
          - template: ./run-sandbox-tests.yml
-      - environment: internal-dev-sandbox
+      - environment: internal-dev-sandboxs
         proxy_path: sandbox
         post_deploy:
          - template: ./run-sandbox-tests.yml
