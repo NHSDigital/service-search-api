@@ -93,6 +93,11 @@ info:
     
     Errors specific to each API are shown in the Endpoints section, under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.
 
+    ## Examples
+    The Directory of Healthcare Services (Service Search) API can be used to search for services and sites based on a variety of filters. These filters can be passed as query parameters for a GET request or as part of the body for a POST request, examples of which are below.
+
+    
+
   version: "Computed and injected at build time by `scripts/set_version.py`"
   title: "Directory of Healthcare Services API - version 3"
   contact:
@@ -334,7 +339,7 @@ paths:
             type: number
             default: 3
       requestBody:
-        description: To generate a response body visit http://api-bridge.azurewebsites.net/servicesearchguide. You can also read Microsoft's search documentation at https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents
+        description: To generate a request body you can read Microsoft's search documentation at https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents
         required: true
         content:
           "application/json":
@@ -632,6 +637,10 @@ components:
           $ref: "#/components/schemas/Geocode"
         "OrganisationSubType":
           type: string
+        "Country":
+          type: string
+        "IsEpsEnabled":
+          type: string
         "OrganisationAliases":
           $ref: "#/components/schemas/StringArray"
         "ParentOrganisation":
@@ -641,9 +650,9 @@ components:
         "OpeningTimes":
           $ref: "#/components/schemas/OpeningTimes"
         "Contacts":
-          $ref: "#/components/schemas/ContactList"
+          $ref: "#/components/schemas/Contacts"
         "Facilities":
-          $ref: "#/components/schemas/FacilityList"
+          $ref: "#/components/schemas/Facilities"
         "GSD":
           type: string
         "LastUpdatedDates":
@@ -660,28 +669,14 @@ components:
         "Trusts":
           $ref: "#/components/schemas/StringArray"
         "Metrics":
-          $ref: "#/components/schemas/MetricList"
-        "Country":
-          type: string  
+          $ref: "#/components/schemas/Metric"
 
+    # Is this supposed to be here?
     OrganisationPostRequest:
       description: Organisation post request
       type: object
       example:
         $ref: "examples/search-organisation-request-body_v3.json"
-
-    OrganisationType:
-      description: Organisation Types
-      type: object
-      properties:
-        "OrganisationTypeID":
-          type: string
-        "OrganisationTypeName":
-          type: string
-        "IsDeleted":
-          type: boolean
-        "DisplayName":
-          type: string
 
     Metric:
       type: object
@@ -723,7 +718,7 @@ components:
         "BandingName":
           type: string
 
-    MetricList:
+    Metrics:
       type: array
       items:
         $ref: "#/components/schemas/Metric"
@@ -758,7 +753,7 @@ components:
         "FacilityGroupName":
           type: string
 
-    FacilityList:
+    Facilities:
       type: array
       items:
         $ref: "#/components/schemas/Facility"
@@ -775,7 +770,7 @@ components:
         "ContactValue":
           type: string
 
-    ContactList:
+    Contacts:
       type: array
       items:
         $ref: "#/components/schemas/Contact"
@@ -843,6 +838,7 @@ components:
           type: object
           additionalProperties: true
       example: '{ "type": "name", "properties": { "name": "EPSG:4326" } }'
+  
   securitySchemes:
     OAuth_Token:
       type: http
