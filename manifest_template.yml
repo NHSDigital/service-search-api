@@ -9,18 +9,18 @@ APIGEE_ENVIRONMENTS:
       service-search-api-internal-dev:
         quota:
           enabled: true
-          limit: 300
+          limit: 10
           interval: 1
           timeunit: minute
         spikeArrest:
           enabled: true
-          ratelimit: 600pm
+          ratelimit: 50pm
       app:
         quota:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 300pm
+          ratelimit: 20pm
   - name: internal-qa
     display_name: Internal QA
     visibility: true
@@ -28,18 +28,18 @@ APIGEE_ENVIRONMENTS:
       service-search-api-internal-qa:
         quota:
           enabled: true
-          limit: 300
+          limit: 10
           interval: 1
           timeunit: minute
         spikeArrest:
           enabled: true
-          ratelimit: 600pm
+          ratelimit: 50pm
       app:
         quota:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 300pm
+          ratelimit: 20pm
   - name: ref
     display_name: Reference
     visibility: true
@@ -104,18 +104,18 @@ APIGEE_ENVIRONMENTS:
       service-search-api-int:
         quota:
           enabled: true
-          limit: 1200
+          limit: 10
           interval: 1
           timeunit: minute
         spikeArrest:
           enabled: true
-          ratelimit: 2400pm
+          ratelimit: 50pm
       app:
         quota:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 1000pm
+          ratelimit: 20pm
   - name: prod
     display_name: Production
     approval_type: manual
@@ -125,18 +125,18 @@ APIGEE_ENVIRONMENTS:
       service-search-api-prod:
         quota:
           enabled: true 
-          limit: 7800
+          limit: 4000
           interval: 1
-          timeunit: minute
+          timeunit: hour
         spikeArrest:
           enabled: true
-          ratelimit: 15000pm
+          ratelimit: 210pm
       app:
         quota:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 2400pm
+          ratelimit: 140pm
 ---
 meta:
   api:
