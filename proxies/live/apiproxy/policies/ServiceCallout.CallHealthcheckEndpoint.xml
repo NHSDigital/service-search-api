@@ -12,7 +12,7 @@
     </Request>
     <Response>healthcheckResponse</Response>
     <HTTPTargetConnection>
-        <URL>https://api.nhs.uk/service-search/organisationtypes?api-version=1</URL>
+        <URL>{{ HEALTCHECK_URL }}</URL>
     </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>

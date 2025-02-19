@@ -34,12 +34,18 @@ extends:
     prod_producer_approval: true
     apigee_deployments:
       - environment: internal-dev
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: internal-qa
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: ref
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}  
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: internal-qa-sandbox
@@ -58,6 +64,8 @@ extends:
         # post_deploy:
         #  - template: ./templates/run-smoke-tests.yml
       - environment: int
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         depends_on:
           - internal_dev
           - internal_qa
