@@ -34,6 +34,8 @@ extends:
     service_base_path: ${{ variables.service_base_path }}
     apigee_deployments:
       - environment: internal-dev
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: internal-dev-sandbox

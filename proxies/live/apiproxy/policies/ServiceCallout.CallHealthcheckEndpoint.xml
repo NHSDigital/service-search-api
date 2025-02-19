@@ -12,7 +12,7 @@
     </Request>
     <Response>healthcheckResponse</Response>
     <HTTPTargetConnection>
-        <URL>{{ HEALTCHECK_URL }}</URL>
+        <URL>{{ HEALTHCHECK_URL }}</URL>
     </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>
