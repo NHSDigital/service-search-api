@@ -40,6 +40,6 @@ def test_for_status(status_endpoint_auth_headers):
     status_data = resp.json()
     apim_responde_code = status_data["checks"]["healthcheck"]["responseCode"]
     apigee_status_code = resp.status_code
-    
+
     assert apigee_status_code == 200
     assert apim_responde_code == 200
