@@ -79,3 +79,4 @@ extends:
         jinja_templates:         # any additional values you need to template into your proxy at deploy time
           REQUIRE_ASID: true
           PDS_TARGET_SERVER: spine-demographics
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_prod }}
