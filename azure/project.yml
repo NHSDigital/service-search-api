@@ -5,4 +5,4 @@ variables:
   product_display_name: Service Search - REST API
   product_description: " "
   spec_file: service-search-api.json
-  healthcheck_url_stag: "https://nhsuk-apim-stag-uks.azure-api.net/service-search/syndicationprofiles/?X25058&amp;api-version=3"
+  healthcheck_url_stag: "https://nhsuk-apim-stag-uks.azure-api.net/service-search/syndicationprofiles/?FA002&amp;api-version=3"

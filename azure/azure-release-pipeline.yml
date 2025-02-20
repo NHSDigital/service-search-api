@@ -53,6 +53,8 @@ extends:
         post_deploy:
          - template: ./run-sandbox-tests.yml
       - environment: internal-dev-sandbox
+        jinja_templates:
+          HEALTHCHECK_URL: ' '
         proxy_path: sandbox
         post_deploy:
          - template: ./run-sandbox-tests.yml
