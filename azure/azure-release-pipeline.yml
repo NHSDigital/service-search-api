@@ -54,7 +54,7 @@ extends:
          - template: ./run-sandbox-tests.yml
       - environment: internal-dev-sandbox
         jinja_templates:
-          HEALTHCHECK_URL: ' '
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         proxy_path: sandbox
         post_deploy:
          - template: ./run-sandbox-tests.yml
