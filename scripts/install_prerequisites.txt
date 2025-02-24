@@ -1,0 +1,55 @@
+### These instructions are geared towards WSL/Ubuntu users. Steps will be similar but may vary on MacOS.
+### To get started with WSL for the first time, follow these instructions: https://learn.microsoft.com/en-us/windows/wsl/install
+
+sudo apt update
+sudo apt upgrade
+
+# install essential packages.
+sudo apt install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git pipx default-jre default-jdk unzip
+
+# install pyenv 
+curl https://pyenv.run | bash
+
+# refresh the shell
+exec $SHELL
+
+# install the necessary Python version
+pyenv install 3.8.2
+
+# Make pyenv available on the PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+################# RESTART TERMINAL FOR CHANGES TO TAKE EFFECT #######################
+
+# set python version globally
+pyenv global 3.8.2
+
+# upgrade pip to latest version
+pip install --upgrade pip
+
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+
+################# RESTART TERMINAL FOR CHANGES TO TAKE EFFECT #######################
+
+# install latest stable version of nvm
+nvm install stable
+nvm use stable
+
+# Make pipx available on the PATH
+pipx ensurepath
+
+################# RESTART TERMINAL FOR CHANGES TO TAKE EFFECT #######################
+
+# check installed versions
+npm --version
+java -version
+poetry --version
+
+#create a .env file in root of project
+#add these to .env file:
+APIGEE_ENVIRONMENT=internal-dev
+SERVICE_BASE_PATH=service-search-api
+STATUS_ENDPOINT_API_KEY=

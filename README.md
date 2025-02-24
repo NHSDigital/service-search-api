@@ -30,6 +30,8 @@ The contents of this repository are protected by Crown Copyright (C).
 -   [poetry](https://github.com/python-poetry/poetry)
 -   Java 8+
 
+For step by step instructions on making these installations, refer to scripts/install_prerequisites.txt. These installations should only have to be done once.
+
 ### Install
 
 ```
