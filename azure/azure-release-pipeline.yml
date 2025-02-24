@@ -34,23 +34,35 @@ extends:
     prod_producer_approval: true
     apigee_deployments:
       - environment: internal-dev
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: internal-qa
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: ref
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}  
         post_deploy:
          - template: ./run-integration-tests.yml
       - environment: internal-qa-sandbox
+        jinja_templates:
+          HEALTHCHECK_URL: ' '
         proxy_path: sandbox
         post_deploy:
          - template: ./run-sandbox-tests.yml
       - environment: internal-dev-sandbox
+        jinja_templates:
+          HEALTHCHECK_URL: ' '
         proxy_path: sandbox
         post_deploy:
          - template: ./run-sandbox-tests.yml
       - environment: sandbox
+        jinja_templates:
+          HEALTHCHECK_URL: ' '
         proxy_path: sandbox
         depends_on:
           - internal_dev_sandbox
@@ -58,6 +70,8 @@ extends:
         # post_deploy:
         #  - template: ./templates/run-smoke-tests.yml
       - environment: int
+        jinja_templates:
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_stag }}
         depends_on:
           - internal_dev
           - internal_qa
@@ -71,3 +85,4 @@ extends:
         jinja_templates:         # any additional values you need to template into your proxy at deploy time
           REQUIRE_ASID: true
           PDS_TARGET_SERVER: spine-demographics
+          HEALTHCHECK_URL: ${{ variables.healthcheck_url_prod }}
