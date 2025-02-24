@@ -16,8 +16,8 @@ if [ -z $APIGEE_GET_TOKEN_DIR ] || [ -z $APIGEE_GET_TOKEN_PATH ]; then
         It looks like you don't have apigee's get_token utility installed where this script is looking for it.
 
         If you would like the get_token utility automatically installed to $HOME/apigee-token-management, press [y]. Press any other key to exit. 
-        Proceeding will install unzip on your system if you do not already have it.
-    "
+        
+        YOU MUST HAVE UNZIP INSTALLED ON YOUR SYSTEM BEFORE PROCEEDING. Use 'sudo apt install unzip' to install this utility."
     read -p "
         Download get_token to $HOME/apigee-token-management? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
@@ -35,15 +35,8 @@ if [ -z $APIGEE_GET_TOKEN_DIR ] || [ -z $APIGEE_GET_TOKEN_PATH ]; then
         echo "an error has occured and the curl has failed."
     fi
 
-    # Check if unzip is available and download if not, then unzip ssocli-bundle.zip
-    # Why doesn't this work?
+    # Unzip
     echo "UNZIPPING..."
-    UNZIP_PATH=$(which "unzip")
-    echo "which unzip exit status is: $?"
-    if [ $? -ne 0 ]; then
-        echo "uh oh..."
-        sudo apt install unzip
-    fi
     unzip ssocli-bundle.zip
 
     # Install get_token
