@@ -3,6 +3,7 @@ python = "^3.8"
 name = "service_search_api"
 
 [tool.poetry]
+name = "service_search_api"
 version = "0.0.1-alpha"
 description = "TODO"
 authors = [
