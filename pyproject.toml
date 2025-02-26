@@ -1,5 +1,6 @@
 [project]
 python = "^3.8"
+name = "service_search_api"
 
 [tool.poetry]
 name = "service_search_api"
