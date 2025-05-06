@@ -8,9 +8,9 @@ info:
     * retrieve a list of organisation types, for example, GP practices or hospitals
     * search for NHS organisations that provide healthcare services listed in [NHS service near you](https://www.nhs.uk/nhs-services/services-near-you/), for example, Leeds General Infirmary
     * search for coronavirus (COVID-19) walk-in sites
-    
+
     This API does not support the FHIR standard.
-    
+
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support). You must do this before you can go live (see ‘Onboarding’ below).
 
@@ -22,12 +22,12 @@ info:
     * [EPS Directory of Services - REST API](https://digital.nhs.uk/developer/api-catalogue/electronic-prescription-service-directory-of-services) - use this to access information about dispensing services, including searching for dispensers who can provide services for a patient with a given location and urgency
     * [Electronic Transmission of Prescriptions Web Services - SOAP API](https://digital.nhs.uk/developer/api-catalogue/electronic-transmission-of-prescriptions-web-services-soap) - use this to access EPS dispenser (and dispensing appliance contractor) information for a patient via NHS UK Web Services
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
-    
+
     ## API status and roadmap
     This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
       * it is available for testing in the integration environment
       * we expect to make breaking changes based on developer feedback
-    
+
     ### Roadmap
     To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=allexceptdone&tag=service-search-api#controls).
     If you have any other queries, please [contact us](https://digital.nhs.uk/developer/help-and-support).
@@ -38,9 +38,9 @@ info:
 
     ## Technology
     This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#basic-rest).
-    
+
     This API does not support the FHIR standard.
-    
+
     ## Network access
     This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
     For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
@@ -65,17 +65,17 @@ info:
     * is for early developer testing
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
-    
+
     For details of sandbox test scenarios, or to try out the sandbox using our 'Try this API' feature, see the documentation for each endpoint.
-    
+
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing) is for formal integration testing.
-    
+
     ### Integration testing
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing):
     * is for formal integration testing
     * includes authorisation, with options for appliation-restricted access
     * test data is a close copy of the production data
-    
+
     For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
 
     ### Rate Limiting
@@ -90,13 +90,11 @@ info:
     * 200 to 299 if it succeeded, including code 202 if it was accepted by an API that needs to wait for further action
     * 400 to 499 if it failed because of a client error by your application
     * 500 to 599 if it failed because of an error on our server
-    
+
     Errors specific to each API are shown in the Endpoints section, under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.
 
     ## Examples
     The Directory of Healthcare Services (Service Search) API can be used to search for services and sites based on a variety of filters. These filters can be passed as query parameters for a GET request or as part of the body for a POST request, examples of which are below.
-
-    
 
   version: "Computed and injected at build time by `scripts/set_version.py`"
   title: "Directory of Healthcare Services API - version 3"
@@ -127,7 +125,7 @@ paths:
         Use this endpoint to find information about services provided by NHS organisations.
 
         For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes).
-        
+
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
 
@@ -150,7 +148,7 @@ paths:
       parameters:
         - name: api-version
           description: |
-            The API version number can be supplied as a query parameter. 
+            The API version number can be supplied as a query parameter.
           in: query
           required: true
           schema:
@@ -160,9 +158,9 @@ paths:
           in: query
           description: |
             The text to search for. All searchable fields are searched by default unless `searchFields` is specified. 
-            
+
             When searching searchable fields, the search text itself is tokenized, so multiple terms can be separated by white space, for example `search=hello world`. 
-            
+
             To match any term, use `*` which can be useful for boolean filter queries. Omitting this parameter has the same effect as setting it to `*`.
           schema:
             type: string
@@ -179,42 +177,42 @@ paths:
           in: query
           description: |
             A comma-separated list of field names to search for the specified text. This field works in conjunction with the `search` field.
-          
+
             Example search field: `searchFields=ODSCode`
           schema:
             type: string
         - name: queryType
           description: |
             When set to simple, search text is interpreted using a simple query language that allows for symbols such as +, * and "".
-            
+
             When the query type is set to full, search text is interpreted using the Lucene query language which allows field-specific and weighted searches.
-            
+
             The following example is a search over independent terms, with a requirement that all matching documents include `pool`.
-            
+
             For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-simple-syntax).
-            
+
             Example using simple query type:
-            
+
             `queryType=simple`
-            
+
             `search=budget hotel +pool`
-            
+
             `searchMode=all`  
-            
+
             This particular example shows in-field search and term boosting. It looks for hotels where the category field contains the term `budget`.
-            
+
             Any documents containing the phrase `recently renovated` are ranked higher as a result of the term boost value.
-            
+
             For more information, see [Lucene query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/query-lucene-syntax).
-            
+
             Example using full query type:
-            
+
             `queryType=full`
-            
+
             `search=category:budget AND \'recently renovated\'^3`
-            
+
             `searchMode=all`
-            
+
           in: query
           schema:
             type: string
@@ -238,11 +236,11 @@ paths:
         - name: $count
           description: |
             Optional, defaults to false. Specifies whether to fetch the total count of results. 
-            
+
             This is the count of all documents that match the search and `$filter` parameters, ignoring `$top` and `$skip`. 
-            
+
             Setting this value to true may have a performance impact. The count returned is an approximation. 
-            
+
             If you’d like to get only the count without any documents, you can use `$top=0`.
           in: query
           schema:
@@ -252,15 +250,15 @@ paths:
           in: query
           description: |
             A list of comma-separated expressions to sort the results by. Each expression can be either a field name or a call to the `geo.distance()` function. 
-            
+
             Each expression can be followed by `asc` to indicate ascending, and `desc` to indicate descending. The default is ascending order.
-          
+
             This `$orderBy` routine orders the results by the distance from the geography point included in the expression. 
-            
+
             The geography point can be a position from where you are and the results are ordered by how local the results are.
-            
+
             For more information, see [Simple query syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-orderby).
-            
+
             Example: 
             `$orderby=geo.distance(Geocode, geography'POINT(-0.76444095373153675 52.000820159912109)')`
           schema:
@@ -269,9 +267,9 @@ paths:
           in: query
           description: |
             A list of comma-separated fields to include in the result set. 
-            
+
             If unspecified or set to *, all fields marked as retrievable in the schema are included in the projection.
-            
+
             Example: `$select=ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationSubType`
           schema:
             type: string
@@ -279,25 +277,25 @@ paths:
           in: query
           description: |
             A structured search expression in standard OData syntax.
-            
+
             The `$filter` parameter specifies inclusion or exclusion criteria for returning matches in search results.
-            
+
             For more information on using the `$filter`, see [OData $filter syntax in Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-query-odata-filter).
-            
+
             Examples:
-            
+
             Filter results by Pharmacies that are EPS-enabled and classed as 'Community', that is, `IsEpsEnabled` is `true`, `Organisation Type` is `PHA` and `Sub Type` is `Community`:
-            
+
             `$filter=IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'`
-            
+
             Filter results that match our postcode, that is `Postcode` field is `NG16`:
-            
+
             `$filter=search.ismatch('NG16', 'Postcode')`
-            
+
             Filter results by `Postcode` is `CW9` and `OrganisationTypeId" is a dentist:
-            
+
             `$filter=search.ismatch('CW9', 'Postcode') and OrganisationTypeId eq 'DEN'`
-            
+
             For details on organisation types and service codes, see [organisation and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes#organisation-and-service-codes).
           schema:
             type: string
@@ -307,7 +305,7 @@ paths:
         "4XX":
           $ref: "#/components/responses/4XX-BARS"
 
-    post:  
+    post:
       summary: Search for organisations
       tags:
         - Organisation
@@ -317,7 +315,7 @@ paths:
         Use this endpoint to find information about services provided by NHS organisations.
 
         For more information on how to use search identifiers with this endpoint, see [DoHS API guide to search identifiers and service codes](https://digital.nhs.uk/developer/api-catalogue/directory-of-healthcare-services/guide-to-search-identifiers-and-service-codes).
-        
+
         ## Sandbox test scenarios
         You can test the following scenarios in our sandbox environment:
 
@@ -344,9 +342,8 @@ paths:
         content:
           "application/json":
             schema:
-                $ref: '#/components/schemas/OrganisationPostRequest'
+              $ref: "#/components/schemas/OrganisationPostRequest"
             examples:
-
               organisationsByServiceCodeFiltered:
                 summary: "Organisations filtering by EPS enabled"
                 value:
@@ -368,7 +365,7 @@ paths:
                   count: true
                   select: "ODSCode,OrganisationName,Contacts,Address1,Address2,Address3,City,Postcode,OrganisationType,OrganisationSubType"
                   filter: "IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'DistanceSelling'"
-              
+
               organisationsByLocation:
                 summary: "Organisations by location"
                 value:
@@ -377,7 +374,7 @@ paths:
                   searchFields: "Address3,City,County"
                   top: 10,
                   count: true,
-                  select: "Latitude,Longitude,Address3,City,County,Postcode" 
+                  select: "Latitude,Longitude,Address3,City,County,Postcode"
 
               organisationsByGeocodeFiltered:
                 summary: "Organisations filtered by EPS enabled and organisation type and ordered by geocode"
@@ -417,7 +414,7 @@ paths:
                   count: true
                   select: "ODSCode, OrganisationType, OrganisationSubType, OrganisationName, Contacts, Address1, Address2, Address3, City, Postcode, Latitude, Longitude"
                   filter: "search.ismatch('B11', 'Postcode') and IsEpsEnabled eq 'true' and OrganisationTypeId eq 'PHA' and OrganisationSubType eq 'Community'"
-              
+
       responses:
         "200":
           $ref: "#/components/responses/OrganisationSearchPostResponse"
@@ -458,25 +455,25 @@ components:
 
       headers:
         X-Correlation-Id:
-          description: 'The X-Correlation-Id from the request header, if supplied, mirrored back.'
+          description: "The X-Correlation-Id from the request header, if supplied, mirrored back."
           schema:
             type: string
             format: uuid
             example: 9562466f-c982-4bd5-bb0e-255e9f5e6689
         X-Request-Id:
-          description: 'The X-Request-Id from the request header, if supplied, mirrored back.'
+          description: "The X-Request-Id from the request header, if supplied, mirrored back."
           schema:
             type: string
             format: uuid
             example: c1ab3fba-6bae-4ba4-b257-5a87c44d4a91
-            
+
     BadRequest:
       description: Bad Request
       content:
         application/json:
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     Unauthorized:
       description: Unauthorized
@@ -484,7 +481,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     Forbidden:
       description: Forbidden
@@ -492,7 +489,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     TooManyRequests:
       description: Too Many Requests
@@ -500,7 +497,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     InternalServerError:
       description: Internal Server Error
@@ -508,7 +505,7 @@ components:
         application/json:
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     NotFound:
       description: Not found
@@ -519,7 +516,7 @@ components:
               $ref: "examples/organisations-not-found_v3.json"
           schema:
             type: object
-            properties: { }
+            properties: {}
 
     SearchResponse:
       description: Search Response
@@ -555,9 +552,9 @@ components:
               summary: "Organisations filtered by service code"
               $ref: "examples/search-organisations-service-code-filtered-response.json"
 
-            ByLocation: 
+            ByLocation:
               summary: "Organisations by location"
-              $ref: "examples/search-organisations-location-response.json" 
+              $ref: "examples/search-organisations-location-response.json"
 
             ByNameFilteredByServicecodeAndOrgType:
               summary: "Organisations by name filtered by service code"
@@ -577,7 +574,7 @@ components:
 
             ByPostcodeFiltered:
               summary: "Organisations by postcode, filtered by service code and organisation type"
-              $ref: "examples/search-organisations-by-nearest-filter-postcode-response.json" 
+              $ref: "examples/search-organisations-by-nearest-filter-postcode-response.json"
 
   schemas:
     SearchResult:
@@ -603,243 +600,525 @@ components:
           items:
             $ref: "#/components/schemas/SearchResult"
 
-    Organisation:
-      description: Organisation v3
-      type: object
-      properties:
-        "ODSCode":
-          type: string
-        "OrganisationName":
-          type: string
-        "OrganisationTypeId":
-          type: string
-        "OrganisationType":
-          type: string
-        "OrganisationStatus":
-          type: string
-        "Address1":
-          type: string
-        "Address2":
-          type: string
-        "Address3":
-          type: string
-        "City":
-          type: string
-        "County":
-          type: string
-        "Latitude":
-          type: string
-        "Longitude":
-          type: string
-        "Postcode":
-          type: string
-        "Geocode":
-          $ref: "#/components/schemas/Geocode"
-        "OrganisationSubType":
-          type: string
-        "Country":
-          type: string
-        "IsEpsEnabled":
-          type: string
-        "OrganisationAliases":
-          $ref: "#/components/schemas/StringArray"
-        "ParentOrganisation":
-          $ref: "#/components/schemas/OrganisationReference"
-        "Services":
-          $ref: "#/components/schemas/StringArray"
-        "OpeningTimes":
-          $ref: "#/components/schemas/OpeningTimes"
-        "Contacts":
-          $ref: "#/components/schemas/Contacts"
-        "Facilities":
-          $ref: "#/components/schemas/Facilities"
-        "GSD":
-          type: string
-        "LastUpdatedDates":
-          type: object
-          additionalProperties:
-            type: string
-            format: date-time
-        "AcceptingPatients":
-          type: object
-          additionalProperties:
-            $ref: "#/components/schemas/Acceptance"
-        "RelatedIAPTCCGs":
-          $ref: "#/components/schemas/StringArray"
-        "Trusts":
-          $ref: "#/components/schemas/StringArray"
-        "Metrics":
-          $ref: "#/components/schemas/Metric"
-
-    # Is this supposed to be here?
     OrganisationPostRequest:
       description: Organisation post request
       type: object
       example:
         $ref: "examples/search-organisation-request-body_v3.json"
 
-    Metric:
+    Organisation:
+      description: Organisation v3
       type: object
       properties:
-        "MetricID":
-          type: number
-        "MetricName":
+        "SearchKey":
           type: string
-        "DisplayName":
-          type: string
-        "Description":
-          type: string
-        "Value":
-          type: string
-        "Value2":
-          type: string
-        "Value3":
-          type: string
-        "Text":
-          type: string
-        "LinkUrl":
-          type: string
-        "LinkText":
-          type: string
-        "MetricDisplayTypeID":
-          type: number
-        "MetricDisplayTypeName":
-          type: string
-        "HospitalSectorType":
-          type: string
-        "MetricText":
-          type: string
-        "DefaultText":
-          type: string
-        "IsMetaMetric":
-          type: string
-        "BandingClassification":
-          type: string
-        "BandingName":
-          type: string
-
-    Metrics:
-      type: array
-      items:
-        $ref: "#/components/schemas/Metric"
-
-    Acceptance:
-      type: object
-      properties:
-        "Id":
-          type: number
-        "Name":
-          type: string
-        "AcceptingPatients":
-          type: boolean
-
-    OrganisationReference:
-      type: object
-      properties:
+          description: Unique identifier for entity
         "ODSCode":
           type: string
+          description: Unique code for an organisation, service or trust
         "OrganisationName":
           type: string
-
-    Facility:
-      type: object
-      properties:
-        "Id":
-          type: number
-        "Name":
-          type: string
-        "Value":
-          type: string
-        "FacilityGroupName":
-          type: string
-
-    Facilities:
-      type: array
-      items:
-        $ref: "#/components/schemas/Facility"
-
-    Contact:
-      type: object
-      properties:
-        "ContactType":
-          type: string
-        "ContactAvailabilityType":
-          type: string
-        "ContactMethodType":
-          type: string
-        "ContactValue":
-          type: string
-
-    Contacts:
-      type: array
-      items:
-        $ref: "#/components/schemas/Contact"
-
-    OpeningTimes:
-      type: array
-      items:
-        type: object
-        properties:
-          "Weekday":
-            type: string
-            enum:
-              - "Monday"
-              - "Tuesday"
-              - "Wednesday"
-              - "Thursday"
-              - "Friday"
-              - "Saturday"
-              - "Sunday"
-          "OffsetOpeningTime":
-            description: Minutes past midnight
-            type: number
-            example: 480
-          "OffsetClosingTime":
-            description: Minutes past midnight
-            type: number
-            example: 1110
-          "OpeningTimeType":
-            type: string
-          "AdditionalOpeningDate":
-            type: string
-          "IsOpen":
-            type: boolean
-
-    JsonEncodedString:
-      type: string
-
-    StringArray:
-      type: array
-      items:
-        type: string
-
-    Geocode:
-      description: "Geocode"
-      type: object
-      properties:
-        "type":
-          type: string
-        "coordinates":
-          type: array
-          items:
-            type: number
-          minLength: 2
-          maxLength: 2
-        "crs":
-          $ref: "#/components/schemas/CoordinateReferenceSystem"
-
-    CoordinateReferenceSystem:
-      description: Co-ordinate reference system
-      type: object
-      properties:
-        "type":
-          type: string
-        "properties":
+          description: Name for an organisation
+        Organisation Aliases:
           type: object
-          additionalProperties: true
-      example: '{ "type": "name", "properties": { "name": "EPSG:4326" } }'
-  
-  securitySchemes:
-    OAuth_Token:
-      type: http
-      scheme: bearer
+          description: Optional alias(es) for organisation
+          properties:
+            "OrganisationAlias":
+              type: string
+              description: Legacy feature - where trading name might be different from legal registered name
+            "OrganisationAliasId":
+              type: string
+              description: Alias ID for organisation
+        "OrganisationTypeId":
+          type: string
+          description: identifies sector, e.g. DEN for dentist
+        "OrganisationType":
+          type: string
+          description: Verbose representation of organisation type, identifying sector for org
+        "OrganisationStatus":
+          type: string
+          description: ((Always should exist, should always have value of 'visible'))
+        "Address 1":
+          type: string
+          description: Address line 1
+        "Address 2":
+          type: string
+          description: Address line 2
+        "Address 3":
+          type: string
+          description: Address line 3
+        "City":
+          type: string
+          description: City or town
+        "County":
+          type: string
+          description: County
+        "Latitude":
+          type: number
+          description: Specific location latitude
+        "Longitude":
+          type: number
+          description: Specific location longitude
+        "Postcode":
+          type: string
+          description: Post code
+        "Geocode":
+          type: number
+          description: Nested data - { type, coordinates, crs { type, properties { name } } }
+        "ParentOrganisation":
+          type: object
+          description: Parent for NHS organisations. Potentially nullable based on sector. Generally parent trust for primary care organisations.
+          properties:
+            "ODSCode":
+              type: string
+              description: Unique code for an organisation, service or trust
+            "OrganisationName":
+              type: string
+              description: Name for an organisation
+
+        "Services":
+          type: object
+          description: Medical services offered
+          properties:
+            "ServiceName":
+              type: string
+              description: Name for a service, e.g. Urgent dental apponumberments
+            "ServiceCode":
+              type: string
+              description: Code for a service, e.g. SRV0165
+            "Contacts":
+              type: object
+              description: Contact service
+              properties:
+                "ContactMethodType":
+                  type: string
+                  description: Medium for contact - telephone, email, web, fax
+                "ContactValue":
+                  type: string
+                  description: Contact number, email, et c.
+            "ServiceProvider":
+              type: object
+              description: Trust that provides service
+              properties:
+                "ODSCode":
+                  type: string
+                  description: Unique code for an organisation, service or trust
+                "OrganisationName":
+                  type: string
+                  description: Name for an organisation
+            "Treatments":
+              type: object
+              description: bullet list of treatments provided
+              properties:
+                "Name":
+                  type: string
+                  description: Name of treatment
+            "OpeningTimes":
+              type: object
+              description: Contains subfields for service opening times
+              properties:
+                "Weekday":
+                  type: string
+                  description: Day of the week
+                "OpeningTime":
+                  type: string
+                  description: Opening time for service in 24hr clock
+                "ClosingTime":
+                  type: string
+                  description: Closing time for service in 24hr clock
+                "OffsetOpeningTime":
+                  type: number
+                  description: Opening time offset in minutes from midnight
+                "OffsetClosingTime":
+                  type: number
+                  description: Closing time offset in minutes from midnight
+                "OpeningTimeType":
+                  type: string
+                  description: General, Additional, Reception, Surgery - opening times for each
+                "AdditionOpeningDate":
+                  type: string
+                  description: Temporary changes and bank holidays - bank holidays must be validated
+                "IsOpen":
+                  type: boolean
+                  description: If set to true there should be opening times, if set to false there should be none.
+                "FromAgeDays":
+                  type: number
+                  description: Age range based opening times - e.g. under 16s or over 60s
+                "ToAgeDays":
+                  type: number
+                  description: Age range based opening times - e.g. under 16s or over 60s
+            "AgeRange":
+              type: object
+              description: List of age ranges for service
+              properties:
+                "FromAgeDays":
+                  type: number
+                  description: Age range based opening times - e.g. under 16s or over 60s
+                "ToAgeDays":
+                  type: number
+                  description: Age range based opening times - e.g. under 16s or over 60s
+            "Metrics":
+              type: object
+              description: Indicators of service health -
+              properties:
+                "MetricID":
+                  type: number
+                  description: Id for Metric
+                "MetricName":
+                  type: string
+                  description: Name for metric
+                "Description":
+                  type: string
+                  description: Description of metric
+                "Text":
+                  type: string
+                  description: Verbose description
+                "BandingClassification":
+                  type: string
+                  description: representation of grading for metric in words - e.g. "good," "adequate," "yes," "no,"
+            "KeyValueData":
+              type: object
+              description: Meta data about service
+              properties:
+                "Key":
+                  type: string
+                  description: Key for meta data - e.g. "flu booking link"
+                "Value":
+                  type: string
+                  description: Value for meta data - e.g. flu booking link url
+
+        "OpeningTimes":
+          type: object
+          description: Opening times at organisational level
+          properties:
+            "Weekday":
+              type: string
+              description: Day of the week
+            "OpeningTime":
+              type: string
+              description: Opening time for organisation in 24hr clock
+            "ClosingTime":
+              type: string
+              description: Closing time for organisation in 24hr clock
+            "OffsetOpeningTime":
+              type: number
+              description: Opening time offset in minutes from midnight
+            "OffsetClosingTime":
+              type: number
+              description: Closing time offset in minutes from midnight
+            "OpeningTimeType":
+              type: string
+              description: General, Additional, Reception, Surgery - opening times for each
+            "AdditionOpeningDate":
+              type: string
+              description: Temporary changes and bank holidays - bank holidays must be validated
+            "IsOpen":
+              type: boolean
+              description: If set to true there should be opening times, if set to false there should be none.
+
+        "Contacts":
+          type: object
+          description: Contact organisation
+          properties:
+            "ContactType":
+              type: string
+              description: can be primary, pals, alternative - usually primary.
+            "ContactAvailabilityType":
+              type: string
+              description: Office hours, out of hours, or weekend
+            "ContactMethodType":
+              type: string
+              description: Medium for contact - telephone, email, web, fax
+            "ContactValue":
+              type: string
+              description: Contact number, email, et c.
+
+        "Facilities":
+          type: object
+          description: Facilities offered by organisation
+          properties:
+            "Id":
+              type: number
+              description: number identifier for facility
+            "Name":
+              type: string
+              description: Name of facility
+            "Value":
+              type: string
+              description: '"Yes" or "No" string value indicating whether facility is offered at organisation'
+            "FacilityGroupName":
+              type: string
+              description: Groups facilities by category - e.g. accessibility, parking, other
+
+        "GSD":
+          type: object
+          description: General service directory (general directory of services) profiles - non-NHS managed service providers
+          properties:
+            "Metrics":
+              type: object
+              description: Indicators for GSD profile health
+              properties:
+                "ElementTitle":
+                  type: string
+                  description: Title for metric
+                "ElementText":
+                  type: string
+                  description: Body text for metric
+                "ElementOrder":
+                  type: number
+                  description: Sort order
+                "MetricId":
+                  type: string
+                  description: Id for metric
+            "DataSupplier":
+              type: object
+              description: Outside organisation providing information
+              properties:
+                "ProvidedBy":
+                  type: string
+                  description: Organisation providing info
+                "ProvidedByImage":
+                  type: string
+                  description: Image logo
+                "ProvidedByUrl":
+                  type: string
+                  description: Link to org
+                "ProvidedOn":
+                  type: string
+                  description: Last time updated
+            "GsdServices":
+              type: object
+              description: GSD Services
+              properties:
+                "ServiceId":
+                  type: string
+                  description: Service ID
+                "ServiceName":
+                  type: string
+                  description: Service Name
+
+        "LastUpdatedDates":
+          type: object
+          description: Date a field was last updated
+          properties:
+            "OpeningTimes":
+              type: string
+              description: Date Opening Times was last updated
+            "BankHolidayOpeningTimes":
+              type: string
+              description: Date Bank Holiday Opening Times was last updated <And where is bank holiday opening times? We only have additional dates>
+            "TemporaryChangesOpeningTimes":
+              type: string
+              description: Date Tempoaray Opening Times (holidays outside of bank holidays) was last updated
+            "DentistsAcceptingPatients":
+              type: string
+              description: Date Dentists Accepting Patients was last updated
+            "Facilities":
+              type: string
+              description: Date Facilities was last updated
+            "HospitalDepartment":
+              type: string
+              description: Date Hospital Department was last updated (no field for hospital department)
+            "Services":
+              type: string
+              description: Date Services was last updated
+            "ContactDetails":
+              type: string
+              description: Date Contact Details were last updated
+            "AcceptingPatients":
+              type: string
+              description: Date Accepting Patients was last updated
+            "ServiceOpeningTimes":
+              type: string
+              description: Date Service Opening Times was last updated
+            "KeyValueData":
+              type: object
+              description: Date KeyValueData was updated - one entry per key
+              properties:
+                "ServiceCode":
+                  type: string
+                  description: Service code
+                "Key":
+                  type: string
+                  description: Key changed
+                "LastUpdatedDated":
+                  type: string
+                  description: Date last updated
+
+        "AcceptingPatients":
+          type: object
+          description: Information on whether the organisation accepting patients
+          properties:
+            "Dentist":
+              type: object
+              description: Information on whether a dentist is accepting patients
+              properties:
+                "Id":
+                  type: number
+                  description: Number identifier for type of acceptance
+                "Name":
+                  type: string
+                  description: Name/description of type of acceptance, e.g. "Adults (18 and over)"
+                "AcceptingPatients":
+                  type: boolean
+                  description: is the dentist accepting patients?
+            "GP":
+              type: string
+              description: '"Yes," or "no," indicating whether GP is accepting dentists'
+
+        "GPRegistration":
+          type: object
+          description: Information for registering with GP
+          properties:
+            "RegistrationLink":
+              type: string
+              description: Registration Link
+            "AcceptingOutOfArea":
+              type: boolean
+              description: Accepting patients outside of catchment area
+
+        "RelatedIAPTCCGs":
+          type: object
+          description: Psychological therapies comission group - only applies to hospitals and clinics
+          properties:
+            "ODSCode":
+              type: string
+              description: Unique code for an organisation, service or trust
+            "OrganisationName":
+              type: string
+              description: Name for an organisation
+
+        "OrganisationSubType":
+          type: string
+          description: Organisation sub type - e.g. Distance selling for pharmacy. Not all org types have a sub type
+
+        "Trusts":
+          type: object
+          description: If the entity is a trust, this contains a list of organisations managed by that trust
+          properties:
+            "ODSCode":
+              type: string
+              description: ODSCode for orgs that provide services at this location
+            "OrganisationName":
+              type: string
+              description: Organisation name for orgs that provide services at this location
+
+        "Metrics":
+          type: object
+          description: Indicators for organisational health e.g. Care Quality Comission inspection ratings, Hospital waiting times for department
+          properties:
+            "MetricID":
+              type: number
+              description: Id for Metric
+            "MetricName":
+              type: string
+              description: Name for metric
+            "DisplayName":
+              type: string
+              description: Description of metric
+            "Description":
+              type: string
+              description: Verbose description
+            "Value":
+              type: string
+              description: Value
+            "Value2":
+              type: string
+              description: Optional value
+            "Value3":
+              type: string
+              description: optional value
+            "Text":
+              type: string
+              description: Description of metric
+            "LinkUrl":
+              type: string
+              description: Describe URL to put on link
+            "LinkText":
+              type: string
+              description: Describe text to put on link
+            "MetricDisplayTypeID":
+              type: number
+              description: Defines type of metric - e.g. yes or no field
+            "MetricDisplayTypeName":
+              type: string
+              description: Name to describe type of metric
+            "HospitalSectorType":
+              type: string
+              description: Hospital Sector Type
+            "MetricText":
+              type: string
+              description: Description of metric
+            "DefaultText":
+              type: string
+              description: Description of metric
+            "IsMetaMetric":
+              type: boolean
+              description: Is metric meta
+            "BandingClassification":
+              type: string
+              description: representation of grading for metric in words - e.g. "good," "adequate," "yes," "no,"
+            "BandingName":
+              type: string
+              description: Descriptive name for banding
+
+        "Country":
+          type: string
+          description: Country organisation is located (England or Wales)
+
+        "ServiceOpeningTimes":
+          type: object
+          description: Opening times for pharmacies, covid clinics and vaccination centres.
+          properties:
+            "Id":
+              type: number
+              description: Number identifier for clinic
+            "TypeId":
+              type: number
+              description: Identifies age range of clinic
+            "Name":
+              type: string
+              description: Name of clinic
+            "StartDate":
+              type: string
+              description: Start date of clinic
+            "EndDate":
+              type: string
+              description: End date of clinic
+            "Services":
+              type: object
+              description: Age ranged based services which apply to this clinic
+              properties:
+                "ServiceCode":
+                  type: string
+                  description: Code for service - e.g. SRV�..
+                "ServiceName":
+                  type: string
+                  description: Name of service - e.g. "children aged 5 to 11"
+            "DailyOpeningTimes":
+              type: object
+              description: Opening times at organisational level
+              properties:
+                "Weekday":
+                  type: string
+                  description: Day of the week
+                "OpeningTimes":
+                  type: object
+                  description: Opening times for organisation
+                  properties:
+                    "OpeningTime":
+                      type: string
+                      description: Opening time for organisation in 24hr clock
+                    "ClosingTime":
+                      type: string
+                      description: Closing time for organisation in 24hr clock
+                    "OffsetOpeningTime":
+                      type: number
+                      description: Opening time offset in minutes from midnight
+                    "OffsetClosingTime":
+                      type: number
+                      description: Closing time offset in minutes from midnight
+
+        "IsEpsEnabled":
+          type: string
+          description: '"Yes" or "No" string value indicating whether the organisation is EPS enabled'
