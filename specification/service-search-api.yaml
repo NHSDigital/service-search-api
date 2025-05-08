@@ -885,6 +885,7 @@ components:
                   description: Link to org
                 "ProvidedOn":
                   type: string
+                  format: date-time
                   description: Last time updated
             "GsdServices":
               type: object
@@ -903,33 +904,43 @@ components:
           properties:
             "OpeningTimes":
               type: string
+              format: date-time
               description: Date Opening Times was last updated
             "BankHolidayOpeningTimes":
               type: string
+              format: date-time
               description: Date Bank Holiday Opening Times was last updated <And where is bank holiday opening times? We only have additional dates>
             "TemporaryChangesOpeningTimes":
               type: string
+              format: date-time
               description: Date Tempoaray Opening Times (holidays outside of bank holidays) was last updated
             "DentistsAcceptingPatients":
               type: string
+              format: date-time
               description: Date Dentists Accepting Patients was last updated
             "Facilities":
               type: string
+              format: date-time
               description: Date Facilities was last updated
             "HospitalDepartment":
               type: string
+              format: date-time
               description: Date Hospital Department was last updated (no field for hospital department)
             "Services":
               type: string
+              format: date-time
               description: Date Services was last updated
             "ContactDetails":
               type: string
+              format: date-time
               description: Date Contact Details were last updated
             "AcceptingPatients":
               type: string
+              format: date-time
               description: Date Accepting Patients was last updated
             "ServiceOpeningTimes":
               type: string
+              format: date-time
               description: Date Service Opening Times was last updated
             "KeyValueData":
               type: object
@@ -943,6 +954,7 @@ components:
                   description: Key changed
                 "LastUpdatedDated":
                   type: string
+                  format: date-time
                   description: Date last updated
 
         "AcceptingPatients":
