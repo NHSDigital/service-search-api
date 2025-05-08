@@ -1091,7 +1091,7 @@ components:
               properties:
                 "ServiceCode":
                   type: string
-                  description: Code for service - e.g. SRV�..
+                  description: Code for service
                 "ServiceName":
                   type: string
                   description: Name of service - e.g. "children aged 5 to 11"
