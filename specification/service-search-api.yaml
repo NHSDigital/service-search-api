@@ -682,7 +682,7 @@ components:
           properties:
             "ServiceName":
               type: string
-              description: Name for a service, e.g. Urgent dental apponumberments
+              description: Name for a service, e.g. Urgent dental appointments
             "ServiceCode":
               type: string
               description: Code for a service, e.g. SRV0165
@@ -909,11 +909,11 @@ components:
             "BankHolidayOpeningTimes":
               type: string
               format: date-time
-              description: Date Bank Holiday Opening Times was last updated <And where is bank holiday opening times? We only have additional dates>
+              description: Date Bank Holiday Opening Times was last updated
             "TemporaryChangesOpeningTimes":
               type: string
               format: date-time
-              description: Date Tempoaray Opening Times (holidays outside of bank holidays) was last updated
+              description: Date Temporary Opening Times (holidays outside of bank holidays) was last updated
             "DentistsAcceptingPatients":
               type: string
               format: date-time
@@ -925,7 +925,7 @@ components:
             "HospitalDepartment":
               type: string
               format: date-time
-              description: Date Hospital Department was last updated (no field for hospital department)
+              description: Date Hospital Department was last updated
             "Services":
               type: string
               format: date-time
@@ -937,7 +937,7 @@ components:
             "AcceptingPatients":
               type: string
               format: date-time
-              description: Date Accepting Patients was last updated
+              description: Date Accepting Patients was last updated (only applies to Dentists and GPs)
             "ServiceOpeningTimes":
               type: string
               format: date-time
@@ -1017,7 +1017,7 @@ components:
 
         "Metrics":
           type: object
-          description: Indicators for organisational health e.g. Care Quality Comission inspection ratings, Hospital waiting times for department
+          description: Indicators for organisational health e.g. Care Quality Commission inspection ratings, Hospital waiting times for department
           properties:
             "MetricID":
               type: number
