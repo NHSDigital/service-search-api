@@ -184,7 +184,7 @@ class TestSearchOrganisations:
         # Then
         assert_that(response.status_code).is_equal_to(expected_status_code)
 
-    @pytest.fixture(autouse=True)
-    def manage_test_environment():
-        time.sleep(2)  # Wait before executing each test, required to not break the per app spike arrest rule.
-        yield
+@pytest.fixture(autouse=True)
+def manage_test_environment():
+    time.sleep(2)  # Wait before executing each test, required to not break the per app spike arrest rule.
+    yield
