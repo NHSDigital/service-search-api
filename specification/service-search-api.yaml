@@ -28,10 +28,6 @@ info:
       * it is available for testing in the integration environment
       * we expect to make breaking changes based on developer feedback
     
-    ### Roadmap
-    To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=allexceptdone&tag=service-search-api#controls).
-    If you have any other queries, please [contact us](https://digital.nhs.uk/developer/help-and-support).
-
     ## Service level
     This API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.
     For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
@@ -96,7 +92,8 @@ info:
     ## Examples
     The Directory of Healthcare Services (Service Search) API can be used to search for services and sites based on a variety of filters. These filters can be passed as query parameters for a GET request or as part of the body for a POST request, examples of which are below.
 
-    
+    ## Contact us
+    For help and support connecting to our APIs and to join our developer community, see [Help and support building healthcare software](https://digital.nhs.uk/developer/help-and-support).
 
   version: "Computed and injected at build time by `scripts/set_version.py`"
   title: "Directory of Healthcare Services API - version 3"
