@@ -3,16 +3,16 @@ const request = require("supertest");
 const assert = require("chai").assert;
 // const expect = require("chai").expect;
 
-const organisationsSingleResponse = require("./responses/organisations-single_v3.json");
-const organisationsAllResponse = require("./responses/organisations_v3.json");
-const organisationsNotFoundResponse = require("./responses/organisations-not-found_v3.json");
-const organisationByOdsCodeFilteredResponse = require("./responses/search-organisations-service-code-filtered-response.json");
-const organisationByNameFilteredResponse = require("./responses/search-organisations-by-name-filtered-response.json");
-const organisationByLocationResponse = require("./responses/search-organisations-location-response.json")
-const organisationByGeocodeFilteredResponse = require("./responses/search-organisations-geocode-filtered-response.json");
-const organisationsByNearestFilteredResponse = require("./responses/search-organisations-by-nearest-filter-postcode-response.json");
-const organisationsByClosingTimeAndLocation = require("./responses/search-organisation-closing-time-location.json")
-const organisationsByLocationFilteredByWheelchairAccess = require("./responses/search-organisations-by-location-filter-by-wheelchair-access.json")
+const organisationsSingleResponse = require("./responses/examples/organisations-single_v3.json");
+const organisationsAllResponse = require("./responses/examples/organisations_v3.json");
+const organisationsNotFoundResponse = require("./responses/examples/organisations-not-found_v3.json");
+const organisationByOdsCodeFilteredResponse = require("./responses/examples/search-organisations-service-code-filtered-response.json");
+const organisationByNameFilteredResponse = require("./responses/examples/search-organisations-by-name-filtered-response.json");
+const organisationByLocationResponse = require("./responses/examples/search-organisations-location-response.json")
+const organisationByGeocodeFilteredResponse = require("./responses/examples/search-organisations-geocode-filtered-response.json");
+const organisationsByNearestFilteredResponse = require("./responses/examples/search-organisations-by-nearest-filter-postcode-response.json");
+const organisationsByClosingTimeAndLocation = require("./responses/examples/search-organisation-closing-time-location.json")
+const organisationsByLocationFilteredByWheelchairAccess = require("./responses/examples/search-organisations-by-location-filter-by-wheelchair-access.json")
 
 
 describe("app handler tests", function () {
