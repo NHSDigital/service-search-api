@@ -22,3 +22,4 @@ smoketest-report.xml
 specification/postman-collection.json
 
 openapitools.json
+sandbox/responses/*
