@@ -10,8 +10,8 @@ REDIRECT_URL=https://nhsd-apim-testing-internal-dev.herokuapp.com/callback
 .EXPORT_ALL_VARIABLES:
 
 run:
-	poetry run pytest -s -v $(f);
+	poetry run pytest --api-name=service-search-api --proxy-name=service-search-api-internal-dev -s -v $(f);
 
 #  run tests with certain marker e.g. make run-sandbox runs tests marked with sandbox
 run-%:
-	poetry run pytest -s -v -m "$*" $(f)
+	poetry run pytests --api-name=service-search-api --proxy-name=service-search-api-internal-dev -v -m "$*" $(f)
