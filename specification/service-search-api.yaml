@@ -12,7 +12,9 @@ info:
     This API does not support the FHIR standard.
 
     ## Who can use this API
-    This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development. To do this, [contact us](https://digital.nhs.uk/developer/help-and-support). You must do this before you can go live (see ‘Onboarding’ below).
+
+    You must agree to the Online Connection Agreement before using this API.
+    This must be done before you can go live (see 'Onboarding' below).
 
     ## Related APIs
     The following APIs are related to this API:
@@ -24,9 +26,12 @@ info:
     * [e-Referral Services - A010 Patient service search endpoint](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir#api-Default-a010-patient-service-search) - use this endpoint to find services that meet the referral needs of a patient
 
     ## API status and roadmap
-    This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
+    This API is [in production](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
       * it is available for testing in the integration environment
       * we expect to make breaking changes based on developer feedback
+
+    ### Roadmap
+    To see our roadmap, or to suggest, comment or vote on features for this API, see our [interactive product backlog](https://nhs-digital-api-management.featureupvote.com/?order=popular&filter=allexceptdone&tag=service-search-api#controls). If you have any other queries, please [contact us](https://digital.nhs.uk/developer/help-and-support).
     
     ## Service level
     This API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.
@@ -50,11 +55,11 @@ info:
 
     ## Environments and testing
 
-    | Environment       | Base URL                                                  |
-    | ----------------- |---------------------------------------------------------- |
-    | Sandbox           | `https://sandbox.api.service.nhs.uk/service-search-api/`    |
-    | Integration test  | `https://int.api.service.nhs.uk/service-search-api/`        |
-    | Production        | Not yet available         |
+    | Environment       | Base URL (GET)                                                 | Base URL (POST)|
+    | ----------------- |---------------------------------------------------------- |-----------------------------|
+    | Sandbox           | `https://sandbox.api.service.nhs.uk/service-search-api/`    |`https://sandbox.api.service.nhs.uk/service-search-api/search`|
+    | Integration test  | `https://int.api.service.nhs.uk/service-search-api/`        | `https://int.api.service.nhs.uk/service-search-api/search`|
+    | Production        | `https://api.service.nhs.uk/service-search-api`         |`https://api.service.nhs.uk/service-search-api/search`|
 
     ### Sandbox testing
     Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing):
@@ -74,11 +79,35 @@ info:
 
     For more details see [integration testing with our RESTful APIs](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing-with-our-restful-apis).
 
-    ### Rate Limiting
+    ### Rate Limiting for Integration
     The integration test environment is rate limited to 1500 requests per week and 1 request per second.
 
+
+    ## Production environment
+    Our production environment:
+    •	requires you to get your application/product onboarded and approved by us
+    •	is to be used by your production application
+    •	includes authorisation via an API Key, which can be obtained from the NHS Digital Onboarding Service - Developer account. This will be different from your Integration test environment API key.
+    •	has a higher rate limit
+    ### Rate Limiting for production 
+    The production environment is rate limited to 4,000 requests per hour. 
+
     ## Onboarding
-    This API is not yet available for onboarding.
+    You need to get your software approved by us before it can go live with this API. We call this onboarding.
+    During this process you will be asked agree to the Online connection agreement.
+    You can submit your application/product for onboarding by signing into your developer account and using the Digital Onboarding Service. 
+    Once all your onboarding responses have been approved, we will enable the 'Directory of Healthcare Services API' for your Production application.
+
+
+    ## Migrating from V1 and V2 of the Directory of Healthcare Services API
+    Users migrating from V1 and V2 will need to go through the onboarding process for this API. 
+    Existing partners will be able to reuse their existing queries but will need to: 
+    a)	Update the query endpoint to the new version 
+    b)	Include their new API key 
+    API partners can continue using the API to search for organisations by location in the query string. However, unlike V1 and V2 of the API, the equivalent query with V3 is a two-step query process. 
+    Step 1 will be to use the Ordnance Survey API or other commercially available software to determine the latitude/longitude from a postcode. 
+    Step 2 will be to use the search endpoint (version 3) with the GeoLocation in the “latitude” and “longitude” query string. 
+
 
     ## Errors
     We use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:
