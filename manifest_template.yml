@@ -89,7 +89,7 @@ APIGEE_ENVIRONMENTS:
     ratelimiting:
       service-search-api-sandbox:
         quota:
-          enabled: false  
+          enabled: false
         spikeArrest:
           enabled: false
       app:
@@ -104,18 +104,18 @@ APIGEE_ENVIRONMENTS:
       service-search-api-int:
         quota:
           enabled: true
-          limit: 1200
+          limit: 7800
           interval: 1
           timeunit: minute
         spikeArrest:
           enabled: true
-          ratelimit: 2400pm
+          ratelimit: 15000pm
       app:
         quota:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 1000pm
+          ratelimit: 2400pm
   - name: prod
     display_name: Production
     approval_type: manual
@@ -124,7 +124,7 @@ APIGEE_ENVIRONMENTS:
     ratelimiting:
       service-search-api-prod:
         quota:
-          enabled: true 
+          enabled: true
           limit: 7800
           interval: 1
           timeunit: minute
