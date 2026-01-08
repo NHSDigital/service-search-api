@@ -1,5 +1,5 @@
 [project]
-python = "^3.9"
+python = "^3.14"
 name = "service_search_api"
 
 [tool.poetry]
@@ -17,11 +17,11 @@ keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.14"
 requests = "^2.28.1"
 jsonpath-ng = "^1.5.3"
 certifi = "2022.12.7"
-pytest-nhsd-apim = "^3.4.2"
+pytest-nhsd-apim = "^5.0.15"
 
 [tool.poetry.scripts]
 
@@ -29,7 +29,7 @@ pytest-nhsd-apim = "^3.4.2"
 assertpy = "^1.1"
 python-dotenv = "^1.0.1"
 flake8 = "^7.3.0"
-black = "^20.8b1"
+black = "^25.0.0"
 pip-licenses = "^2.0.1"
 jinja2 = "^2.11.1"
 pyyaml = "^6.0"
