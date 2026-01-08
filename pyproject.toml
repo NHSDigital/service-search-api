@@ -1,35 +1,31 @@
 [project]
-python = ">=3.9,<4.0"
+python = ">=3.9,<3.13"
 name = "service_search_api"
 
 [tool.poetry]
 name = "service_search_api"
 version = "0.0.1-alpha"
 description = "TODO"
-authors = [
-    #TODO add authors
-]
-readme = 'README.md'
+authors = []
+readme = "README.md"
 license = "MIT"
 repository = "https://github.com/NHSDigital/service-search-api"
 homepage = "https://github.com/NHSDigital/service-search-api"
-keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
-
+keywords = ["healthcare", "uk", "nhs"]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4.0"
+python = ">=3.9,<3.13"
 requests = "^2.28.1"
 jsonpath-ng = "^1.5.3"
 certifi = "2022.12.7"
 pytest-nhsd-apim = "^3.4.2"
-
-[tool.poetry.scripts]
+lxml = "^4.9.4"
 
 [tool.poetry.group.dev.dependencies]
 assertpy = "^1.1"
 python-dotenv = "^1.0.1"
-flake8 = "^7.0.0"
-black = "^23.3.0"
+flake8 = "^7.3.0"
+black = "^20.8b1"
 pip-licenses = "^2.0.1"
 jinja2 = "^2.11.1"
 pyyaml = "^6.0"
@@ -37,7 +33,7 @@ docopt = "^0.6.2"
 jsonpath-rw = "^1.4.0"
 semver = "^2.9.0"
 gitpython = "^3.1.41"
-pytest = "8.2.0"
+pytest = "^8.2.0"
 coverage = "^5.5"
 aiohttp = "^3.8.5"
 pytest-asyncio = "^0.14.0"
