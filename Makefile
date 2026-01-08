@@ -5,14 +5,7 @@ all: install publish release smoketest serve
 #Installs dependencies using poetry.
 install-python:
 	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
-	@if command -v apt-get > /dev/null; then \
-		echo "Installing system dependencies..."; \
-		sudo apt-get update && sudo apt-get install -y libxml2-dev libxslt-dev; \
-	elif command -v yum > /dev/null; then \
-		echo "Installing system dependencies..."; \
-		sudo yum install -y libxml2-devel libxslt-devel; \
-	fi
-	poetry install --no-root --with dev
+	PIP_PREFER_BINARY=1 poetry install --no-root --with dev
 
 #Installs dependencies using npm.
 install-node: 
