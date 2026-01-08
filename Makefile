@@ -33,9 +33,8 @@ install: install-node install-python .git/hooks/pre-commit
 # ---------- Lint ----------
 lint: install-python
 	$(info ">>>>>>>>>>> LINT <<<<<<<<<<<<<<")
-	$(ACTIVATE) && export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT
-	$(ACTIVATE) && npm run lint
-	$(ACTIVATE) && poetry run flake8 .
+	$(ACTIVATE) && export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT && npm run lint
+	$(ACTIVATE) && find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
 
 # ---------- Clean ----------
 clean: lint
