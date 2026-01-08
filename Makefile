@@ -1,70 +1,63 @@
-SHELL := /bin/bash -euo pipefail
-
-VENV_DIR := .venv
-ACTIVATE := source $(VENV_DIR)/bin/activate
+SHELL=/bin/bash -euo pipefail
 
 all: install publish release smoketest serve
 
-# ---------- Python Dependencies ----------
+#Installs dependencies using poetry.
 install-python:
 	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
-	# Create virtual environment if missing
-	test -d $(VENV_DIR) || python3 -m venv $(VENV_DIR)
-	# Upgrade pip and install poetry in venv
-	$(ACTIVATE) && pip install --upgrade pip
-	$(ACTIVATE) && pip install poetry
-	# Install project dependencies via poetry
-	$(ACTIVATE) && poetry install --no-root --with dev
+	poetry install --no-root
 
-# ---------- Node Dependencies ----------
-install-node:
+#Installs dependencies using npm.
+install-node: 
 	$(info ">>>>>>>>>>> INSTALL NODE DEPENDENCIES <<<<<<<<<<<<<<")
 	npm install --legacy-peer-deps
 	cd sandbox && npm install --legacy-peer-deps
 
-# ---------- Git Hooks ----------
-.git/hooks/pre-commit:
+#Configures Git Hooks, which are scipts that run given a specified event.
+.git/hooks/pre-commit: 
 	$(info ">>>>>>>>>>> GIT PRE-COMMIT HOOKS <<<<<<<<<<<<<<")
 	cp scripts/pre-commit .git/hooks/pre-commit
 
-# ---------- Combined Install ----------
+#Condensed Target to run all targets above.
 install: install-node install-python .git/hooks/pre-commit
 
-# ---------- Lint ----------
-lint: install-python
+#Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
+lint: 
 	$(info ">>>>>>>>>>> LINT <<<<<<<<<<<<<<")
-	$(ACTIVATE) && export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT && npm run lint
-	$(ACTIVATE) && find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
+	export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT
+	npm run lint
+	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8 
 
-# ---------- Clean ----------
+#Removes build/ + dist/ directories
 clean: lint
 	$(info ">>>>>>>>>>> CLEAN <<<<<<<<<<<<<<")
 	rm -rf build
 	rm -rf dist
 
-# ---------- Publish ----------
+#Creates the fully expanded OAS spec in json
 publish: clean
 	$(info ">>>>>>>>>>> PUBLISH <<<<<<<<<<<<<<")
 	mkdir -p build
-	$(ACTIVATE) && npm run publish 2> /dev/null
-	$(ACTIVATE) && poetry run scripts/inline_examples.py build/service-search-api.json > build/temp.json
+	npm run publish 2> /dev/null
+	poetry run scripts/inline_examples.py build/service-search-api.json > build/temp.json
 	rm build/service-search-api.json
 	mv build/temp.json build/service-search-api.json
 
-# ---------- Build Proxy ----------
-build-proxy:
+#Runs build proxy script
+build-proxy: 
 	$(info ">>>>>>>>>>> RUN BUILD PROXY SCRIPT <<<<<<<<<<<<<<")
 	scripts/build_proxy.sh
 
-# ---------- Copy Examples ----------
-_dist_include := pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests specification
-copy-examples:
+#Files to loop over in release
+_dist_include="pytest.ini poetry.lock poetry.toml pyproject.toml Makefile build/. tests specification"
+
+copy-examples: 
 	$(info ">>>>>>>>>>> COPY EXAMPLES <<<<<<<<<<<<<<")
 	cp specification/examples/* sandbox/responses/
 	mkdir -p build/examples
 	cp sandbox/responses/* build/examples/
 
-# ---------- Release ----------
+#Create /dist/ sub-directory and copy files into directory
 release: clean copy-examples publish build-proxy
 	$(info ">>>>>>>>>>> RELEASE <<<<<<<<<<<<<<")
 	mkdir -p dist
@@ -75,14 +68,11 @@ release: clean copy-examples publish build-proxy
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-qa-sandbox.yml
 	cp ecs-proxies-deploy.yml dist/ecs-deploy-internal-dev-sandbox.yml
 
-# ---------- Smoketest ----------
+#Command to run end-to-end smoktests post-deployment to verify the environment is working
 smoketest:
 	$(info ">>>>>>>>>>>> SMOKETEST <<<<<<<<<<<<")
-	$(ACTIVATE) && . scripts/get_apigee_token.sh
-	$(ACTIVATE) && poetry run pytest -v --junitxml=smoketest-report.xml \
-		--api-name=service-search-api --proxy-name=service-search-api-internal-dev
+	. scripts/get_apigee_token.sh
+	poetry run pytest -v --junitxml=smoketest-report.xml --api-name=service-search-api --proxy-name=service-search-api-internal-dev
 
-# ---------- Serve ----------
 serve: clean publish
-	$(info ">>>>>>>>>>> SERVE <<<<<<<<<<<<<<")
-	$(ACTIVATE) && npm run serve
+	npm run serve
