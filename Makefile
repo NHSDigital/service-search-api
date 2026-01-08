@@ -2,13 +2,8 @@ SHELL=/bin/bash -euo pipefail
 
 all: install publish release smoketest serve
 
-install-system-deps:
-	$(info ">>>>>>>>>>> INSTALL SYSTEM DEPENDENCIES <<<<<<<<<<<<<<")
-	sudo apt-get update && \
-	sudo apt-get install -y libxml2-dev libxslt1-dev python3-dev build-essential
-
 #Installs dependencies using poetry.
-install-python: install-system-deps
+install-python:
 	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
 	python -m venv .venv
 	source .venv/bin/activate && poetry install --no-root --with dev
