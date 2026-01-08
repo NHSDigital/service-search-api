@@ -5,7 +5,7 @@ all: install publish release smoketest serve
 #Installs dependencies using poetry.
 install-python:
 	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
-	PIP_PREFER_BINARY=1 poetry install --no-root --with dev
+	poetry install --no-root
 
 #Installs dependencies using npm.
 install-node: 
@@ -22,7 +22,7 @@ install-node:
 install: install-node install-python .git/hooks/pre-commit
 
 #Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
-lint: install-python
+lint: 
 	$(info ">>>>>>>>>>> LINT <<<<<<<<<<<<<<")
 	export OPENAPI_GENERATOR_CLI_SEARCH_URL=DEFAULT
 	npm run lint
