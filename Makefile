@@ -5,7 +5,7 @@ all: install publish release smoketest serve
 #Installs dependencies using poetry.
 install-python:
 	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
-	poetry install --no-root
+	poetry install --no-root --with dev
 
 #Installs dependencies using npm.
 install-node: 
