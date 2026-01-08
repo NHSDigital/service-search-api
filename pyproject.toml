@@ -1,5 +1,5 @@
 [project]
-python = ">=3.9,<3.13"
+python = ">=3.9,<4.0"
 name = "service_search_api"
 
 [tool.poetry]
@@ -17,7 +17,7 @@ keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.9,<4.0"
 requests = "^2.28.1"
 jsonpath-ng = "^1.5.3"
 certifi = "2022.12.7"
