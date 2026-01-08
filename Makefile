@@ -5,7 +5,9 @@ all: install publish release smoketest serve
 #Installs dependencies using poetry.
 install-python:
 	$(info ">>>>>>>>>>> INSTALL PYTHON DEPENDENCIES <<<<<<<<<<<<<<")
-	python3.11.14 -m venv .venv
+	# Create venv with whatever python pyenv is currently using
+	python -m venv .venv
+	# Activate venv and install dependencies
 	source .venv/bin/activate && poetry install --no-root --with dev
 
 #Installs dependencies using npm.
