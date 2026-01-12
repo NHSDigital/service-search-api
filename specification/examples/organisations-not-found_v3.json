@@ -1,4 +1,4 @@
 {
-  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-10')/$metadata#docs(*)",
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-2')/$metadata#docs(*)",
   "value": []
 }

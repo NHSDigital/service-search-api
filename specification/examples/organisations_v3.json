@@ -1,5 +1,5 @@
 {
-  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-10')/$metadata#docs(*)",
+  "@odata.context": "https://nhsuksearchstaguks.search.windows.net/indexes('service-search-syndication-3-2')/$metadata#docs(*)",
   "value": [
       {
           "@search.score": 1.0,
@@ -17181,5 +17181,5 @@
           "ServiceOpeningTimes": []
       }
   ],
-  "@odata.nextLink": "https://nhsuksearchstaguks.search.windows.net/indexes/service-search-syndication-3-10/docs/?api-version=2017-11-11-Preview&search=%2A&$skip=50"
+  "@odata.nextLink": "https://nhsuksearchstaguks.search.windows.net/indexes/service-search-syndication-3-2/docs/?api-version=2017-11-11-Preview&search=%2A&$skip=50"
 }
