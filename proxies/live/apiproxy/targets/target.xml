@@ -49,4 +49,5 @@
       </LoadBalancer>
       <Path>/service-search/syndicationprofiles</Path>
     </HTTPTargetConnection>
+    <!-- Empty comment -->
 </TargetEndpoint>
