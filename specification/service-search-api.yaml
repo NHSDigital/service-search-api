@@ -77,7 +77,7 @@ info:
     ### Rate Limiting
     Rate limits apply to both integration test and production environments:
     * 7800 requests per minute per product
-    * 2400 requests per minute per application
+    * 6000 requests per minute per application
 
     ## Onboarding
     This API is not yet available for onboarding.
