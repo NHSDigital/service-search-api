@@ -115,7 +115,7 @@ APIGEE_ENVIRONMENTS:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 2400pm
+          ratelimit: 6000pm
   - name: prod
     display_name: Production
     approval_type: manual
@@ -136,7 +136,7 @@ APIGEE_ENVIRONMENTS:
           enabled: false
         spikeArrest:
           enabled: true
-          ratelimit: 2400pm
+          ratelimit: 6000pm
 ---
 meta:
   api:
