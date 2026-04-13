@@ -9,7 +9,7 @@
   "license": "Unlicense",
   "private": true,
   "dependencies": {
-    "express": "^5.0.0-alpha.8",
+    "express": "^5.0.0",
     "loglevel": "^1.7.1",
     "mocha": "^10.7.3",
     "mocha-junit-reporter": "^2.2.1",
